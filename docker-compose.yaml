@@ -1,0 +1,23 @@
+services: 
+# list of every service the app needs (front, back, db...)
+  postgres:
+    image: postgres:16
+    # version the isolated docker container is going to use
+    container_name: workoutbuddy-db
+    restart: always
+    # if docker crashes or pc restarts -> automatically restart the container
+    environment:
+    # .env INSIDE the docker container.
+      POSTGRES_USER: workoutbuddy_user
+      POSTGRES_PASSWORD: workoutbuddy_password
+      POSTGRES_DB: workoutbuddy
+    ports:
+    # HOST_PORT : CONTAINER_PORT
+      - "5432:5432"
+    volumes:
+      - workoutbuddy_data:/var/lib/postgresql/data
+      # ensures DB data persist container deleiton
+
+volumes:
+  workoutbuddy_data:
+  # declares the named volume
