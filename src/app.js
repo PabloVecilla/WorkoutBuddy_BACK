@@ -1,13 +1,16 @@
 const express = require("express"); 
 const cookieParser = require("cookie-parser"); 
 // const cors = require("cors"); 
-const sequelize = require("../config/database")
+const sequelize = require("../config/database"); 
 
 // ROUTES
 // _users
 const userRoutes = require("../src/routes/user.routes"); 
 // _auth
 const authRoutes = require("../src/routes/auth.routes"); 
+
+// IMPORT_MODELS
+require("./models"); 
 
 require("dotenv").config(); 
 
