@@ -8,10 +8,12 @@ const sequelize = require("../config/database");
 const userRoutes = require("../src/routes/user.routes"); 
 // _auth
 const authRoutes = require("../src/routes/auth.routes"); 
+// _program
+const programRoutes = require("../src/routes/program.routes"); 
 
 // IMPORT_MODELS
 require("./models"); 
-
+// IMPORT DOTENV
 require("dotenv").config(); 
 
 const app = express(); 
@@ -25,6 +27,8 @@ app.use(cookieParser()) //cookie
 app.use("/", userRoutes); 
 
 app.use("/auth", authRoutes); 
+
+app.use("/programs", programRoutes); 
 
 app.get("/", (_req, res) => {
   res.json({ message: "WorkoutBuddy API running on local" });

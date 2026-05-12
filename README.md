@@ -45,6 +45,9 @@ WorkoutBuddy is a full-stack fitness application designed to help users create, 
 - Protected routes
 - Current user endpoint
 - Logout functionality
+- Programs CRUD
+- Protected ownership logic
+- PATCH support
 
 ### Backend Architecture
 - Modular route/controller structure
@@ -69,6 +72,25 @@ GET /auth/me
 
 #### Logout
 POST /auth/logout
+
+### Program Routes
+
+#### Create
+POST /programs/create
+
+#### Find All
+GET /programs/
+
+#### Find one By id
+GET /perograms/:id
+
+#### Delete one by id
+DELETE /programs/:id
+
+#### Update one by id
+PATCH /programs/:id
+
+
 
 ---
 
