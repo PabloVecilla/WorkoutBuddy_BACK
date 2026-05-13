@@ -9,7 +9,15 @@ const Exercise = sequelize.define(
             primaryKey: true, 
             autoIncrement: true
         }, 
+        order: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         name: {
+            type: DataTypes.STRING, 
+            allowNull: false
+        }, 
+        category: {
             type: DataTypes.STRING, 
             allowNull: false
         }, 
