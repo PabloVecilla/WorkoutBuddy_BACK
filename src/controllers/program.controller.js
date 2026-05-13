@@ -2,15 +2,15 @@ const { Program } = require("../models");
 
 const createProgram = async (req, res) => {
     try {
-        const { name, goal, level, frecuency } = req.body; 
+        const { name, goal, level, frequency } = req.body; 
         const userId = req.user.id
 
-        if (!name || !goal || !level || !frecuency) return res.status(400).json({
-            message: "Name, goal, level and frecuency required"
+        if (!name || !goal || !level || !frequency) return res.status(400).json({
+            message: "Name, goal, level and frequency required"
         }); 
 
         const program = await Program.create(
-            { name, goal, level, frecuency, userId }
+            { name, goal, level, frequency, userId }
         ); 
 
         res.status(201).json( {
@@ -92,7 +92,7 @@ const updateProgram = async (req, res) => {
         const userId = req.user.id; 
         const programId = Number(req.params.id); 
 
-        const { name, goal, level, frecuency } = req.body; 
+        const { name, goal, level, frequency } = req.body; 
 
         if (isNaN(programId)) return res.status(400).json({ message: "Invalid id" }); 
 
@@ -103,7 +103,7 @@ const updateProgram = async (req, res) => {
             name: name ?? program.name, 
             goal: goal ?? program.goal, 
             level: level ?? program.level, 
-            frecuency: frecuency ?? program.frecuency
+            frequency: frequency ?? program.frequency
         }); 
 
         res.status(200).json({

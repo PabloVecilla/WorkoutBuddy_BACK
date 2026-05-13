@@ -30,7 +30,7 @@ const Program = sequelize.define(
             ), 
             allowNull: false
         }, 
-        frecuency: {
+        frequency: {
             type: DataTypes.INTEGER, 
             allowNull: false, 
             validate: {
