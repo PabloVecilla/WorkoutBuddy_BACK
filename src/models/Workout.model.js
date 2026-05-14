@@ -29,13 +29,13 @@ const Workout = sequelize.define(
             ), 
             allowNull: false
         }, 
-        difficulty: {
-            type: DataTypes.INTEGER,
-            validate: {
-                min: 1, 
-                max: 10
-            }
-        }
+        // difficulty: {
+        //     type: DataTypes.INTEGER,
+        //     validate: {
+        //         min: 1, 
+        //         max: 10
+        //     }
+        // }
     },
     {
         tableName: "workout",

@@ -9,6 +9,14 @@ const Exercise = sequelize.define(
             primaryKey: true, 
             autoIncrement: true
         }, 
+        externalId: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        source: {
+            type: DataTypes.STRING, 
+            allowNull: true
+        },
         order: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -23,7 +31,7 @@ const Exercise = sequelize.define(
         }, 
         muscle: {
             type: DataTypes.STRING, 
-            allowNull: false
+            allowNull: true
         }, 
         equipment: {
             type: DataTypes.STRING, 
@@ -33,7 +41,7 @@ const Exercise = sequelize.define(
             allowNull: false
         },
         reps: {
-            type: DataTypes.INTEGER, 
+            type: DataTypes.STRING, 
             allowNull: false
         }, 
         restSeconds: {
