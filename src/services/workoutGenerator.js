@@ -184,8 +184,8 @@ const generateProgram = ({ goal, level, frequency }) => {
         });
 
         if (hasCardio) {  // adds cardio if it belongs to user's program  
-        
-            const selectedCardio = selectExercise("cardio", level)
+            const selectedCardio = selectExercise("cardio", level); 
+
             exercises.unshift({
                 order: 1, 
                 category: "cardio",
@@ -208,5 +208,7 @@ const generateProgram = ({ goal, level, frequency }) => {
 module.exports = {
 generateProgram,
 };
+
+// console.log(generateProgram({goal: "muscle_gain", level: "intermediate", frequency: 3}); 
 
 

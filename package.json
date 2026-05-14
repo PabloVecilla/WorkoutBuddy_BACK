@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/app.js",
     "start": "node --watch src/app.js",
-    "db:init": "node create-tables.js"
+    "db:init": "node create-tables.js", 
+    "test": "node -e \"console.log('no tests yet')\""
   },
   "keywords": [],
   "author": "",

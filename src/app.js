@@ -10,6 +10,8 @@ const userRoutes = require("../src/routes/user.routes");
 const authRoutes = require("../src/routes/auth.routes"); 
 // _program
 const programRoutes = require("../src/routes/program.routes"); 
+// _exercise
+const exerciseRoutes = require("../src/routes/exercise.routes"); 
 
 // IMPORT_MODELS
 require("./models"); 
@@ -29,6 +31,8 @@ app.use("/", userRoutes);
 app.use("/auth", authRoutes); 
 
 app.use("/programs", programRoutes); 
+
+app.use("/exercises", exerciseRoutes); 
 
 app.get("/", (_req, res) => {
   res.json({ message: "WorkoutBuddy API running on local" });

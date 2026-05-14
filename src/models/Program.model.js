@@ -32,7 +32,7 @@ const Program = sequelize.define(
         }, 
         frequency: {
             type: DataTypes.INTEGER, 
-            allowNull: false, 
+            allowNull: true, 
             validate: {
                 min: 1, 
                 max: 7

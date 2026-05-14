@@ -1,4 +1,5 @@
-const { Program } = require("../models"); 
+const {Program, Workout, Exercise} = require("../models"); 
+const { generateProgram } = require("../services/workoutGenerator"); 
 
 const createProgram = async (req, res) => {
     try {
@@ -21,6 +22,39 @@ const createProgram = async (req, res) => {
     } catch (err) { 
         res.status(500).json({
             message: "Error creating Program", 
+            error: err.message
+        }); 
+    }
+}; 
+
+const generateProgramController = async (req, res) => {
+    try {
+        const userId = req.user.id; 
+
+        const { name, goal, level, frequency } = req.body; 
+
+        if (!name || !goal || !level || !frequency ) return res.status(400).json({ message: "All fields are required" }); 
+
+        const generatedProgram = generateProgram({ goal, level, frequency }); 
+
+        const addedProgram = await Program.create({userId, name, goal, level, frequency}); 
+
+        for (let day of generatedProgram) {
+            const addedWorkout = await Workout.create({dayNumber: day.dayNumber, focus: day.focus, programId: addedProgram.id})
+            
+            const exercisesWithId = day.exercises.map((exercise) => ({...exercise, workoutId: addedWorkout.id})); 
+            
+            await Exercise.bulkCreate(exercisesWithId); 
+        }; 
+
+        res.status(201).json({
+            message: "Program saved successfully", 
+            addedProgram
+        }); 
+
+    } catch (err) {
+        res.status(500).json({
+            message: "Error generating program", 
             error: err.message
         }); 
     }
@@ -49,7 +83,18 @@ const getProgramById = async (req, res) => {
 
         if (isNaN(programId)) return res.status(400).json({ message: "Invalid id" }); 
 
-        const program = await Program.findOne({ where: { id: programId, userId }}); 
+        const program = await Program.findOne({ where: { id: programId, userId }, 
+                                                include: [{ // left join the Workouts that BELONG to said user and said program
+                                                        model: Workout, 
+                                                        include: [{ // left join the Exercises that belong to said WOrkout from said Program of said User
+                                                            model: Exercise,
+                                                        }],
+                                                    }], 
+                                                order: [
+                                                    [Workout, "dayNumber", "ASC"],
+                                                    [Workout, Exercise, "order", "ASC"]
+                                                ]
+                                            }); 
 
         if (!program) return res.status(404).json({ message: "Program not found" }); 
 
@@ -124,5 +169,6 @@ module.exports = {
     getPrograms, 
     getProgramById, 
     deleteProgram, 
-    updateProgram
+    updateProgram, 
+    generateProgramController
 }; 
