@@ -26,7 +26,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; 
 
 app.use(cors ({ // use cors to define access route from frontend
-  origin: "http://localhost:5173", // frontend req origin  
+  origin: process.env.FRONTEND_URL, // frontend req origin  
   credentials: true // http-only cookies require credentials
 })); 
 app.use(express.json()); // Parseamos a JSON para que sea un objeto legible por JS
