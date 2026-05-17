@@ -13,6 +13,9 @@ const programRoutes = require("../src/routes/program.routes");
 // _exercise
 const exerciseRoutes = require("../src/routes/exercise.routes"); 
 
+// CORS
+const cors = require("cors"); 
+
 // IMPORT_MODELS
 require("./models"); 
 // IMPORT DOTENV
@@ -22,6 +25,10 @@ const app = express();
 
 const PORT = process.env.PORT || 3000; 
 
+app.use(cors ({ // use cors to define access route from frontend
+  origin: "http://localhost:5173", // frontend req origin  
+  credentials: true // http-only cookies require credentials
+})); 
 app.use(express.json()); // Parseamos a JSON para que sea un objeto legible por JS
 app.use(express.urlencoded({extended: false})) //parseamos el formulario desde XML
 app.use(cookieParser()) //cookie
