@@ -65,14 +65,14 @@ const login = async (req, res) => {
             { expiresIn: process.env.JWT_EXPIRES_IN }
         ); 
 
-        res.cookie("token", token, {
+        res.cookie("token", token, { // modifies the response headers; 
             httpOnly: true, 
             secure: false, 
             sameSite: "lax", 
             maxAge: Number(process.env.COOKIE_MAX_AGE)
         }); 
 
-        res.json({
+        res.json({ // sends final response  with modified headers  
             message: "Login successful", 
             user: {
                 id: user.id, 
