@@ -78,16 +78,19 @@ const getPrograms = async (req, res) => {
 
 const getProgramById = async (req, res) => {
     try {
-        const programId = Number(req.params.id); 
+        const { id } = req.params; 
+        const numericId = Number(id); 
         const userId = req.user.id; 
 
-        if (isNaN(programId)) return res.status(400).json({ message: "Invalid id" }); 
+        if (isNaN(numericId)) return res.status(400).json({ message: "Invalid id" }); 
 
-        const program = await Program.findOne({ where: { id: programId, userId }, 
+        const program = await Program.findOne({ where: { id: numericId, userId }, 
                                                 include: [{ // left join the Workouts that BELONG to said user and said program
                                                         model: Workout, 
+                                                        required: false,
                                                         include: [{ // left join the Exercises that belong to said WOrkout from said Program of said User
                                                             model: Exercise,
+                                                            required: false
                                                         }],
                                                     }], 
                                                 order: [
