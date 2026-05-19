@@ -150,15 +150,15 @@ const generateProgram = async ({ goal, level, frequency }) => {
         throw new Error("No Program available for this level and frequency");
     }
 
-    return Promise.all(program.map(async (focus, index) => { 
+    return Promise.all(program.map(async (focus, dayIndex) => { 
         const categories = workoutBlueprints[focus]; // extracts categories for each workout in the user's program. F.ex: fullBody: ["squat_pattern","horizontal_press","vertical_pull","hip_hinge","core"] 
         const hasCardio = goalRule.cardioMinutes > 0; 
 
-        const exercises = await Promise.all(categories.map((category) => {
+        const exercises = await Promise.all(categories.map(async (category, exerciseIndex) => {
         const selectedExercise = selectExercise(category); // Extracts exercises matching category, f.ex: "squat_pattern" --> "leg_press"; 
 
         return {
-            order: hasCardio ? index + 2 : index + 1,
+            order: hasCardio ? exerciseIndex + 2 : exerciseIndex + 1,
             category,
             name: selectedExercise.name,
             equipment: selectedExercise.equipment,
@@ -169,7 +169,7 @@ const generateProgram = async ({ goal, level, frequency }) => {
         }));
 
         if (hasCardio) {  // adds cardio if it belongs to user's program  
-            const selectedCardio = selectExercise("cardio"); 
+            const selectedCardio = await selectExercise("cardio"); 
 
             exercises.unshift({
                 order: 1, 
