@@ -5,6 +5,8 @@
         //     "frequency": 3
         //   }
 
+import { getExercisesByCategory, fetchWorkoutApiExercises } from "./workoutAPI.service";
+
 const goalRules = { // --> generates a rulebase for sets, reps, rest and cardio based on goal rules
     muscle_gain: {
         sets: 4,
@@ -101,38 +103,21 @@ const workoutBlueprints = {  // exercise category selection for each workout
     ],
 };
 
-const exercisePools = {  // (test --> later fetch from api) -- selection of exercises in each category
-    cardio: [
+
+const cardio = [
         { name: "Incline Treadmill Walk", level: "beginner",equipment: "treadmill" },
         { name: "Stationary Bike", level: "beginner", equipment: "bike" },
         { name: "Rowing Machine", level: "intermediate", equipment: "machine" },
         { name: "Jump Rope", level: "intermediate", equipment: "bodyweight" },
         { name: "Stair Master", level: "intermediate", equipment: "bodyweight" },
-      ],
-    horizontal_press: [
-      { name: "Machine Chest Press", level: "beginner", equipment: "machine" },
-      { name: "Bench Press", level: "intermediate", equipment: "barbell" },
-      { name: "Dumbbell Bench Press", level: "beginner", equipment: "dumbbells" },
-    ],
-  
-    vertical_pull: [
-      { name: "Lat Pulldown", level: "beginner", equipment: "machine" },
-      { name: "Pull-up", level: "intermediate", equipment: "bodyweight" },
-    ],
-  
-    squat_pattern: [
-      { name: "Leg Press", level: "beginner", equipment: "machine" },
-      { name: "Goblet Squat", level: "beginner", equipment: "dumbbell" },
-      { name: "Back Squat", level: "intermediate", equipment: "barbell" },
-    ],
-  };
+]
 
   const getRandomItem = (items) => {  
     return items[Math.floor(Math.random() * items.length)];
   };
   
-  const selectExercise = (category, level) => {  // randomly select an exercise for each category matching user level
-    const pool = exercisePools[category];
+  const selectExercise = async (category) => {  // randomly select an exercise for each category matching user level
+    const pool = await getExercisesByCategory(category);
   
     if (!pool || pool.length === 0) {
       return {
@@ -142,35 +127,35 @@ const exercisePools = {  // (test --> later fetch from api) -- selection of exer
       };
     }
   
-    const levelAppropriate = pool.filter((exercise) => {  // if the user level is beginner: show beginner exercises; else: show all; 
+  /*   const levelAppropriate = pool.filter((exercise) => {  // if the user level is beginner: show beginner exercises; else: show all; 
       if (level === "beginner") {
         return exercise.level === "beginner";
       }
   
       return true;
-    });
+    }); */
   
-    return getRandomItem(levelAppropriate.length > 0 ? levelAppropriate : pool);
+    return getRandomItem(/* levelAppropriate.length > 0 ? levelAppropriate :  */pool);
 };
-  
-const generateProgram = ({ goal, level, frequency }) => {
+
+const generateProgram = async ({ goal, level, frequency }) => {
     const goalRule = goalRules[goal];  // extracts the rule for the user's goal f.ex: user picks "strength", then goal rule = sets: 4, reps: "8-12",restSeconds: 90, cardioMinutes: 10...
     const program = programTemplates[level]?.[frequency]; // if user = beginner & frequency = 2 --> program = [fullBody, fullBody];
 
     if (!goalRule) {
-        throw new Error("Invalid goal");
+        throw new Error("Invalid goal"); 
     }
 
     if (!program) {
         throw new Error("No Program available for this level and frequency");
     }
 
-    return program.map((focus, index) => { 
+    return Promise.all(program.map(async (focus, index) => { 
         const categories = workoutBlueprints[focus]; // extracts categories for each workout in the user's program. F.ex: fullBody: ["squat_pattern","horizontal_press","vertical_pull","hip_hinge","core"] 
         const hasCardio = goalRule.cardioMinutes > 0; 
 
-        const exercises = categories.map((category) => {
-        const selectedExercise = selectExercise(category, level); // Extracts exercises matching category, f.ex: "squat_pattern" --> "leg_press"; 
+        const exercises = await Promise.all(categories.map((category) => {
+        const selectedExercise = selectExercise(category); // Extracts exercises matching category, f.ex: "squat_pattern" --> "leg_press"; 
 
         return {
             order: hasCardio ? index + 2 : index + 1,
@@ -181,10 +166,10 @@ const generateProgram = ({ goal, level, frequency }) => {
             reps: goalRule.reps,
             restSeconds: goalRule.restSeconds,
         };
-        });
+        }));
 
         if (hasCardio) {  // adds cardio if it belongs to user's program  
-            const selectedCardio = selectExercise("cardio", level); 
+            const selectedCardio = selectExercise("cardio"); 
 
             exercises.unshift({
                 order: 1, 
@@ -202,7 +187,7 @@ const generateProgram = ({ goal, level, frequency }) => {
         focus,
         exercises,
         };
-    });
+    }));
 };
 
 module.exports = {

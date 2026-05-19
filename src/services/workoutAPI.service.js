@@ -110,6 +110,14 @@ const fetchWorkoutApiExerciseById = async (id) => {
         
     }; 
   };
+
+  // GET exercises by category from API via workoutAPIservice
+  const getExercisesByCategory = async (category) => {
+    const allExercises = await fetchWorkoutApiExercises(); 
+    allExercises?.filter(exercise => exercise.category === category); 
+  }; 
+
+   
   
   module.exports = {
     fetchWorkoutApiExercises,
@@ -117,4 +125,5 @@ const fetchWorkoutApiExerciseById = async (id) => {
     getExercises,
     normalizeWorkoutApiExercise,
     classifyExerciseCategory,
+    getExercisesByCategory
   };
