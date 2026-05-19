@@ -5,7 +5,7 @@
         //     "frequency": 3
         //   }
 
-import { getExercisesByCategory, fetchWorkoutApiExercises } from "./workoutAPI.service.js";
+const { getExercisesByCategory, fetchWorkoutApiExercises } = require("./workoutAPI.service.js");
 
 const goalRules = { // --> generates a rulebase for sets, reps, rest and cardio based on goal rules
     muscle_gain: {
