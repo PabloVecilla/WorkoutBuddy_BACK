@@ -67,8 +67,8 @@ const login = async (req, res) => {
 
         res.cookie("token", token, { // modifies the response headers; 
             httpOnly: true, 
-            secure: false, 
-            sameSite: "lax", 
+            secure: process.env.NODE_ENV === "production", 
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
             maxAge: Number(process.env.COOKIE_MAX_AGE)
         }); 
 
@@ -97,8 +97,8 @@ const me = async (req, res) => {
 const logout = async (_req, res) => {
     res.clearCookie("token", { // delete token
         httpOnly: true, // ------> for delete, all the options in this json 
-        secure: false, // have to be === to the ones we created the token with
-        sameSite: "lax", 
+        secure: process.env.NODE_ENV === "production", // have to be === to the ones we created the token with
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
     }); 
     res.json({
         message: "logout successfull"
