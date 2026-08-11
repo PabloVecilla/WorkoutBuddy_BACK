@@ -1,26 +1,23 @@
 const bcrypt = require("bcrypt"); 
-const User = require("../models/User.model"); 
 const jwt = require("jsonwebtoken"); 
+// Import service query functions
+const { findUserByEmail, createUser } = require("../services/auth.service");
 
 // Register
 const register = async (req, res) => {
     try {
-        const { name, mail, pass } = req.body; 
+        const { name, email, password } = req.body; 
 
-        if( !name || !mail || !pass) return res.status(400).json({ 
+        if( !name || !email || !password) return res.status(400).json({ 
             message: "Please fill all the required fields" }); 
 
-        const existingUser = await User.findOne({where: {  email: mail}}); 
+        const existingUser = await findUserByEmail(email);
 
         if (existingUser) return res.status(409).json({ message: "User already registered"}); 
 
-        const passwordHash = await bcrypt.hash(pass, 10); 
+        const passwordHash = await bcrypt.hash(password, 10); 
 
-        const user = User.create({
-            name, 
-            email: mail, 
-            passwordHash
-        }); 
+        const user = await createUser(name, email, passwordHash); 
 
         res.status(201).json({
             message: "User registered successfully", 
@@ -44,11 +41,11 @@ const register = async (req, res) => {
 // Login::
 const login = async (req, res) => {
     try {
-        const { mail, pass } = req.body; 
+        const { email, password } = req.body; 
 
-        if (!mail || !pass) return res.status(401).json({message: "Enter email and password"}); 
+        if (!email || !password) return res.status(401).json({message: "Enter email and password"}); 
 
-        const user = await User.findOne({ where: { email: mail } }); 
+        const user = await findUserByEmail(email); 
 
         if (!user) return res.status(404).json({ message: "User not found" }); 
 

@@ -4,10 +4,14 @@
   "description": "API to support exercise app ",
   "main": "src/app.js",
   "scripts": {
-    "dev": "nodemon src/app.js",
+    "dev": "NODE_ENV=development nodemon src/app.js",
     "start": "node --watch src/app.js",
     "db:init": "node create-tables.js",
-    "test": "node -e \"console.log('no tests yet')\""
+    "test": "node -e \"console.log('no tests yet')\"",
+    "exercises:fetch": "node scripts/fetchExercises.js",
+    "exercises:normalize": "node scripts/normalizeExercises.js",
+    "exercises:prepare": "npm run exercises:fetch && npm run exercises:normalize", 
+    "exercises:seed": "node scripts/seedExercises"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +25,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
+    "nodemon": "^3.1.14",
     "pg": "^8.20.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.8"

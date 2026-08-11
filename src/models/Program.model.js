@@ -1,8 +1,5 @@
-const { DataTypes } = require("sequelize"); 
-const sequelize = require("../../config/database"); // DB connection object import
-
-const Program = sequelize.define(
-    "Program", {
+module.exports = (sequelize, DataTypes) => { 
+    const Program = sequelize.define( "Program", {
         id: {
             type: DataTypes.INTEGER, 
             primaryKey: true, 
@@ -41,10 +38,8 @@ const Program = sequelize.define(
     },
     {
         tableName: "programs", 
-        timestamps: true
-    }
-
-
-); 
-
-module.exports = Program; 
+        timestamps: true, 
+        underscored: true  // translates camelCase js standard to snake_case SQL standard
+    }); 
+    return Program; 
+}; 

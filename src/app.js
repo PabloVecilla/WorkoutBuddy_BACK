@@ -1,6 +1,13 @@
 const express = require("express"); 
 const cookieParser = require("cookie-parser"); 
 // const cors = require("cors"); 
+
+// IMPORT DOTENV
+require("dotenv").config({
+  path:
+    process.env.NODE_ENV === "production" ? ".env" : ".env.local" 
+}); 
+
 const sequelize = require("../config/database"); 
 
 // ROUTES
@@ -18,8 +25,6 @@ const cors = require("cors");
 
 // IMPORT_MODELS
 require("./models"); 
-// IMPORT DOTENV
-require("dotenv").config(); 
 
 const app = express(); 
 

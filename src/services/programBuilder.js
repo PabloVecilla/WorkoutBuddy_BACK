@@ -3,9 +3,9 @@
         //     "goal": "muscle_gain",
         //     "level": "beginner",
         //     "frequency": 3
-        //   }
+        // }
 
-const { getExercisesByCategory, fetchWorkoutApiExercises } = require("./workoutAPI.service.js");
+const { findExercisesByMovementPattern } = require("./exercise.service");
 
 const goalRules = { // --> generates a rulebase for sets, reps, rest and cardio based on goal rules
     muscle_gain: {
@@ -46,7 +46,7 @@ const programTemplates = {  // depending on user level, aglutinates programs (wo
     },
   
     intermediate: {
-      3: ["push", "pull", "legs"],
+      3: ["full_body", "upper", "lower"],
       4: ["upper", "lower", "upper", "lower"],
       5: ["push", "pull", "legs", "upper", "lower"],
       6: ["push", "pull", "legs", "push", "pull", "legs"],
@@ -57,41 +57,40 @@ const workoutBlueprints = {  // exercise category selection for each workout
     push: [
       "horizontal_press",
       "vertical_press",
-      "chest_isolation",
-      "side_delt",
-      "triceps",
+      "horizontal_adduction",
+      "shoulder_abduction",
+      "elbow_extension",
     ],
   
     pull: [
       "vertical_pull",
       "horizontal_pull",
-      "rear_delt",
-      "biceps",
-      "upper_back",
+      "shoulder_horizontal_abduction",
+      "elbow_flexion",
+      "shoulder_shrug",
     ],
   
     legs: [
       "squat_pattern",
       "hip_hinge",
-      "quad_isolation",
-      "hamstring_curl",
-      "calves",
+      "knee_extension",
+      "knee_flexion",
+      "calf_flexion",
     ],
   
     upper: [
       "horizontal_press",
       "vertical_pull",
       "horizontal_pull",
-      "side_delt",
+      "shoulder_horizontal_abduction",
       "arms",
     ],
   
     lower: [
       "squat_pattern",
       "hip_hinge",
-      "glutes",
-      "hamstring_curl",
-      "calves",
+      "glute_flexion",
+      "calf_flexion",
     ],
   
     full_body: [
@@ -99,7 +98,7 @@ const workoutBlueprints = {  // exercise category selection for each workout
       "horizontal_press",
       "vertical_pull",
       "hip_hinge",
-      "core",
+      "spinal_flexion",
     ],
 };
 
@@ -116,13 +115,14 @@ const cardio = [
     return items[Math.floor(Math.random() * items.length)];
   };
   
-  const selectExercise = async (category) => {  // randomly select an exercise for each category matching user level
-    const pool = await getExercisesByCategory(category);
+  const selectExercise = async (movementPattern) => {  // randomly select an exercise for each category matching user level
+    if (movementPattern === "cardio") return getRandomItem(cardio); 
+    const pool = await findExercisesByMovementPattern(movementPattern);
   
     if (!pool || pool.length === 0) {
       return {
         name: "Exercise not available yet",
-        category,
+        movementPattern,
         equipment: null,
       };
     }
@@ -138,62 +138,77 @@ const cardio = [
     return getRandomItem(/* levelAppropriate.length > 0 ? levelAppropriate :  */pool);
 };
 
-const generateProgram = async ({ goal, level, frequency }) => {
+const generateExercisesForWorkout = async (focus, goalRule, hasCardio) => {
+  const movementPatterns = workoutBlueprints[focus]; 
+
+  const exercises = await Promise.all(
+    movementPatterns.map(async (pattern, index) => {
+      const selectedExercise = await selectExercise(pattern); 
+
+      return {
+        order: hasCardio ? index + 2 : index + 1,
+        movementPattern: pattern,
+        name: selectedExercise.name,
+        equipment: selectedExercise.equipment,
+        sets: goalRule.sets,
+        reps: goalRule.reps,
+        restSeconds: goalRule.restSeconds,
+      }
+    })
+  ); // end Promise.all
+
+  if (hasCardio) {
+    // adds cardio if it belongs to user's program  
+    const selectedCardio = await selectExercise("cardio"); 
+
+    exercises.unshift({
+      order: 1, 
+      category: "cardio",
+      name: selectedCardio.name,
+      equipment: selectedCardio.equipment,
+      sets: 1,
+      reps: `${goalRule.cardioMinutes} min`,
+      restSeconds: 0
+    });
+  }
+  return exercises; 
+}
+
+const generateProgram = async ({ name, goal, level, frequency }) => {
     const goalRule = goalRules[goal];  // extracts the rule for the user's goal f.ex: user picks "strength", then goal rule = sets: 4, reps: "8-12",restSeconds: 90, cardioMinutes: 10...
-    const program = programTemplates[level]?.[frequency]; // if user = beginner & frequency = 2 --> program = [fullBody, fullBody];
+    const programTemplate = programTemplates[level]?.[frequency]; // if user = beginner & frequency = 2 --> program = [fullBody, fullBody];
+    
+    if (!goalRule)  throw new Error("Invalid goal"); 
 
-    if (!goalRule) {
-        throw new Error("Invalid goal"); 
-    }
+    if (!programTemplate)   throw new Error("No Program available for this level and frequency");
 
-    if (!program) {
-        throw new Error("No Program available for this level and frequency");
-    }
+    const hasCardio = goalRule.cardioMinutes > 0; 
 
-    return Promise.all(program.map(async (focus, dayIndex) => { 
-        const categories = workoutBlueprints[focus]; // extracts categories for each workout in the user's program. F.ex: fullBody: ["squat_pattern","horizontal_press","vertical_pull","hip_hinge","core"] 
-        const hasCardio = goalRule.cardioMinutes > 0; 
-
-        const exercises = await Promise.all(categories.map(async (category, exerciseIndex) => {
-        const selectedExercise = selectExercise(category); // Extracts exercises matching category, f.ex: "squat_pattern" --> "leg_press"; 
-
-        return {
-            order: hasCardio ? exerciseIndex + 2 : exerciseIndex + 1,
-            category,
-            name: selectedExercise.name,
-            equipment: selectedExercise.equipment,
-            sets: goalRule.sets,
-            reps: goalRule.reps,
-            restSeconds: goalRule.restSeconds,
-        };
-        }));
-
-        if (hasCardio) {  // adds cardio if it belongs to user's program  
-            const selectedCardio = await selectExercise("cardio"); 
-
-            exercises.unshift({
-                order: 1, 
-                category: "cardio",
-                name: selectedCardio.name,
-                equipment: selectedCardio.equipment,
-                sets: 1,
-                reps: `${goalRule.cardioMinutes} min`,
-                restSeconds: 0
-            });
-        }
+    const generatedWorkouts = await Promise.all(
+      programTemplate.map(async (focus, dayIndex) => { 
+        const exercises = await generateExercisesForWorkout(focus, goalRule, hasCardio); 
 
         return {  //returns exercises for a given day with a given focus
-        dayNumber: index + 1,
-        focus,
-        exercises,
+            dayNumber: dayIndex + 1,
+            focus,
+            exercises,
         };
-    }));
+      })
+    ); // end Promise.all()
+    return {
+      name, 
+      goal, 
+      level, 
+      frequency, 
+      workouts: generatedWorkouts
+    }
 };
+
+// generateProgram({ goal: "strength", level: "beginner", frequency: 2 })
+// console.log(generateProgram({goal: "muscle_gain", level: "intermediate", frequency: 3})); 
 
 module.exports = {
 generateProgram,
 };
-
-// console.log(generateProgram({goal: "muscle_gain", level: "intermediate", frequency: 3}); 
 
 

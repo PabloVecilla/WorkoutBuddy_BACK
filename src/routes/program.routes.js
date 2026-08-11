@@ -15,6 +15,4 @@ router.delete("/:id", protect, deleteProgram);
 
 router.patch("/:id", protect, updateProgram); 
 
-router.post("/generate", protect, generateProgramController); 
-
 module.exports = router; 

@@ -1,8 +1,10 @@
-const User = require("./User.model"); 
-const Program = require("./Program.model");
-const Workout = require("./Workout.model");
-const Exercise = require("./Exercise.model"); 
-const { BelongsTo } = require("sequelize");
+const sequelize = require("../../config/database"); 
+const { DataTypes } = require("sequelize"); 
+const User = require("./User.model")(sequelize, DataTypes); 
+const Program = require("./Program.model")(sequelize, DataTypes);
+const Workout = require("./Workout.model")(sequelize, DataTypes);
+const Exercise = require("./Exercise.model")(sequelize, DataTypes); 
+const WorkoutExercise = require("./WorkoutExercise.model")(sequelize, DataTypes); 
 
 // User --> Program
 User.hasMany(Program, {
@@ -14,6 +16,8 @@ Program.belongsTo(User, {
     foreignKey: "userId"
 }); 
 
+// Program --> Workout
+
 Program.hasMany(Workout, {
     foreignKey: "programId", 
     onDelete: "CASCADE"
@@ -23,16 +27,31 @@ Workout.belongsTo(Program, {
     foreignKey: "programId"
 }); 
 
-Workout.hasMany(Exercise, {
+// Workout --> Exercise
+
+Workout.hasMany(WorkoutExercise, {
     foreignKey: "workoutId",
+    as: "workoutExercises",
     onDelete: "CASCADE"
 }); 
 
-Exercise.belongsTo(Workout, {
-    foreignKey: "workoutId"
+WorkoutExercise.belongsTo(Workout, {
+    foreignKey: "workoutId", 
+    as: "workout"
 }); 
 
-module.exports = { User, Program, Workout, Exercise }
+// Exercise --> WorkoutExercise
+Exercise.hasMany(WorkoutExercise, {  // helps sequelize query WorkoutExercise to search from a given Exercise
+    foreignKey: "exerciseId",
+    as: "workoutExercises" 
+});
+WorkoutExercise.belongsTo(Exercise, { // helps sequelize find a Exercise from the exerciseid stored in WorkoutExercise
+    foreignKey: "exerciseId", 
+    as: "exercise",
+    onDelete: "RESTRICT" 
+});
+
+module.exports = { sequelize, User, Program, Workout, Exercise, WorkoutExercise }; 
 
 
 

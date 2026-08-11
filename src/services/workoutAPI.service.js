@@ -1,36 +1,39 @@
 const axios = require("axios"); 
 require("dotenv").config(); 
 
-// Prepare cache variables
-let cachedExercises = null; 
-let cacheTimestamp = null; 
-
-const CACHE_DURATION = 1000 * 60 * 60 * 24; 
-
-const classifyExerciseCategory = (exercise) => {
+const classifyExerciseMovementPattern = (exercise) => {
     const name = exercise.name?.toLowerCase() || "";
     const muscle = exercise.primaryMuscles?.[0]?.name?.toLowerCase() || "";
   
-    if (name.includes("lateral raise") || name.includes("upright row")) return "side_delt";
-    if (name.includes("rear delt") || name.includes("reverse fly") || name.includes("face pull") || name.includes("reverse butterfly")) return "rear_delt";
-    if (name.includes("shoulder press") || name.includes("overhead press")) return "vertical_press";
-    if (name.includes("pull up") || name.includes("pull down") || name.includes("pullover")) return "vertical_pull";
-    if (name.includes("row")) return "horizontal_pull";
-  
-    if (muscle.includes("chest")) return "horizontal_press";
-    if (muscle.includes("biceps")) return "biceps";
-    if (muscle.includes("triceps")) return "triceps";
-    if (muscle.includes("quadriceps") || muscle.includes("quads")) return "squat_pattern";
-    if (muscle.includes("hamstring")) return "hamstring_curl";
-    if (muscle.includes("glute")) return "glutes";
-    if (muscle.includes("calves")) return "calves";
-    if (muscle.includes("abs") || muscle.includes("core")) return "core";
+    if (name.includes("lateral raise") || name.includes("upright row")) return "shoulder_abduction";
+    if (name.includes("rear delt") || name.includes("reverse fly") || name.includes("face pull") || name.includes("reverse butterfly")) return "shoulder_horizontal_abduction";
+    if (muscle.includes("shoulder") && name.includes("front raise")) return "shoulder_flexion";
+    if (muscle.includes("shoulder") && name.includes("press")) return "vertical_push"; 
+    if (muscle.includes("back") && name.includes("pull up") || name.includes("pull-up") || name.includes("pull down") || name.includes("pull-down") || name.includes("pulldown") || name.includes("pullover") || name.includes("pushdown straight")) return "vertical_pull";
+    if (muscle.includes("back") && name.includes("row")) return "horizontal_pull";
+    if (name.includes("shrug")) return "shoulder_shrug";
+    if (muscle.includes("back") && name.includes("extension")) return "back_extension";
+
+    if (muscle.includes("chest") && name.includes("press") || name.includes("push")) return "horizontal_push";
+    if (muscle.includes("chest") && name.includes("fly") || name.includes("pec-deck") || name.includes("butterfly")) return "horizontal_adduction";
+    if (name.includes("dips")) return "vertical_push"
+    if (muscle.includes("biceps")) return "elbow_flexion";
+    if (muscle.includes("triceps")) return "elbow_extension";
+    if (muscle.includes("quadriceps") || muscle.includes("quads") && name.includes("extension")) return "knee_extension";
+    if (muscle.includes("quadriceps") || muscle.includes("quads") && name.includes("press") || name.includes("squat")) return "squat_pattern"
+    if (muscle.includes("hamstring") && name.includes("curl")) return "knee_flexion";
+    if (muscle.includes("adductor")) return "hip_adduction"; 
+    if (muscle.includes("abductor")) return "hip_abduction"; 
+    if (name.includes("deadlift") || name.includes("good morning")) return "hip_hinge"
+    if (muscle.includes("glute")) return "glute_flexion";
+    if (muscle.includes("calves")) return "calf_flexion";
+    if (muscle.includes("abs") || muscle.includes("abdominals") || muscle.includes("obliques") || muscle.includes("core")) return "spinal_flexion";
   
     return "general";
   };
   
   const normalizeWorkoutApiExercise = (exercise) => {
-    const url = `${process.env.WORKOUT_API_BASE_URL}/exercises`; 
+    const url = "https://api.workoutapi.com/exercises"; 
     const imageUrl = `${url}/${exercise.id}/image`; 
 
     return {
@@ -38,71 +41,29 @@ const classifyExerciseCategory = (exercise) => {
       source: "workoutapi",
       name: exercise.name,
       muscle: exercise.primaryMuscles?.[0]?.name ?? null,
-      category: classifyExerciseCategory(exercise),
+      secondaryMuscle: exercise.secondaryMuscles?.[0]?.name ?? null,
+      movementPattern: classifyExerciseMovementPattern(exercise),
       equipment: exercise.categories?.[0]?.name ?? null,
+      complexity: exercise.types?.[0].name ?? null,
       imageUrl,
       instructions: exercise.description ?? null,
       raw: exercise,
     };
   };
 
-  const getExercises = async () => {
-    const now = Date.now(); 
-
-    if (cachedExercises && cacheTimestamp && now - cacheTimestamp < CACHE_DURATION) return cachedExercises; 
-
+  const fetchWorkoutApiExercises = async () => { // 1 call to populate raw-exercises.json
+    if (!process.env.WORKOUT_API_BASE_URL || !process.env.WORKOUT_API_KEY)
+        throw new Error("Missing workoutAPI variables at .env"); 
+    
     const url = `${process.env.WORKOUT_API_BASE_URL}/exercises`;  
-    const key = process.env.SECONDARY_WORKOUT_API_KEY;
-
-    const response = axios.get(url, {headers: { "x-api-key": key }}); 
-
-    cachedExercises = response.data?.map(normalizeWorkoutApiExercise); 
-    cacheTimestamp = now; 
-
-    return cachedExercises; 
-  }; 
-
-const fetchWorkoutApiExerciseById = async (id) => {
-    if (!process.env.WORKOUT_API_BASE_URL || !process.env.SECONDARY_WORKOUT_API_KEY)
-        throw new Error("Missing environment variables"); 
+    const key = process.env.WORKOUT_API_KEY;
 
     try {
-        const response = await axios.get(`${process.env.WORKOUT_API_BASE_URL}/exercises/${id}`, { headers: { 
-            "x-api-key": process.env.SECONDARY_WORKOUT_API_KEY }
-        }); 
+      const response = await axios.get(url, {headers: { "x-api-key": key }}); 
 
-        return normalizeWorkoutApiExercise(response.data); 
+      const exercises = response.data
 
-    } catch (err) {
-        throw new Error (`Error fetching from API: ${err.message}, ${process.env.WORKOUT_API_BASE_URL}`); 
-    }
-}; 
-  
-  const fetchWorkoutApiExercises = async (filters = {}) => {
-// If no filters get passed, loop never runs because there's nothing to iterate
-    if (!process.env.WORKOUT_API_BASE_URL || !process.env.SECONDARY_WORKOUT_API_KEY)
-        throw new Error("Missing environment variables"); 
-
-    try {
-
-        let exercises = await getExercises(); 
-
-            for (let filterKey in filters) { 
-                const filterValue = filters[filterKey];
-                if (!filterValue) continue; // skip iteration if there's no filterValue; 
-
-                exercises = exercises.filter((exercise) => {
-                    // exercise[filterKey].toLowerCase could crash if it's value is null. Check for value first.
-                    const exerciseValue = exercise[filterKey]; 
-                    if (!exerciseValue) return false; 
-
-                    if (filterKey === "name" || filterKey === "muscle") {
-                        return exerciseValue.toLowerCase().includes(filterValue.toLowerCase()) ; 
-                    }
-                    return exerciseValue.toLowerCase() === filterValue.toLowerCase(); 
-                }); 
-            }
-            return exercises; 
+      return exercises; 
 
     } catch (err) {
         throw new Error (`Error fetching from API: ${err.message}, ${url}`); 
@@ -111,19 +72,8 @@ const fetchWorkoutApiExerciseById = async (id) => {
     }; 
   };
 
-  // GET exercises by category from API via workoutAPIservice
-  const getExercisesByCategory = async (category) => {
-    const allExercises = await fetchWorkoutApiExercises(); 
-    allExercises?.filter(exercise => exercise.category === category); 
-  }; 
-
-   
-  
   module.exports = {
     fetchWorkoutApiExercises,
-    fetchWorkoutApiExerciseById,
-    getExercises,
     normalizeWorkoutApiExercise,
-    classifyExerciseCategory,
-    getExercisesByCategory
+    classifyExerciseMovementPattern,
   };
