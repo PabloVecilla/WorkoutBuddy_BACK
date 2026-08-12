@@ -1,6 +1,6 @@
 const express = require("express"); // server
 
-const { createProgram, getPrograms, getProgramById, deleteProgram, updateProgram, generateProgramController } = require("../controllers/program.controller"); // controller functions
+const { createProgram, getPrograms, getProgramById, deleteProgram, updateProgram } = require("../controllers/program.controller"); // controller functions
 const protect = require("../middleware/auth.middleware");
 
 const router = express.Router();  //import router from express

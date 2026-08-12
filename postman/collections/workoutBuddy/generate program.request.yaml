@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://localhost:3000/programs/generate
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "name": "Teniente Dan",
+        "goal": "muscle_gain",
+        "level": "beginner",
+       "frequency": 3
+    }
+settings: {}
+order: 10000

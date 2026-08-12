@@ -10,6 +10,6 @@ const createUser = async (name, email, passwordHash) => {
         email, 
         passwordHash
     }); 
-}
+}; 
   
-module.exports = { findUserByEmail, findUserByEmailAndPassword, createUser }; 
+module.exports = { findUserByEmail, createUser }; 

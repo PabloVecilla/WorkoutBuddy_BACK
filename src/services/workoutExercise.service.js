@@ -59,7 +59,7 @@ const deleteWorkoutExerciseForUser = async (userId, workoutExerciseId) => {
         return workoutExercise; 
 }; 
 
-const createExercisesForWorkout = async (exercises, workoutId, transaction) => {
+const createExercisesForWorkout = async ({exercises, workoutId, transaction}) => {
     // Mapeamos los ejercicios con el ID del entrenamiento
     const exercisesWithId = exercises.map(exercise => ({
         ...exercise,

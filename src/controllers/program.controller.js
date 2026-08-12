@@ -10,22 +10,23 @@ const createProgram = async (req, res) => {
         }); 
 
         const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
-
-        res.status(201).json( {
+        if (!program) return res.status(500).json({message: "Error generating or saving program"})
+        res.status(201).json({
             message: "Program created successfully", 
             program
         }); 
 
-    } catch (err) { 
-
+    } catch (err) {
         if(err.message.includes("BAD_REQUEST"))
             return res.status(400).json({
                 message: "Invalid input data to generate Program", 
+                program, 
                 error: err.message
             }); 
 
         res.status(500).json({
             message: "Error saving Program",
+            program, 
             error: err.message
         }); 
     }
@@ -44,7 +45,7 @@ const getPrograms = async (req, res) => {
             error: err.message
         }); 
     }
-}; 
+};
 
 const getProgramById = async (req, res) => {
     try {
@@ -73,7 +74,11 @@ const getProgramById = async (req, res) => {
 const deleteProgram = async (req, res) => {
     try {
         const userId = req.user.id; 
-        const programId = Number(req.params.id); 
+        const { id } = req.params; 
+
+        if (!id) return res.status(400).json({ message: "No id provided" });
+
+        const programId = Number(id); 
 
         if (isNaN(programId)) return res.status(400).json({ message: "invalid id" }); 
 // destroy returns the NUMBER of rows deleted

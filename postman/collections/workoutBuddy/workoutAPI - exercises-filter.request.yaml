@@ -1,0 +1,20 @@
+$kind: http-request
+name: workoutAPI - exercises/filter
+url: https://api.workoutapi.com/exercises/filter
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "muscles": [
+        "back"
+      ]
+    }
+auth:
+  type: apikey
+  credentials:
+    in: header
+    value: bcf913273b4a7f5ced76320f04eb608c7e4bcfcc675568c990be846fbc3eb0ae
+    key: x-api-key
+settings: {}
+order: 14000

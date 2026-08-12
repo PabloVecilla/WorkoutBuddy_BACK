@@ -12,11 +12,11 @@ const createWorkoutsForProgram = async (workoutsData, programId, transaction) =>
             }, { transaction });
 
             // Delegamos los ejercicios al servicio correspondiente (pasándole la transacción)
-            await workoutExerciseService.createExercisesForWorkout(
-                workoutData.exercises, 
-                addedWorkout.id, 
+            await workoutExerciseService.createExercisesForWorkout({
+                exercises: workoutData.exercises, 
+                workoutId: addedWorkout.id, 
                 transaction
-            );
+            });
         })
     );
 };

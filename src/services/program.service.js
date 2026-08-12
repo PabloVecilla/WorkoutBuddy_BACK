@@ -1,12 +1,10 @@
-// Import models
-const { Program } = require("../models"); 
+
+// Import models && Import sequelize to enable transaction
+const { sequelize, Program, Workout, WorkoutExercise } = require("../models"); 
 // Import programBuilder
 const { generateProgram } = require("./programBuilder"); 
 // import workout inyection function
 const { createWorkoutsForProgram } = require("./workout.service"); 
-
-const { createWorkoutForUser } = require("./workout.service"); 
-const { createWorkoutExercises } = require("./workoutExercise.service"); 
 
 const findAllProgramsForUser = async (userId) =>
     Program.findAll( { where: { userId } }); 
@@ -17,23 +15,23 @@ const findProgramByIdForUser = async (data) =>
                                 include: [{ // left join the Workouts that BELONG to said user and said program
                                     model: Workout, 
                                     required: false,
-                                    include: [{ // left join the Exercises that belong to said WOrkout from said Program of said User
-                                        model: Exercise,
+                                    include: [{ // left join the WorkoutExercises that belong to said WOrkout from said Program of said User
+                                        model: WorkoutExercise,
+                                        as: "workoutExercises",
                                         required: false
                                     }],
                                 }], 
                                 order: [
                                     [Workout, "dayNumber", "ASC"],
-                                    [Workout, Exercise, "order", "ASC"]
+                                    [Workout, { model: WorkoutExercise, as: "workoutExercises" }, "order", "ASC"]
                                 ] 
-                    }); 
+    }); 
 
 const destroyProgramForUser = async (data) =>
     Program.destroy({ where: { id: data.programId, userId: data.userId } })
 
 const generateAndSaveProgramForUser = async (data) => {
     const { name, goal, level, frequency, userId } = data;
-
     try {
         const result = await sequelize.transaction(async (t) => { 
             const generatedProgram = await generateProgram({ name, goal, level, frequency }); 
@@ -59,7 +57,7 @@ const generateAndSaveProgramForUser = async (data) => {
         throw err; // re-throw error for program.controller to catch. 
     }
     
-}; 
+};
 
 const updateProgramForUser = async (input) => {
 

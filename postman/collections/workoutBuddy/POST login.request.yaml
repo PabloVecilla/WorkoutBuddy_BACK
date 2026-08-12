@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://localhost:3000/auth/login
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "mail": "carlos@example.com",
+        "pass": "123456"
+    }
+auth:
+  type: noauth
+settings: {}
+order: 3000
