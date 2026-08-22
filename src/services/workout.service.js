@@ -1,15 +1,19 @@
-const { Workout } = require('../models');
+const { Program, Workout, sequelize } = require('../models');
 const workoutExerciseService = require('./workoutExercise.service');
 
 const createWorkoutsForProgram = async (workoutsData, programId, transaction) => {
-    await Promise.all(
-        workoutsData.map(async (workoutData) => {
+    console.log("Program id in workout service: ", programId); 
+    for (const workoutData of workoutsData) {
+        const [rows] = await sequelize.query('SELECT id from programs where id = :programId', {replacements: {programId}, transaction, logging: console.log});
+        console.log("RAW SQL program lookup: ", rows); 
             // Create workout
             const addedWorkout = await Workout.create({
                 dayNumber: workoutData.dayNumber,
                 focus: workoutData.focus,
-                programId: programId
-            }, { transaction });
+                programId
+            }, { transaction, 
+                logging: console.log
+             }); 
 
             // Delegamos los ejercicios al servicio correspondiente (pasándole la transacción)
             await workoutExerciseService.createExercisesForWorkout({
@@ -17,8 +21,30 @@ const createWorkoutsForProgram = async (workoutsData, programId, transaction) =>
                 workoutId: addedWorkout.id, 
                 transaction
             });
-        })
-    );
+    }
 };
 
-module.exports = { createWorkoutsForProgram };
+const findAllWorkoutsInProgramForUser = async (userId, programId) =>
+    Workout.findAll( { where: { programId },
+                        include: { model: Program, where: { userId }, attributes: [] } }); 
+
+const findWorkoutByIdInProgramForUser = async (programId, workoutId, userId) => 
+    Workout.findOne({ where: { id: workoutId, 
+                                programId },
+                                    include: { // left join the WorkoutExercises that belong to said Workout from said Program
+                                        model: Program,
+                                        where: { userId },
+                                        attributes: []
+                                    },
+    }); 
+
+const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) =>
+    Workout.destroy({ where: { id: workoutId, 
+                        programId },
+                            include: { // left join the Program checking for user being authorized
+                                model: Program,
+                                where: { userId },
+                                attributes: []
+                            } }); 
+
+module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser };

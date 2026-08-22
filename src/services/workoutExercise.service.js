@@ -31,7 +31,7 @@ const findUserWorkoutExerciseById = async (userId, workoutExerciseId) => {
 };  
 
 const updateWorkoutExerciseForUser = async (userId, workoutExerciseId, updates) => {
-    const workoutExercise =  await findUserWorkoutExerciseById(userId, workoutExerciseId); 
+    const workoutExercise = await findUserWorkoutExerciseById(userId, workoutExerciseId); 
     if (!workoutExercise) return null; 
 
     const {
@@ -60,7 +60,8 @@ const deleteWorkoutExerciseForUser = async (userId, workoutExerciseId) => {
 }; 
 
 const createExercisesForWorkout = async ({exercises, workoutId, transaction}) => {
-    // Mapeamos los ejercicios con el ID del entrenamiento
+    // Map exercises with workout ID
+    console.log("Exercises prepared for workout: ", exercises)
     const exercisesWithId = exercises.map(exercise => ({
         ...exercise,
         workoutId
@@ -69,6 +70,5 @@ const createExercisesForWorkout = async ({exercises, workoutId, transaction}) =>
     // Insertamos usando la transacción que nos pasaron
     return await WorkoutExercise.bulkCreate(exercisesWithId, { transaction });
 };
-
 
 module.exports = { updateWorkoutExerciseForUser, deleteWorkoutExerciseForUser, createExercisesForWorkout }; 

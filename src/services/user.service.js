@@ -11,5 +11,9 @@ const createUser = async (name, email, passwordHash) => {
         passwordHash
     }); 
 }; 
+
+const findAllUsers = async () => {
+    return User.findAll(); 
+}; 
   
-module.exports = { findUserByEmail, createUser }; 
+module.exports = { findUserByEmail, createUser, findAllUsers }; 

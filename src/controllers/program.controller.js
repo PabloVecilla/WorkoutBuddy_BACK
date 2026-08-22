@@ -5,9 +5,21 @@ const createProgram = async (req, res) => {
         const { name, goal, level, frequency } = req.body; 
         const userId = req.user.id
 
-        if (!name || !goal || !level || !frequency) return res.status(400).json({
-            message: "Name, goal, level and frequency required"
+        if (!name) return res.status(400).json({
+            message: "Name required"
         }); 
+        if (!goal) return res.status(400).json({
+            message: "Goal, level and frequency required"
+        }); 
+        if (!level) return res.status(400).json({
+            message: "Level required"
+        }); 
+        if (!frequency) return res.status(400).json({
+            message: "Frequency required"
+        }); 
+        // if (!name || !goal || !level || !frequency) return res.status(400).json({
+        //     message: "Name, goal, level and frequency required"
+        // }); 
 
         const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
         if (!program) return res.status(500).json({message: "Error generating or saving program"})
@@ -20,13 +32,11 @@ const createProgram = async (req, res) => {
         if(err.message.includes("BAD_REQUEST"))
             return res.status(400).json({
                 message: "Invalid input data to generate Program", 
-                program, 
                 error: err.message
             }); 
 
         res.status(500).json({
             message: "Error saving Program",
-            program, 
             error: err.message
         }); 
     }

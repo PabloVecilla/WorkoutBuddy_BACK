@@ -83,7 +83,7 @@ const workoutBlueprints = {  // exercise category selection for each workout
       "vertical_pull",
       "horizontal_pull",
       "shoulder_horizontal_abduction",
-      "arms",
+      "horizontal_adduction",
     ],
   
     lower: [
@@ -102,10 +102,10 @@ const workoutBlueprints = {  // exercise category selection for each workout
     ],
 };
 
-  const getRandomItem = (items) => {  
-    return items[Math.floor(Math.random() * items.length)];
-  };
-  
+const getRandomItem = (items) => {  
+  return items[Math.floor(Math.random() * items.length)];
+};
+   
   const selectExercise = async (movementPattern) => {  // randomly select an exercise for each category matching user level
     const pool = await findExercisesByMovementPattern(movementPattern);
   

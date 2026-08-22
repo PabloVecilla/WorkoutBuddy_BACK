@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt"); 
 const jwt = require("jsonwebtoken"); 
 // Import service query functions
-const { findUserByEmail, createUser } = require("../services/auth.service");
+const { findUserByEmail, createUser } = require("../services/user.service");
 
 // Register
 const register = async (req, res) => {
