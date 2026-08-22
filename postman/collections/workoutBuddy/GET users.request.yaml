@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://localhost:3000/users
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: noauth
+settings: {}
+order: 2000

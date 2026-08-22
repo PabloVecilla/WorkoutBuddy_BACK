@@ -5,19 +5,30 @@ const createProgram = async (req, res) => {
         const { name, goal, level, frequency } = req.body; 
         const userId = req.user.id
 
-        if (!name || !goal || !level || !frequency) return res.status(400).json({
-            message: "Name, goal, level and frequency required"
+        if (!name) return res.status(400).json({
+            message: "Name required"
         }); 
+        if (!goal) return res.status(400).json({
+            message: "Goal, level and frequency required"
+        }); 
+        if (!level) return res.status(400).json({
+            message: "Level required"
+        }); 
+        if (!frequency) return res.status(400).json({
+            message: "Frequency required"
+        }); 
+        // if (!name || !goal || !level || !frequency) return res.status(400).json({
+        //     message: "Name, goal, level and frequency required"
+        // }); 
 
         const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
-
-        res.status(201).json( {
+        if (!program) return res.status(500).json({message: "Error generating or saving program"})
+        res.status(201).json({
             message: "Program created successfully", 
             program
         }); 
 
-    } catch (err) { 
-
+    } catch (err) {
         if(err.message.includes("BAD_REQUEST"))
             return res.status(400).json({
                 message: "Invalid input data to generate Program", 
@@ -44,7 +55,7 @@ const getPrograms = async (req, res) => {
             error: err.message
         }); 
     }
-}; 
+};
 
 const getProgramById = async (req, res) => {
     try {
@@ -73,7 +84,11 @@ const getProgramById = async (req, res) => {
 const deleteProgram = async (req, res) => {
     try {
         const userId = req.user.id; 
-        const programId = Number(req.params.id); 
+        const { id } = req.params; 
+
+        if (!id) return res.status(400).json({ message: "No id provided" });
+
+        const programId = Number(id); 
 
         if (isNaN(programId)) return res.status(400).json({ message: "invalid id" }); 
 // destroy returns the NUMBER of rows deleted

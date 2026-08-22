@@ -2,7 +2,7 @@
 const express = require("express"); 
 
 // Import controller functions
-const { updateWorkoutExercise, deleteWorkoutExercise } = require("../controllers/workoutExercise.controller"); 
+const { deleteWorkout, getWorkoutById, getWorkouts } = require("../controllers/workout.controller"); 
 
 // Import auth middleware::
 const protect = require("../middleware/auth.middleware");
@@ -11,9 +11,11 @@ const protect = require("../middleware/auth.middleware");
 const router = express.Router(); 
 
 // ROUTES::
-router.patch("/:id", protect, updateWorkoutExercise); 
+router.get("/", protect, getWorkouts)
 
-router.delete("/:id", protect, deleteWorkoutExercise); 
+router.get("/:workoutId", protect, getWorkoutById); 
+
+router.delete("/:workoutId", protect, deleteWorkout); 
 
 // Export routes
 module.exports = router; 

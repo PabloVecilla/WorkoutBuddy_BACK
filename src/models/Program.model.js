@@ -4,11 +4,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER, 
             primaryKey: true, 
             autoIncrement: true
-
         }, 
         name: {
             type: DataTypes.STRING, 
-            allowNull: false
+            allowNull: true
         }, 
         goal: {
             type: DataTypes.ENUM(
@@ -29,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         }, 
         frequency: {
             type: DataTypes.INTEGER, 
-            allowNull: true, 
+            allowNull: false, 
             validate: {
                 min: 1, 
                 max: 7
@@ -37,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         }, 
     },
     {
+        // indexes: [{
+        //     unique: true, 
+        //     fields: ["user_id", "goal", "level", "frequency"]
+        // }],
         tableName: "programs", 
         timestamps: true, 
         underscored: true  // translates camelCase js standard to snake_case SQL standard

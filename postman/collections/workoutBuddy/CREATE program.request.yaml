@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://localhost:3000/programs/create
+method: POST
+body:
+  type: json
+  content: |
+    {
+        "name": "PPL", 
+        "goal": "muscle_gain", 
+        "level": "intermediate",
+        "frecuency": "6"
+    }
+settings: {}
+order: 6000

@@ -83,7 +83,7 @@ const workoutBlueprints = {  // exercise category selection for each workout
       "vertical_pull",
       "horizontal_pull",
       "shoulder_horizontal_abduction",
-      "arms",
+      "horizontal_adduction",
     ],
   
     lower: [
@@ -102,21 +102,11 @@ const workoutBlueprints = {  // exercise category selection for each workout
     ],
 };
 
-
-const cardio = [
-        { name: "Incline Treadmill Walk", level: "beginner",equipment: "treadmill" },
-        { name: "Stationary Bike", level: "beginner", equipment: "bike" },
-        { name: "Rowing Machine", level: "intermediate", equipment: "machine" },
-        { name: "Jump Rope", level: "intermediate", equipment: "bodyweight" },
-        { name: "Stair Master", level: "intermediate", equipment: "bodyweight" },
-]
-
-  const getRandomItem = (items) => {  
-    return items[Math.floor(Math.random() * items.length)];
-  };
-  
+const getRandomItem = (items) => {  
+  return items[Math.floor(Math.random() * items.length)];
+};
+   
   const selectExercise = async (movementPattern) => {  // randomly select an exercise for each category matching user level
-    if (movementPattern === "cardio") return getRandomItem(cardio); 
     const pool = await findExercisesByMovementPattern(movementPattern);
   
     if (!pool || pool.length === 0) {
@@ -140,12 +130,12 @@ const cardio = [
 
 const generateExercisesForWorkout = async (focus, goalRule, hasCardio) => {
   const movementPatterns = workoutBlueprints[focus]; 
-
   const exercises = await Promise.all(
     movementPatterns.map(async (pattern, index) => {
       const selectedExercise = await selectExercise(pattern); 
 
       return {
+        exerciseId: selectedExercise.id,
         order: hasCardio ? index + 2 : index + 1,
         movementPattern: pattern,
         name: selectedExercise.name,
@@ -162,6 +152,7 @@ const generateExercisesForWorkout = async (focus, goalRule, hasCardio) => {
     const selectedCardio = await selectExercise("cardio"); 
 
     exercises.unshift({
+      exerciseId: selectedCardio.id,
       order: 1, 
       category: "cardio",
       name: selectedCardio.name,

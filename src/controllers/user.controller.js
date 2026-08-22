@@ -1,27 +1,43 @@
-const User = require("../models/User.model"); 
+const { findUserByEmail, createUser, findAllUsers } = require("../services/user.service");
 
-const createTestUser = async (req, res) => {
+const createTestUser = async (_req, res) => {
+    const user = {
+        name: "Test User", 
+        email: "user@test.com", 
+        passwordHash: "123456", 
+    }; 
     try {
-        const user = await User.create({
-          name: "Test User", 
-          email: "user@test.com", 
-          passwordHash: "123456", 
-        })
-        res.status(201).json(user); 
+        const existingUser = await findUserByEmail(user.email);
+        if (existingUser) return res.status(409).json({ message: "User already registered"}); 
+
+        const createdUser = await createUser(
+          user.name, 
+          user.email, 
+          user.passwordHash
+        ); 
+        res.status(201).json({
+            message: "User registered successfully", 
+            user: {
+                id: createdUser.id, 
+                name: createdUser.name, 
+                email: createdUser.email, 
+                createdAt: createdUser.createdAt
+            }
+        }); 
       } catch (err) {
         res.status(500).json({
           message: "User creation failed", 
           error: err.message, 
         }); 
       }
-}
+};
 
 const getAllUsers = async (_req, res) => {
     try {
-        const users = await User.findAll(); 
+        const users = await findAllUsers(); 
         if (!users) return res.status(404).json({
             message: "No users found",
-        })
+        }); 
         res.status(200).json(users); 
     } catch (err) {
         res.status(500).json({
@@ -33,8 +49,8 @@ const getAllUsers = async (_req, res) => {
 
 const getUserByEmail = async (req, res) => {
     try {
-        const mail = req.params.mail; 
-        const user = await User.findOne({where: { email: mail }}); 
+        const email = req.params.mail; 
+        const user = await findUserByEmail( email ); 
 
         if (!user) return res.status(404).json({message: "User not found"}); 
 
