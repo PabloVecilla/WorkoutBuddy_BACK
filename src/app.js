@@ -1,6 +1,13 @@
 const express = require("express"); 
 const cookieParser = require("cookie-parser"); 
 // const cors = require("cors"); 
+
+// IMPORT DOTENV
+require("dotenv").config({
+  path:
+    process.env.NODE_ENV === "production" ? ".env" : ".env.local" 
+}); 
+
 const sequelize = require("../config/database"); 
 
 // ROUTES
@@ -10,6 +17,8 @@ const userRoutes = require("../src/routes/user.routes");
 const authRoutes = require("../src/routes/auth.routes"); 
 // _program
 const programRoutes = require("../src/routes/program.routes"); 
+// _workout
+const workoutRoutes = require("../src/routes/workout.routes"); 
 // _exercise
 const exerciseRoutes = require("../src/routes/exercise.routes"); 
 
@@ -18,8 +27,6 @@ const cors = require("cors");
 
 // IMPORT_MODELS
 require("./models"); 
-// IMPORT DOTENV
-require("dotenv").config(); 
 
 const app = express(); 
 
@@ -39,6 +46,8 @@ app.use("/auth", authRoutes);
 
 app.use("/programs", programRoutes); 
 
+app.use("/programs/:programId/workouts", workoutRoutes); 
+
 app.use("/exercises", exerciseRoutes); 
 
 app.get("/", (_req, res) => {
@@ -50,7 +59,7 @@ async function startServer() { // -> only accept http requests if connection is 
     await sequelize.authenticate(); // -> test connection to DB
     console.log("Database Connected"); 
 
-    await sequelize.sync({alter:true}); // -> updates DB to match the sequelize model --> ONLY for development. 
+    await sequelize.sync(); // -> updates DB to match the sequelize model --> ONLY for development. 
     console.log("Models synced"); 
 
     app.listen(PORT, () => {

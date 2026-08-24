@@ -1,0 +1,9 @@
+$kind: http-request
+name: programs
+url: http://localhost:3000/programs/
+method: GET
+body:
+  type: json
+  content: ""
+settings: {}
+order: 7000

@@ -2,7 +2,7 @@
 const express = require("express"); 
 
 // import controller functions 
-const { updateExercise, deleteExercise, getExercises, getExerciseById } = require("../controllers/exercise.controller"); 
+const { getExercises, getExerciseById } = require("../controllers/exercise.controller"); 
 
 // import auth middleware::
 const protect = require("../middleware/auth.middleware"); 
@@ -10,14 +10,11 @@ const protect = require("../middleware/auth.middleware");
 // import router
 const router = express.Router(); 
 
-router.patch("/:id", protect, updateExercise); 
-
-router.delete("/:id", protect, deleteExercise); 
-
+// ROUTES::
 router.get("/", protect, getExercises); 
 
 router.get("/:id", protect, getExerciseById); 
 
 
-
+// Export routes
 module.exports = router; 

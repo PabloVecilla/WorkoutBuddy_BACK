@@ -1,0 +1,21 @@
+// Import express
+const express = require("express"); 
+
+// Import controller functions
+const { deleteWorkout, getWorkoutById, getWorkouts } = require("../controllers/workout.controller"); 
+
+// Import auth middleware::
+const protect = require("../middleware/auth.middleware");
+
+// import router 
+const router = express.Router(); 
+
+// ROUTES::
+router.get("/", protect, getWorkouts)
+
+router.get("/:workoutId", protect, getWorkoutById); 
+
+router.delete("/:workoutId", protect, deleteWorkout); 
+
+// Export routes
+module.exports = router; 

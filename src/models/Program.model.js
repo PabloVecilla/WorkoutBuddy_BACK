@@ -1,17 +1,13 @@
-const { DataTypes } = require("sequelize"); 
-const sequelize = require("../../config/database"); // DB connection object import
-
-const Program = sequelize.define(
-    "Program", {
+module.exports = (sequelize, DataTypes) => { 
+    const Program = sequelize.define( "Program", {
         id: {
             type: DataTypes.INTEGER, 
             primaryKey: true, 
             autoIncrement: true
-
         }, 
         name: {
             type: DataTypes.STRING, 
-            allowNull: false
+            allowNull: true
         }, 
         goal: {
             type: DataTypes.ENUM(
@@ -32,7 +28,7 @@ const Program = sequelize.define(
         }, 
         frequency: {
             type: DataTypes.INTEGER, 
-            allowNull: true, 
+            allowNull: false, 
             validate: {
                 min: 1, 
                 max: 7
@@ -40,11 +36,13 @@ const Program = sequelize.define(
         }, 
     },
     {
+        // indexes: [{
+        //     unique: true, 
+        //     fields: ["user_id", "goal", "level", "frequency"]
+        // }],
         tableName: "programs", 
-        timestamps: true
-    }
-
-
-); 
-
-module.exports = Program; 
+        timestamps: true, 
+        underscored: true  // translates camelCase js standard to snake_case SQL standard
+    }); 
+    return Program; 
+}; 

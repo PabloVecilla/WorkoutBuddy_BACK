@@ -1,0 +1,15 @@
+$kind: http-request
+name: CREATE program
+url: http://localhost:3000/programs/create
+method: POST
+body:
+  type: json
+  content: |
+    {
+        "name": "Summer ready", 
+        "goal": "recomp", 
+        "level": "intermediate",
+        "frequency": "5"
+    }
+settings: {}
+order: 6000

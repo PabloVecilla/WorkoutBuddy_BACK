@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET user by mail
+url: http://localhost:3000/users/carlos@example.com
+method: GET
+order: 287171866015451

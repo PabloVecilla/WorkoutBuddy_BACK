@@ -1,70 +1,51 @@
-const {Program, Workout, Exercise} = require("../models"); 
-const { generateProgram } = require("../services/workoutGenerator"); 
+const { findAllProgramsForUser, findProgramByIdForUser, updateProgramForUser, destroyProgramForUser, generateAndSaveProgramForUser,  } = require("../services/program.service"); 
 
 const createProgram = async (req, res) => {
     try {
         const { name, goal, level, frequency } = req.body; 
         const userId = req.user.id
 
-        if (!name || !goal || !level || !frequency) return res.status(400).json({
-            message: "Name, goal, level and frequency required"
+        if (!name) return res.status(400).json({
+            message: "Name required"
         }); 
+        if (!goal) return res.status(400).json({
+            message: "Goal, level and frequency required"
+        }); 
+        if (!level) return res.status(400).json({
+            message: "Level required"
+        }); 
+        if (!frequency) return res.status(400).json({
+            message: "Frequency required"
+        }); 
+        // if (!name || !goal || !level || !frequency) return res.status(400).json({
+        //     message: "Name, goal, level and frequency required"
+        // }); 
 
-        const program = await Program.create(
-            { name, goal, level, frequency, userId }
-        ); 
-
-        res.status(201).json( {
+        const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
+        if (!program) return res.status(500).json({message: "Error generating or saving program"})
+        res.status(201).json({
             message: "Program created successfully", 
             program
         }); 
 
-    } catch (err) { 
-        res.status(500).json({
-            message: "Error creating Program", 
-            error: err.message
-        }); 
-    }
-}; 
-
-const generateProgramController = async (req, res) => {
-    try {
-        const userId = req.user.id; 
-
-        const { name, goal, level, frequency } = req.body; 
-
-        if (!name || !goal || !level || !frequency ) return res.status(400).json({ message: "All fields are required" }); 
-
-        const generatedProgram = generateProgram({ goal, level, frequency }); 
-
-        const addedProgram = await Program.create({userId, name, goal, level, frequency}); 
-
-        for (let day of generatedProgram) {
-            const addedWorkout = await Workout.create({dayNumber: day.dayNumber, focus: day.focus, programId: addedProgram.id})
-            
-            const exercisesWithId = day.exercises.map((exercise) => ({...exercise, workoutId: addedWorkout.id})); 
-            
-            await Exercise.bulkCreate(exercisesWithId); 
-        }; 
-
-        res.status(201).json({
-            message: "Program saved successfully", 
-            addedProgram
-        }); 
-
     } catch (err) {
+        if(err.message.includes("BAD_REQUEST"))
+            return res.status(400).json({
+                message: "Invalid input data to generate Program", 
+                error: err.message
+            }); 
+
         res.status(500).json({
-            message: "Error generating program", 
+            message: "Error saving Program",
             error: err.message
         }); 
     }
 }; 
 
 const getPrograms = async (req, res) => {
+    const userId = req.user.id; 
     try {
-        const programs = await Program.findAll({
-            where: { userId: req.user.id }
-        }); 
+        const programs = await findAllProgramsForUser(userId); 
 
         res.status(200).json(programs); 
 
@@ -74,7 +55,7 @@ const getPrograms = async (req, res) => {
             error: err.message
         }); 
     }
-}; 
+};
 
 const getProgramById = async (req, res) => {
     try {
@@ -84,20 +65,7 @@ const getProgramById = async (req, res) => {
 
         if (isNaN(numericId)) return res.status(400).json({ message: "Invalid id" }); 
 
-        const program = await Program.findOne({ where: { id: numericId, userId }, 
-                                                include: [{ // left join the Workouts that BELONG to said user and said program
-                                                        model: Workout, 
-                                                        required: false,
-                                                        include: [{ // left join the Exercises that belong to said WOrkout from said Program of said User
-                                                            model: Exercise,
-                                                            required: false
-                                                        }],
-                                                    }], 
-                                                order: [
-                                                    [Workout, "dayNumber", "ASC"],
-                                                    [Workout, Exercise, "order", "ASC"]
-                                                ]
-                                            }); 
+        const program = await findProgramByIdForUser( { id: numericId, userId } ); 
 
         if (!program) return res.status(404).json({ message: "Program not found" }); 
 
@@ -116,12 +84,16 @@ const getProgramById = async (req, res) => {
 const deleteProgram = async (req, res) => {
     try {
         const userId = req.user.id; 
-        const programId = Number(req.params.id); 
+        const { id } = req.params; 
+
+        if (!id) return res.status(400).json({ message: "No id provided" });
+
+        const programId = Number(id); 
 
         if (isNaN(programId)) return res.status(400).json({ message: "invalid id" }); 
 // destroy returns the NUMBER of rows deleted
 
-        const deletedCount = await Program.destroy({ where: { id: programId, userId } }); 
+        const deletedCount = await destroyProgramForUser({ programId, userId }); 
         
         if (deletedCount === 0) return res.status(404).json({ message: "Program not found" }); 
 
@@ -139,24 +111,17 @@ const updateProgram = async (req, res) => {
     try {
         const userId = req.user.id; 
         const programId = Number(req.params.id); 
-
         const { name, goal, level, frequency } = req.body; 
 
-        if (isNaN(programId)) return res.status(400).json({ message: "Invalid id" }); 
+        if (isNaN(programId)) return res.status(400).json({ message: "Invalid program id" }); 
 
-        const program = await Program.findOne({ where: { id: programId, userId } }); 
-        if (!program) return res.status(404).json({ message: "Program not found" }); 
+        const updatedProgram = await updateProgramForUser({ programId, userId, data: { name, goal, level, frequency } }); 
 
-        await program.update({
-            name: name ?? program.name, 
-            goal: goal ?? program.goal, 
-            level: level ?? program.level, 
-            frequency: frequency ?? program.frequency
-        }); 
+        if (!updatedProgram) return res.status(404).json({ message: "Program not found" }); 
 
         res.status(200).json({
             message: "Program edited successfully", 
-            program
+            updatedProgram
         }); 
 
     } catch (err) {
@@ -172,6 +137,5 @@ module.exports = {
     getPrograms, 
     getProgramById, 
     deleteProgram, 
-    updateProgram, 
-    generateProgramController
-}; 
+    updateProgram
+};

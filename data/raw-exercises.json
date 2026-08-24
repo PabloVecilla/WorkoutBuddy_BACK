@@ -1,0 +1,4368 @@
+[
+  {
+    "id": "bd813e6f-c078-492c-a86e-6da32c84fa46",
+    "code": "DUMBBELL_SHRUGS",
+    "primaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Shrugs",
+    "description": "Stand upright with a dumbbell in each hand, arms fully extended at your sides, and palms facing your body. Keep your chest lifted, shoulders pulled slightly back, and core engaged. Without bending your elbows, lift your shoulders straight up toward your ears as high as you can. Focus on contracting your trapezius muscles at the top of the movement. Pause briefly, then slowly lower your shoulders back down under control. Avoid rolling or rotating the shoulders — the motion should be vertical and controlled."
+  },
+  {
+    "id": "03ee64f2-6c74-49a0-bc66-232771ba2719",
+    "code": "FRONT_RAISE_WITH_DUMBBELLS",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Front Raise with Dumbbells",
+    "description": "Stand upright with a dumbbell in each hand, arms extended down in front of your thighs, and palms facing your body. Keep your chest lifted, shoulders relaxed, and engage your core. Raise one or both arms straight in front of you until they reach shoulder height, keeping your elbows slightly bent and wrists neutral. Pause briefly at the top to contract your shoulder muscles. Lower the dumbbells slowly and under control back to the starting position. Avoid using momentum or swinging your body during the movement."
+  },
+  {
+    "id": "361444d2-c3ce-4437-bc84-20fb7e4a6d0a",
+    "code": "DUMBBELL_SHOULDER_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Shoulder Press",
+    "description": "Sit on a bench with back support and hold a dumbbell in each hand resting on your thighs. Using your legs, help lift the dumbbells up to shoulder height, elbows bent and palms facing forward. Press the dumbbells upward until your arms are fully extended above your head, bringing the weights slightly together at the top without locking your elbows. Lower the dumbbells in a controlled manner back to shoulder level. Keep your core tight and avoid arching your back. This exercise can also be performed standing, but requires strict posture and core engagement."
+  },
+  {
+    "id": "c9ff4f0e-86fe-42bb-8278-7d867c8cb27b",
+    "code": "BARBELL_SHOULDER_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Barbell Shoulder Press",
+    "description": "Stand tall with your feet shoulder-width apart and a barbell resting at shoulder level, palms facing forward and elbows slightly in front of the bar. Engage your core and retract your shoulder blades. Press the barbell upward in a straight line until your arms are fully extended above your head without locking the elbows. At the top, keep the bar slightly behind your head for proper alignment. Lower the barbell back to shoulder level with control. Keep your torso upright throughout the movement and avoid leaning back."
+  },
+  {
+    "id": "ada4f605-33d5-4490-98a7-184e1a0421f4",
+    "code": "LATERAL_RAISE_WITH_DUMBBELLS",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Lateral Raise with Dumbbells",
+    "description": "Stand upright with a dumbbell in each hand, arms relaxed at your sides, and palms facing your body. Engage your core and keep your chest lifted. With a slight bend in your elbows, raise both arms out to the sides until they reach shoulder height, keeping the motion smooth and controlled. Pause briefly at the top while contracting your shoulder muscles. Lower the dumbbells slowly back to the starting position. Avoid swinging or using momentum. This exercise can also be performed seated for greater isolation."
+  },
+  {
+    "id": "049b3c25-603d-42f2-8c3f-ebbd3f156d1f",
+    "code": "CABLE_LATERAL_RAISE",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable Lateral Raise",
+    "description": "Set the cable pulley to the lowest position and attach a single handle. Stand sideways to the machine, holding the handle with the hand farthest from the pulley. Let your arm rest alongside your body with a slight bend in the elbow. Engage your core and raise your arm out to the side until it reaches shoulder height, keeping the movement slow and controlled. Pause briefly at the top, then lower the handle back to the starting position. Keep your torso still and avoid swinging. Repeat the movement on the opposite side."
+  },
+  {
+    "id": "1dd0c3cf-1667-4726-9627-49ec4b3f7b29",
+    "code": "ARNOLD_DUMBBELL_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Arnold Dumbbell Press",
+    "description": "Sit on a bench with back support, holding a dumbbell in each hand resting on your thighs. Lift the dumbbells to chest level with your palms facing your body and elbows bent in front of you. Begin the press by rotating your wrists outward as you press the weights overhead. At the top of the movement, your arms should be fully extended and your palms facing forward. Reverse the motion as you lower the dumbbells, rotating your wrists back inward to return to the starting position. Keep your core tight and perform the movement in a smooth and controlled manner."
+  },
+  {
+    "id": "10cada0d-59ba-462b-b39b-b8c9c2b1c578",
+    "code": "UPRIGHT_ROW",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Upright Row",
+    "description": "Stand upright holding a barbell with a narrow, overhand grip at hip level. Keep your back straight, chest up, and core engaged. Pull the barbell straight up along your body, leading with your elbows and keeping the bar close to your torso. Raise the bar until it reaches upper chest or neck level, with elbows flaring outward and positioned above the wrists. Pause briefly at the top, then lower the bar slowly and under control back to the starting position. Avoid swinging or using momentum throughout the movement."
+  },
+  {
+    "id": "d21892b8-0749-4a1b-88cb-1af05ae427fc",
+    "code": "CABLE_FRONT_RAISE",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable Front Raise (Bar)",
+    "description": "Set the cable pulley to the lowest position and attach a straight bar. Stand facing away from the machine and hold the bar with both hands using an overhand grip, arms extended down in front of your thighs. Engage your core and raise the bar straight in front of you to shoulder height, keeping a slight bend in your elbows and your wrists neutral. Pause briefly at the top, then slowly lower the bar back to the starting position with control. Avoid using momentum or leaning backward."
+  },
+  {
+    "id": "eeb65c40-a2db-4beb-aa41-fa04ea846865",
+    "code": "REVERSE_FLY_ON_INCLINE_BENCH",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Reverse Fly on Incline Bench",
+    "description": "Lie face down on an incline bench with a dumbbell in each hand, arms extended toward the floor and palms facing each other. Keep your chest in contact with the bench and engage your core. With a slight bend in the elbows, raise your arms out to the sides in a wide arc until they reach shoulder height. Focus on squeezing the shoulder blades together at the top. Lower the dumbbells slowly and under control back to the starting position. Avoid using momentum or swinging the arms."
+  },
+  {
+    "id": "92a4e570-a39b-467d-bbe1-1662281d2326",
+    "code": "INCLINE_DUMBBELL_REVERSE_FLY",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Incline Dumbbell Reverse Fly",
+    "description": "Stand with a dumbbell in each hand, arms extended down at your sides. Hinge forward at the hips with a flat back and slight bend in your knees, bringing your torso close to parallel with the floor. With a slight bend in the elbows, raise your arms out to the sides in a wide arc until they reach shoulder height, squeezing your shoulder blades together at the top. Lower the dumbbells slowly and under control back to the starting position. The movement can also be performed seated on an incline bench for greater stability."
+  },
+  {
+    "id": "3b4bb83a-86db-4500-801f-5b0761bb4237",
+    "code": "CABLE_REVERSE_FLY",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable Reverse Fly",
+    "description": "Stand facing the cable machine with both pulleys set at the highest position. Grab the left handle with your right hand and the right handle with your left hand, so that your arms are crossed in front of you with elbows slightly bent and hands just below shoulder height. Engage your core and pull both arms out and back in a wide arc until your hands are aligned with your shoulders and your arms are perpendicular to your torso. Focus on contracting the rear delts at the peak of the movement. Slowly return to the starting crossed-arm position with control, avoiding momentum or using your back."
+  },
+  {
+    "id": "e28a88d5-6a11-4ecd-96a0-6ece58a4e198",
+    "code": "FACE_PULL",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Face Pull",
+    "description": "Set the cable pulley to a high position and attach a rope handle. Stand facing the machine and grab each end of the rope with a neutral grip, thumbs pointing toward you. Step back slightly and extend your arms forward, keeping a slight bend in your elbows. Pull the rope toward your face by driving your elbows back and out while squeezing your shoulder blades together. At the end of the movement, your elbows should be at shoulder height, and your forearms should form a 90-degree angle, with the rope spread apart near your face. Reverse the motion slowly to return to the starting position, keeping tension on the cable at all times."
+  },
+  {
+    "id": "cb18dd7a-d12b-4b84-9084-da92d04a81c8",
+    "code": "REVERSE_BUTTERFLY",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Reverse Butterfly",
+    "description": "Sit facing the rear side of the butterfly (pec deck) machine and adjust the seat so that your shoulders are aligned with the handles. Grab the handles with a neutral grip and keep your elbows slightly bent. Pull the handles outward and backward in a wide arc, focusing on squeezing your shoulder blades together at the peak of the movement. Keep your chest in contact with the pad and avoid using momentum. Slowly return the handles to the starting position under control to complete the rep."
+  },
+  {
+    "id": "c774c4f8-3ce9-4c91-8a62-7036d0f2e798",
+    "code": "LANDMINE_SHOULDER_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Landmine Shoulder Press",
+    "description": "Stand facing the landmine bar with one end anchored to the floor. Hold the free end of the bar with one hand at shoulder height, elbow bent and close to the body. Engage your core and keep your torso upright. Press the bar upward and slightly forward until your arm is fully extended without locking the elbow. Slowly lower the bar back to the starting position under control, maintaining a stable posture throughout the movement."
+  },
+  {
+    "id": "27fc4bb6-91e8-46a3-8c6d-38807ac3f0d1",
+    "code": "PLATE_FRONT_RAISE",
+    "primaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Plate Front Raise",
+    "description": "Stand upright holding a weight plate with both hands in front of your thighs. Keep your arms slightly bent, chest lifted, and core engaged. Raise the plate straight up in front of you until it reaches shoulder height. Pause briefly at the top, then slowly lower the plate back down under control. Avoid swinging the weight or using momentum."
+  },
+  {
+    "id": "7dd935c3-66d2-4b48-b0b0-8da01940da10",
+    "code": "DUMBBELL_BICEPS_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Biceps Curl",
+    "description": "Stand upright with a dumbbell in each hand, arms fully extended at your sides and palms facing forward. Keep your elbows close to your torso and your back straight. Curl the dumbbells upward by flexing your elbows, bringing the weights toward your shoulders while keeping your upper arms stationary. Focus on contracting your biceps at the top of the movement. Lower the dumbbells slowly back to the starting position without locking your elbows completely. This exercise can also be performed seated on a bench."
+  },
+  {
+    "id": "113c7bdf-80b2-4c91-9914-93c5364ef94c",
+    "code": "DUMBBELL_HAMMER_GRIP_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Hammer Grip Curl",
+    "description": "Stand upright with a dumbbell in each hand, arms extended at your sides and palms facing your body in a neutral grip. Keep your elbows close to your torso and maintain a straight back. Curl the dumbbells upward by bending your elbows, bringing the weights toward your shoulders while keeping the palms facing inward throughout the movement. Squeeze your biceps at the top, then lower the dumbbells slowly and under control back to the starting position without locking your elbows. This exercise can also be performed seated on a bench."
+  },
+  {
+    "id": "6b5c26de-a731-4dcf-af8c-c1da86dee78d",
+    "code": "BARBELL_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Barbell Curl",
+    "description": "Stand upright holding a barbell with both hands using a shoulder-width underhand grip, palms facing forward. Let your arms hang fully extended in front of your thighs. Keep your elbows close to your torso and curl the barbell upward by flexing your elbows, bringing the bar toward your shoulders. Focus on keeping your upper arms stationary and avoid swinging. Squeeze the biceps at the top, then lower the barbell in a controlled manner back to the starting position without locking your elbows. Maintain a straight back throughout the movement."
+  },
+  {
+    "id": "29467bd2-25e7-4cb5-a86c-82f3382b2c62",
+    "code": "BICEPS_CURL_MACHINE",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Biceps Curl Machine",
+    "description": "Adjust the seat height so your upper arms rest comfortably on the arm pad, with your elbows aligned with the machine’s pivot point. Grasp the handles or bar with an underhand grip. Keeping your upper arms fixed against the pad, curl the weight toward your shoulders by bending your elbows and contracting your biceps. Pause briefly at the top, then lower the weight slowly back to the starting position without fully locking your elbows. Maintain smooth and controlled movement throughout the exercise."
+  },
+  {
+    "id": "a030589d-6d07-49c1-9801-112bfb649247",
+    "code": "REVERSE_BARBELL_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      },
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Reverse Barbell Curl",
+    "description": "Stand upright holding a barbell with both hands using an overhand (pronated) grip, palms facing down, and hands at shoulder-width. Keep your elbows close to your body and your arms fully extended in front of your thighs. Curl the barbell upward by bending your elbows, bringing the bar toward your shoulders while keeping your upper arms stationary. Focus on contracting your forearms and biceps. Lower the bar slowly and under control back to the starting position, without locking your elbows. Maintain a straight posture throughout the movement."
+  },
+  {
+    "id": "1a291b2e-2e6b-4da8-827d-75ef0fcdc394",
+    "code": "SPIDER_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Spider Curl",
+    "description": "Lie face down on an incline bench with your chest supported and your arms hanging straight down, holding a dumbbell in each hand with your palms facing forward. Keep your upper arms vertical and stationary. Curl the weights toward your shoulders by bending your elbows and contracting your biceps. Pause briefly at the top, then lower the dumbbells slowly and under control to the starting position, without locking your elbows. This exercise can also be performed using a barbell."
+  },
+  {
+    "id": "d477847f-4748-42dc-b8c7-aacd0c378d1e",
+    "code": "BICEPS_CABLE_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Biceps Cable Curl",
+    "description": "Stand facing a low cable pulley with a straight bar attachment. Grab the bar with an underhand grip, hands about shoulder-width apart, and arms fully extended in front of your thighs. Keep your elbows close to your torso and curl the bar upward by bending your elbows, bringing the bar toward your shoulders. Contract your biceps at the top of the movement. Slowly lower the bar back down to the starting position, maintaining control and avoiding full elbow lockout."
+  },
+  {
+    "id": "e288e083-b48e-47fc-aeee-37e83fc2058b",
+    "code": "HIGH_CABLE_CURLS",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "High Cable Curls",
+    "description": "Stand in the center of a cable crossover machine with both pulleys set at the highest position. Grab a handle in each hand using a supinated grip, and extend your arms out to the sides at shoulder height without locking your elbows. Keep your upper arms parallel to the floor and stationary. Curl the handles toward your head by bending your elbows and contracting your biceps. Pause briefly at the peak of the movement, then slowly return to the starting position while maintaining tension in the cables."
+  },
+  {
+    "id": "cd2f0c9c-6657-492f-84d0-e8563685f52e",
+    "code": "SUPINATED_GRIP_PULL_UPS",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      },
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Supinated Grip Pull-Ups",
+    "description": "Grab a pull-up bar with an underhand (supinated) grip, palms facing you, and hands about shoulder-width apart. Start from a dead hang with arms fully extended. Engage your core and pull your chest toward the bar by bending your elbows and squeezing your shoulder blades together. Continue pulling until your chin rises above the bar. Pause briefly at the top, then lower yourself slowly back down in a controlled manner without fully locking your elbows. Keep your body stable and avoid swinging throughout the movement."
+  },
+  {
+    "id": "fdcf4274-8be9-46de-bc17-ad913cfca724",
+    "code": "BAYESIAN_CABLE_CURL",
+    "primaryMuscles": [
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Bayesian Cable Curl",
+    "description": "Set a cable pulley to the lowest position and stand facing away from the machine. Hold the handle with one hand, arm extended slightly behind your body. Keep your elbow fixed and close to your side. Curl the handle upward by flexing the elbow until your forearm is fully contracted. Slowly return to the starting position while maintaining constant tension on the cable."
+  },
+  {
+    "id": "dc651790-c0f1-4630-90f2-01c645a34e71",
+    "code": "DIPS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Dips",
+    "description": "Position yourself between parallel bars, using a step or platform if needed to reach the start. Grab the bars with a neutral grip and fully extend your arms without locking the elbows. Engage your core to maintain stability. Lower your body in a controlled motion by bending your elbows until your upper arms are about parallel to the ground. Avoid letting your elbows go higher than your shoulders. Push back up to the starting position, focusing on your triceps and chest. Keep your body upright and avoid swinging throughout the movement."
+  },
+  {
+    "id": "e76956e8-f703-4f30-ad2b-955e01cb6de9",
+    "code": "LYING_BARBELL_EXTENSIONS",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Lying Barbell Extensions",
+    "description": "Sit on a flat bench with a barbell resting on your thighs, gripping it with a narrow overhand grip. Lie back on the bench and extend your arms fully so the barbell is directly above your chest, perpendicular to your torso. Keeping your elbows tucked in and stationary, lower the barbell toward your forehead by bending only at the elbows. Once the bar is close to your forehead, extend your arms back up to the starting position without locking the elbows. Only your forearms should move throughout the exercise."
+  },
+  {
+    "id": "cd262228-ccd8-43a4-b714-225831298220",
+    "code": "CLOSE_GRIP_CHEST_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Close Grip Chest Press",
+    "description": "Sit on a flat bench with a barbell resting on your thighs, and grip it with a close overhand grip, palms facing down. Lie back and press the barbell straight up so your arms are fully extended above your chest. Keep your elbows close to your torso and lower the barbell down in a controlled motion until it touches or nearly touches your mid-chest. Press the bar back up to the starting position by extending your arms, without locking your elbows. Focus on keeping tension on the triceps throughout the movement."
+  },
+  {
+    "id": "ad3e3593-b046-4fd6-812b-077770d0bbcc",
+    "code": "BENCH_DIPS",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Bench Dips",
+    "description": "Position yourself with your back to a flat bench and place your hands on the edge behind you, fingers pointing forward. Extend your legs in front of you with your heels on the floor and your hips elevated. Lower your body by bending your elbows until your upper arms are about parallel to the ground. Avoid letting your shoulders drop below your elbows. Push yourself back up by extending your arms, without locking the elbows at the top. Engage your core throughout to keep the movement stable."
+  },
+  {
+    "id": "5329cf01-fa9a-48d4-9add-ef6c8b3a1f75",
+    "code": "DUMBBELL_KICKBACK",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Kickback",
+    "description": "Place one knee and the same-side hand on a flat bench for support, keeping your back straight and head in a neutral position. Hold a dumbbell in the opposite hand with your arm bent and upper arm parallel to your torso. Extend your arm fully by straightening the elbow until the dumbbell points backward. Keep your upper arm stationary and close to your body throughout. Squeeze your triceps at the top, then slowly return to the starting position without letting your elbow drop. Perform the desired reps and switch sides."
+  },
+  {
+    "id": "8fa29e8c-c204-4499-a42c-21bbe4b6c95e",
+    "code": "DUMBBELL_OVERHEAD_TRICEPS_EXTENSION",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Overhead Triceps Extension",
+    "description": "Sit on a bench with back support, holding a single dumbbell with both hands. Grip the dumbbell by the upper end with your palms facing the weight plate for stability. Extend your arms overhead, keeping the dumbbell positioned above your head. Slowly bend your elbows to lower the weight behind your head, making sure your upper arms remain stationary and close to your ears. Do not allow the dumbbell to touch your neck. Once you reach a deep stretch, extend your arms again to return to the starting position. Keep your back straight and only move your forearms throughout the exercise."
+  },
+  {
+    "id": "1bd91869-6873-4cb3-b1e7-d8b3b8aa3900",
+    "code": "ROPE_TRICEPS_EXTENSION",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Rope Triceps Extension",
+    "description": "Attach a rope handle to a high pulley and stand facing the cable machine. Grab the rope with a neutral grip, elbows tucked close to your body and forearms parallel to the floor. Extend your arms downward, pushing the rope toward your thighs while slightly separating the ends of the rope at the bottom of the movement. Contract your triceps at the end, then slowly return to the starting position by bending your elbows. Only your forearms should move during the exercise."
+  },
+  {
+    "id": "77ea8f96-d90a-46a8-bac8-2e814bbeaca1",
+    "code": "OVERHEAD_TRICEPS_EXTENSION",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Overhead Triceps Extension",
+    "description": "Attach a rope handle to a low pulley and stand upright facing away from the machine with your feet shoulder-width apart. Grab the rope with a neutral grip and bring your hands behind your head with your elbows bent and pointing upward. Keeping your torso straight and core engaged, extend your arms vertically above your head until they are fully straight. Focus on keeping your elbows stable and close to your head. Slowly return to the starting position by bending your elbows. Only your forearms should move during the exercise."
+  },
+  {
+    "id": "80665873-eb60-4f89-8480-a0da2848870c",
+    "code": "CLOSE_GRIP_PUSH_UPS",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Close Grip Push-Ups",
+    "description": "Get into a kneeling position and place your hands on the floor close together, just under your chest. Extend your legs back to form a plank, resting on the balls of your feet. Keep your body straight and engage your core. Lower your chest toward the floor by bending your elbows while keeping them close to your torso. Avoid letting your elbows flare out. Once your chest is just above the ground, push through your palms to return to the starting position. Maintain a straight back and controlled motion throughout."
+  },
+  {
+    "id": "c7ee12bf-a477-4fe9-9a4e-4a8170ed5cbe",
+    "code": "EZ_BAR_OVERHEAD_TRICEPS_EXTENSION",
+    "primaryMuscles": [
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "EZ-bar Overhead Triceps Extension",
+    "description": "Stand or sit holding an EZ bar with a narrow grip. Raise the bar overhead with arms fully extended. Keeping your elbows close to your head, bend your elbows to lower the bar behind your head in a controlled manner. Extend your arms to return to the starting position, focusing on contracting the triceps throughout the movement."
+  },
+  {
+    "id": "c771ecae-ea5e-4772-a4ac-00b783a6dded",
+    "code": "BARBELL_BENCH_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Barbell Bench Press",
+    "description": "Lie flat on a bench with your feet firmly planted on the floor. Grip the barbell slightly wider than shoulder-width, keeping your wrists aligned over your elbows. Unrack the bar and position it above your chest. Lower the bar under control by bending your elbows, bringing it down to your mid-chest while keeping your elbows at about a 45-degree angle from your torso. Press the bar upward until your arms are extended, without locking your elbows. Maintain symmetry between both arms and avoid excessive arching of your lower back. At the end of your set, carefully rerack the bar."
+  },
+  {
+    "id": "ef6f4758-0137-4ba5-a643-4c35e22a52d7",
+    "code": "INCLINE_BARBELL_BENCH_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Incline Barbell Bench Press",
+    "description": "Lie back on an incline bench, with your feet firmly planted on the floor. Grip the barbell slightly wider than shoulder-width. Unrack the bar and position it directly above your upper chest. Lower the bar under control by bending your elbows, bringing it to the upper portion of your chest. Press the bar back upward by extending your arms, stopping just before locking your elbows. Keep your back flat against the bench, maintain symmetry, and avoid excessive arching. Rerack the bar safely after completing your set."
+  },
+  {
+    "id": "960aceb7-6b6c-494c-8214-252dbe901c30",
+    "code": "DECLINE_BARBELL_BENCH_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Decline Barbell Bench Press",
+    "description": "Lie back on a decline bench with your feet secured under the foot pads and your back firmly supported. Grip the barbell slightly wider than shoulder-width. Unrack the bar and position it over your lower chest. Lower the bar slowly and under control by bending your elbows, keeping them at a slight angle from your torso. Press the bar back up by extending your arms until they are almost straight, without locking the elbows. Focus on maintaining symmetry, keeping your back stable, and returning the bar safely to the rack after your set."
+  },
+  {
+    "id": "ef944d70-7485-4f7c-829f-a264b18fb0b8",
+    "code": "DUMBBELL_BENCH_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Bench Press",
+    "description": "Sit on a flat bench with a dumbbell in each hand, using a neutral or standard grip. Lie back with your feet firmly planted on the floor and bring the dumbbells to chest level. Press the weights upward until your arms are nearly extended, allowing the dumbbells to come close together at the top. Lower the dumbbells under control by bending your elbows, bringing them down to the sides of your chest according to your shoulder mobility. Press back up while keeping your arms moving in a controlled arc. Do not lock out the elbows. Keep your back flat on the bench and ensure even movement on both sides."
+  },
+  {
+    "id": "dd39d859-3e5c-47b8-afa3-d1304873ab24",
+    "code": "INCLINE_DUMBBELL_BENCH_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Incline Dumbbell Bench Press",
+    "description": "Sit on an incline bench with a dumbbell in each hand, using a neutral or standard grip. Lie back with your feet firmly planted on the floor and position the dumbbells at chest level. Press the dumbbells upward at a slight angle until your arms are almost fully extended, bringing the weights close together at the top. Slowly lower them under control by bending your elbows, allowing the dumbbells to descend toward the upper chest. Avoid locking your elbows at the top and maintain control throughout the motion. Keep your back pressed to the bench and ensure symmetrical movement with both arms."
+  },
+  {
+    "id": "c69bb2f5-c00a-4298-affe-731ad94465a2",
+    "code": "DECLINE_DUMBBELL_BENCH_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Decline Dumbbell Bench Press",
+    "description": "Sit on a decline bench with a dumbbell in each hand using a neutral or standard grip. Lie back and secure your feet under the support pads. Bring the dumbbells to chest level and press them upward until your arms are nearly extended, bringing the weights close together at the top. Slowly lower the dumbbells in a controlled arc toward the lower chest by bending your elbows. Avoid locking your elbows at the top. Maintain control and symmetry between both arms, keep your back supported on the bench, and avoid excessive arching."
+  },
+  {
+    "id": "38a01b88-b0ef-4b68-ac9c-ad398e840b79",
+    "code": "LATERAL_PLANK",
+    "primaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Lateral plank",
+    "description": "Kneel down and place one of your elbows on the mat, then extend your legs on the opposite side to distribute your weight between one foot and the active forearm. You will be positioned sideways to engage the oblique muscle. Your back should remain straight throughout the hold. Contract your abs to maintain this position for the set duration, then relax. Repeat on the other side."
+  },
+  {
+    "id": "f809b9a2-855c-4d4d-8f15-4c63ef04027e",
+    "code": "DUMBBELL_CHEST_FLYS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Chest Flys",
+    "description": "Sit on a flat bench with a dumbbell in each hand using a neutral grip. Lie back with your feet firmly planted on the ground and extend your arms above your chest with the dumbbells close together. Open your arms out to the sides in a wide arc, keeping a slight bend in your elbows. Lower the dumbbells until they reach approximately chest level, depending on your shoulder mobility. Engage your chest to bring the dumbbells back together over your chest in a controlled motion. Avoid locking the elbows. To emphasize the upper chest, you can use a slightly inclined bench, but too much incline will shift the focus to the shoulders."
+  },
+  {
+    "id": "b9345bf3-9d90-4eaf-82fc-3b4e54271afd",
+    "code": "PUSH_UPS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Push-Ups",
+    "description": "Start on all fours, placing your hands shoulder-width apart or slightly wider, and your feet extended behind you with your toes on the ground. Keep your body in a straight line from head to heels by engaging your core and glutes. Lower your chest toward the floor by bending your elbows, keeping them close to your sides. When your chest nearly touches the floor, push through your palms to extend your arms and return to the starting position. Maintain a straight spine and avoid letting your hips sag or rise throughout the movement."
+  },
+  {
+    "id": "64a8f3f8-8c8e-4893-8946-060be81c3a9f",
+    "code": "PEC_DECK",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Pec-Deck / Butterfly",
+    "description": "Adjust the seat so that your elbows are aligned with shoulder height when you grip the handles. Sit with your back firmly against the pad and your feet flat on the floor. Keep a slight bend in your elbows and bring the handles together in front of your chest by contracting your chest muscles. Pause briefly at the top, then slowly return to the starting position by opening your arms in a controlled motion. Keep the movement smooth and your back supported throughout the exercise."
+  },
+  {
+    "id": "876017d3-b668-4ddf-8cb9-d3a1c03a1315",
+    "code": "SEATED_CHEST_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Seated Chest Press",
+    "description": "Adjust the seat so that the handles are aligned with the middle of your chest. Sit down with your back flat against the pad and feet firmly on the floor. Grasp the handles with elbows bent around 90 degrees. Press the handles forward by extending your arms in a controlled motion, without locking your elbows at the top. Slowly return to the starting position by bending your elbows, keeping tension on your chest muscles throughout the movement."
+  },
+  {
+    "id": "57a5b617-27d2-44cc-96e7-28c87d3bd22a",
+    "code": "MOUNTAIN_CLIMBERS",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Mountain climbers",
+    "description": "Kneel down and place your hands flat on the mat, then extend your legs. Bend one knee to bring it toward your chest. At that moment, extend that same leg back to the starting position while bending the opposite knee. Repeat this cycle at a fast pace to work on your cardio. Remember to contract your abs throughout the movement."
+  },
+  {
+    "id": "96965313-b23d-46d3-badf-1ea113710c47",
+    "code": "HIGH_CABLE_CHEST_FLY",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "High Cable Chest Fly",
+    "description": "Set the pulleys to a high position and stand in the center of the machine. Grab the handles with a neutral grip and take a small step forward to create tension. With a slight bend in your elbows, open your arms wide, then bring your hands together in front of your chest by contracting your pectorals. Keep the movement slow and controlled, especially during the negative phase. Do not let the handles go too far behind you to avoid shoulder strain. You can lean slightly forward to better isolate specific areas of the chest."
+  },
+  {
+    "id": "82e8b9c7-4081-412d-b21c-edbdd2076c5b",
+    "code": "LOW_CABLE_CHEST_FLY",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Low Cable Chest Fly",
+    "description": "Set the pulleys to a low position and stand in the center of the machine. Grab the handles with a neutral grip and step slightly forward to create tension. With a slight bend in your elbows, raise your arms upward in a wide arc while bringing your hands together in front of your head, contracting your chest muscles. Pause briefly at the top, then slowly lower your arms back to the starting position in a controlled motion. Focus on keeping your chest engaged throughout the movement."
+  },
+  {
+    "id": "7751e00e-01ec-48aa-8066-db2c98b59413",
+    "code": "INCLINE_CHEST_PRESS_MACHINE",
+    "primaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Incline Chest Press Machine",
+    "description": "Adjust the seat height so the handles align with your upper chest. Sit with your back firmly against the pad and feet flat on the floor. Grasp the handles with a firm grip and press them upward and slightly forward by extending your arms, without locking your elbows at the top. Slowly bring the handles back down in a controlled motion to return to the starting position. Keep your chest engaged and back supported throughout the movement."
+  },
+  {
+    "id": "5dd8ecb4-631b-44ed-9e15-ab89a649c8ba",
+    "code": "PRONATED_GRIP_PULL_UPS",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Pronated Grip Pull-Ups",
+    "description": "Grab the pull-up bar with an overhand (pronated) grip, hands at or slightly wider than shoulder-width apart. Engage your back muscles and pull your body upward until your chin passes the height of the bar. Focus on keeping the movement smooth and controlled. Slowly lower yourself back down without fully locking your elbows at the bottom. Keep your body tight and avoid swinging. Emphasize pulling with your back rather than relying too much on the biceps, especially in the early phase of the lift."
+  },
+  {
+    "id": "f5dc5cab-f43d-4975-91db-a66267a50460",
+    "code": "TOES_TO_BAR",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Toes-to-bar",
+    "description": "Hang from a pull-up bar with an overhand grip and keep your body stable. Engage your core and raise your legs while keeping them straight until your toes touch the bar. Control the descent back to the hanging position without swinging. Maintain tension in the abs throughout the movement."
+  },
+  {
+    "id": "bd73c54e-22cd-4f76-8704-eb1d6c1851de",
+    "code": "HORIZONTAL_ROW_MACHINE",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Horizontal Row Machine",
+    "description": "Sit facing the machine and place your feet on the supports. Bend your knees to reach the handles while keeping your back straight. Then extend your legs slightly to unlock the weight stack and create space. Retract your shoulders and squeeze your shoulder blades together as you pull the handles toward your midsection, ideally around your navel. Slowly return to the starting position with control. After completing your repetitions, bend your knees again to bring the weight stack back without rounding your back."
+  },
+  {
+    "id": "d96dca76-e201-4e81-992f-b5010d2ff994",
+    "code": "PULL_DOWN",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Pull-Down",
+    "description": "Sit on the seat facing the machine and grasp the bar with a pronated grip (palms facing away), hands shoulder-width or slightly wider. Engage your lats to pull the bar down toward your upper chest, keeping your torso upright. Pause briefly at the bottom, then slowly return to the starting position without locking out your elbows. Focus on controlling the negative phase of the movement. This exercise can also be performed with a supinated grip (palms facing you) for increased biceps activation."
+  },
+  {
+    "id": "6ca32f7d-a478-4374-90c6-97fb4eb478b3",
+    "code": "BARBELL_BENT_OVER_ROW",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Barbell Bent Over Row",
+    "description": "Stand with your feet shoulder-width apart and grasp the barbell with a pronated grip (palms facing down), holding it at hip level. Bend forward at the hips, keeping your back straight and chest up. Pull the bar toward your lower abdomen by retracting your shoulders and squeezing your shoulder blades together. Lower the bar in a controlled manner back to the starting position. Maintain a straight back throughout the movement. This exercise can also be performed with a supinated grip (palms facing up) to place more emphasis on the biceps."
+  },
+  {
+    "id": "565afd4f-430b-413b-a144-bb1c5470ecbd",
+    "code": "BENT_OVER_DUMBBELL_ROW",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Bent Over Dumbbell Row",
+    "description": "Stand with a dumbbell in each hand, arms hanging at your sides. Slightly bend your knees and hinge forward at the hips while keeping your back straight and chest up. Pull the dumbbells toward your hips by retracting your shoulders and squeezing your shoulder blades together. Lower the weights in a controlled motion until your arms are nearly fully extended. Focus on using your back muscles and minimize biceps involvement to better isolate the upper and mid-back."
+  },
+  {
+    "id": "8698aaee-d628-40cb-8c29-c291b7808696",
+    "code": "CANDLESTICKS",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Candlesticks",
+    "description": "Lie on your back with arms along your sides for support. Contract your abs to lift your legs upward, then raise your hips off the floor so your body is supported on your upper back. Lower your hips and legs back down slowly under control, keeping tension in your core throughout."
+  },
+  {
+    "id": "e4f126db-6eca-47c5-bb0c-8103d7f2b5d2",
+    "code": "UNILATERAL_BENT_OVER_ROW",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Unilateral Bent Over Row",
+    "description": "Place one knee and the same-side hand on a flat bench to support your body, ensuring your back remains flat and parallel to the ground. With your free hand, grab a dumbbell and pull it up toward your hip by retracting your shoulder and squeezing your shoulder blade. Pause briefly at the top, then lower the dumbbell under control until your arm is nearly fully extended. Focus on using your back muscles rather than the biceps. After completing one side, switch and perform the movement on the other arm."
+  },
+  {
+    "id": "c36715d7-dcb6-405d-9318-531b6f67ba6a",
+    "code": "AUSTRALIAN_PULL_UPS",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Australian Pull-Ups",
+    "description": "Set the bar at a height that allows you to grip it while keeping your heels on the ground. Grab the bar with an overhand grip (palms facing away from you), hands shoulder-width apart or slightly wider. Engage your shoulder blades to pull your chest toward the bar while keeping your body straight and core tight. Lower yourself in a controlled manner without locking out the elbows at the bottom. Focus on using your back muscles throughout the movement and avoid relying on the biceps too early in the pull."
+  },
+  {
+    "id": "b7a8f2f7-df1c-474f-a2da-1c8a54c5ea26",
+    "code": "T_BAR_ROW",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "T-Bar Row",
+    "description": "Stand over the T-bar with your feet shoulder-width apart. Bend your knees slightly and hinge forward at the hips while keeping your back flat and chest up. Grab the handles with either a pronated or neutral grip, depending on the handle type. Pull the bar toward your torso by retracting your shoulder blades and driving your elbows back. Squeeze your back at the top, then lower the weight under control without locking your arms at the bottom. Focus on using your back muscles and limit biceps involvement early in the pull."
+  },
+  {
+    "id": "4dd43edd-9f38-42ee-a5ba-efa0be79495b",
+    "code": "DEADLIFT",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      },
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "20db10f2-98fa-49e9-960a-3974fb6a61d6",
+        "code": "FOREARMS",
+        "color": "#219EBC",
+        "name": "Forearms"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Deadlift",
+    "description": "Stand with your feet shoulder-width apart, the barbell positioned over the middle of your feet. Bend at the hips and knees while keeping your back flat and chest up. Grab the bar with a pronated grip (palms facing you) and engage your lats by pulling your shoulders back. Push through your heels to lift the bar, extending your hips and knees simultaneously until you're standing upright. Pause briefly at the top without leaning back. Lower the bar in a controlled motion by hinging at the hips and bending your knees, keeping your back straight throughout the descent."
+  },
+  {
+    "id": "70fc54bf-eba5-4ba3-a010-1cc889d94856",
+    "code": "BACK_EXTENSIONS",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Back extensions",
+    "description": "Position yourself on the back extension machine, securing your feet and adjusting the pad so it rests just below your hips. Start with your upper body straight in line with your legs. Lower your torso by hinging at the hips, keeping your back flat and descending as far as your mobility allows. Reverse the movement by contracting your lower back muscles to raise your torso until your body is straight again, avoiding hyperextension. To increase difficulty, you can hold a weight plate against your chest."
+  },
+  {
+    "id": "8214e83f-21e3-4e5d-8a48-44139afaf572",
+    "code": "PUSHDOWN_STRAIGHT_ARM",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "1702aa43-a460-400c-bb26-e23f54452be7",
+        "code": "TRAPEZIUS",
+        "color": "#264653",
+        "name": "Trapezius"
+      },
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Pushdown straight arm",
+    "description": "Stand facing the cable machine and grab the straight bar with a pronated grip (palms facing down). Step slightly back and bend your knees slightly while keeping your back straight. With arms fully extended but not locked, use your lats to push the bar down toward your thighs, maintaining your arms straight throughout the motion. Once at the bottom, slowly return the bar to the starting position in a controlled manner. Keep your back straight and core engaged at all times."
+  },
+  {
+    "id": "c7311892-ac01-46d9-931e-495d11a40f74",
+    "code": "LOW_CABLE_ROW",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Low cable row",
+    "description": "Stand or sit facing the low pulley machine and grab the handle with a pronated grip (palms facing down). Keep your back straight and chest up as you pull the handle toward your torso, focusing on squeezing your shoulder blades together. Pause briefly at the top, then slowly return to the starting position with control. You may also perform this exercise with a supinated grip (palms facing up) for more biceps engagement, or unilaterally to isolate each side."
+  },
+  {
+    "id": "7d495b06-7053-4805-8b21-2c2cc1fd393b",
+    "code": "TRX_ROW",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "945f1cd3-103f-4dc9-9199-d96b8e380d9b",
+        "code": "BICEPS",
+        "color": "#FFBE0B",
+        "name": "Biceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "TRX row",
+    "description": "Grab the two handles with a neutral grip and lean back while keeping your arms and legs extended but not locked. Pull your chest toward the handles by bending your elbows and keeping them close to your body. Control the descent back to the starting position. Maintain a straight body line throughout the movement. You can increase or decrease the difficulty by adjusting your foot placement and the height of the handles. Changing your grip (pronated or supinated) also helps target different muscle fibers."
+  },
+  {
+    "id": "e0ed62f2-773e-4708-91e0-bd342e431c7f",
+    "code": "ABDUCTOR_MACHINE",
+    "primaryMuscles": [
+      {
+        "id": "f0b9615e-2395-4f77-ba7b-db49fcab716a",
+        "code": "ABDUCTORS",
+        "color": "#F8961E",
+        "name": "Abductors"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Abductor machine",
+    "description": "Sit on the machine with your back pressed against the backrest. Position your legs so that the outsides of your thighs and your feet rest against the pads. Push your legs outward by contracting your abductors, then slowly control the return to the starting position."
+  },
+  {
+    "id": "b16f62bb-712a-4c95-a050-df4b8035c591",
+    "code": "PULLOVER",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Pullover",
+    "description": "Place a dumbbell on your knees while sitting on the bench. Lie back and bring the dumbbell above your chest, holding it with both palms against the inside of the weight plate for better control. Extend your arms slightly bent and pivot the shoulders backward to lower the dumbbell behind your head. Engage your lats to bring the weight back above your chest and repeat. Maintain a strong grip on the weight to avoid injury. This exercise can also be performed with a barbell."
+  },
+  {
+    "id": "aed2dfa1-6a38-4f27-a420-040b74e124ee",
+    "code": "KNEELING_UNILATERAL_LAT_PULLDOWN",
+    "primaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Kneeling Unilateral Lat Pulldown",
+    "description": "Kneel in front of the lat pulldown machine and grasp the handle with one hand overhead. Keep your torso upright and core engaged. Pull the handle down toward your upper chest by driving the elbow downward and backward. Slowly return the handle to the starting position under control, maintaining tension throughout the movement."
+  },
+  {
+    "id": "8aa2579f-f34e-4bb6-a8b7-0755f45c03a0",
+    "code": "CRUNCHES",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Crunches",
+    "description": "Lie on your back on a mat with your knees bent. Place your hands at your temples or cross your arms over your chest. Contract your abdominal muscles to lift your upper body off the floor, keeping your lower back pressed against the mat at all times. Return to the starting position and repeat."
+  },
+  {
+    "id": "8abbf1de-7d9c-4b9d-8147-8d957c937d51",
+    "code": "ROTATION_CRUNCHES",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      },
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Rotation crunches",
+    "description": "Lie on your back on a mat with your knees bent. Place your hands at your temples and cross one leg over the other by placing your ankle on the opposite knee. Contract your abs while slightly rotating your torso to bring your elbow toward the crossed leg. Return to the starting position and repeat with the opposite leg. Keep your lower back pressed against the mat throughout the exercise."
+  },
+  {
+    "id": "c8d41f3b-c98c-49c4-9a9a-2a6f57dce591",
+    "code": "LEG_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Leg raises",
+    "description": "Lie on your back on a mat with your arms at your sides and your legs straight or slightly bent. Contract your abs to lift your legs up to about a 90° angle, then control the descent back to the starting position, stopping just before your feet touch the ground to maximize muscle engagement. Keep your lower back pressed against the mat throughout the exercise."
+  },
+  {
+    "id": "7c6b223d-8c6e-4a8c-a993-66ce925bb3b0",
+    "code": "PLANK",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Plank",
+    "description": "Kneel down, then place your elbows on the mat and extend your legs to distribute your weight between your toes and forearms. Your back should remain straight throughout the hold. Contract your abs to maintain this position for the set duration, then relax."
+  },
+  {
+    "id": "8dd70c16-350b-46cb-b649-4529a66698ca",
+    "code": "RUSSIAN_TWIST",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      },
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Russian twist",
+    "description": "Sit on a mat with your knees bent and your hands joined in front of you. Slightly lift both feet off the floor, and rotate your torso to bring your hands to one side of your body while keeping them together. Do the same on the opposite side and continue. Keep your abs engaged to optimize core work and maintain posture and balance."
+  },
+  {
+    "id": "fa712945-e408-442f-ba3c-caf8f27ae19a",
+    "code": "V_UPS",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "V-ups",
+    "description": "Lie down on a mat with your legs together and your arms by your sides. Contract your abs to raise your legs while keeping them straight, and lift your torso to try to touch your feet with your hands. The goal is to balance on your glutes during each repetition."
+  },
+  {
+    "id": "f8a1567c-ef33-4178-aead-61b9ba292dad",
+    "code": "SCISSORS",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Scissors",
+    "description": "Lie down on a mat with your legs together and your arms along your sides. Slightly lift both legs off the ground, then raise one leg while keeping it straight, as the other remains close to the floor. Lower the raised leg while lifting the other, and alternate like this throughout the set. Keep your lower back pressed into the mat during the entire movement."
+  },
+  {
+    "id": "9b66006a-106e-46f0-8591-70876bb5f7e7",
+    "code": "ROMAN_CHAIR_LEG_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Roman chair leg raises",
+    "description": "Press your back against the pad and place your elbows on the armrests so that your arms are bent at 90°. With legs straight and together, bend them to raise your knees as high as possible, contracting your abs throughout the movement. While maintaining this contraction, return to the starting position with legs extended, and repeat. This exercise can also be performed with legs kept straight the entire time, which makes it harder and more effective. Always keep your back pressed against the pad during execution."
+  },
+  {
+    "id": "ebb1b3fd-6b73-46ec-bcd1-9db3e4f6b596",
+    "code": "HEEL_TOUCHES",
+    "primaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Heel touches",
+    "description": "Lie on a mat with your knees bent and arms along your sides. By contracting your obliques, reach to touch your heel on one side with your hand, without lifting your back off the mat. Return to the starting position and repeat on the other side. Keep your abs contracted throughout the movement to maximize muscle engagement."
+  },
+  {
+    "id": "819120ed-dc6d-45d0-a9c1-456777f03adb",
+    "code": "CABLE_CRUNCHES",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable crunches",
+    "description": "Attach a rope to a high pulley and kneel facing it. Grab the rope with both hands in a neutral grip (palms facing inward), keeping your back straight at the start. Contract your abs to round your back forward, keeping the ends of the rope near your ears. Once you've reached maximum contraction, return to the starting position slowly to optimize muscle engagement. Avoid going too low to prevent engaging the hip flexors and focus on the abs."
+  },
+  {
+    "id": "a96c402e-6e77-4a5b-9c54-32c0d623228f",
+    "code": "AB_WHEEL",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      },
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "AB Wheel",
+    "description": "Kneel down (preferably on a mat) and grab the AB Wheel in front of you while bending forward. Roll it as far as possible while engaging your abs until your back is straight. Hold this extended position for 2 or 3 seconds, then contract your abs to roll the wheel back to the starting position. Keep your arms and knees close together throughout the movement."
+  },
+  {
+    "id": "0a64fdd9-2638-40e5-a618-329ebb73938a",
+    "code": "HANGING_LEG_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Hanging leg raises",
+    "description": "Grab the bar with an overhand grip (palms facing away), keep your body straight and abs engaged to avoid swinging. Contract your abs to lift your legs in front of you while keeping them straight. Touch the bar with your feet (or get as close as possible), then control the descent back to the starting position. This exercise can also be performed with bent knees at 90° to make it easier."
+  },
+  {
+    "id": "e8417064-b30d-46fb-99b3-5baa72b06935",
+    "code": "CRUNCHES_MACHINE",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Crunches Machine",
+    "description": "Sit on the crunch machine and adjust the seat and pads so they align comfortably with your torso. Grip the handles and keep your feet anchored. Contract your abs to flex your spine forward, bringing your rib cage toward your pelvis. Pause briefly at peak contraction, then slowly return to the starting position without fully releasing the tension."
+  },
+  {
+    "id": "8e132e84-0607-4bed-bb26-8a99a7d7bfd2",
+    "code": "CABLE_WOODCHOPPERS",
+    "primaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      },
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable Woodchoppers",
+    "description": "Set the cable pulley at a high or low position depending on the variation. Stand sideways to the machine and hold the handle with both hands. With arms extended, rotate your torso to pull the handle diagonally across your body. Control the movement using your core, then slowly return to the starting position. Repeat on both sides."
+  },
+  {
+    "id": "89a3e608-23ac-4f53-85dc-e9922af85da2",
+    "code": "CABLE_SIDE_BENDS",
+    "primaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable Side Bends",
+    "description": "Set the cable pulley to the lowest position and stand sideways to the machine. Hold the handle with the hand closest to the pulley while the other hand rests on your hip. Start in an upright position, then bend your torso sideways away from the pulley. Contract your obliques to return to the upright position. Perform the movement slowly and repeat on both sides."
+  },
+  {
+    "id": "501431ea-005d-49b9-8fc1-2b93108f72a6",
+    "code": "DUMBBELL_SIDE_BENDS",
+    "primaryMuscles": [
+      {
+        "id": "7b8a3a3d-f58f-4d37-b223-f67d5ec1679c",
+        "code": "OBLIQUES",
+        "color": "#00B4D8",
+        "name": "Obliques"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "48f4962f-0822-4fbb-a4a1-bdaf900139a7",
+        "code": "ABS",
+        "color": "#E76F51",
+        "name": "Abdominals"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Dumbbell Side Bends",
+    "description": "Stand upright holding a dumbbell in one hand while the other hand rests on your hip. Keep your torso straight and bend sideways toward the dumbbell. Contract your obliques to return to the upright position. Perform all reps on one side before switching."
+  },
+  {
+    "id": "34af8990-23f2-45fd-928a-5d9cf5a983ae",
+    "code": "SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Squat",
+    "description": "Place a bar on a rack at a suitable height. Rest the bar on your traps behind your neck, then straighten your legs to lift it off the rack. Step back slightly and position your feet shoulder-width apart or slightly wider. Keep your back straight and your abs tight, bend your knees while focusing the load on your heels to maintain balance. Imagine sitting down on a chair and keep a straight path throughout the movement. Once you reach the bottom (depth depends on your mobility), contract your quads and glutes to lift the bar back up. After your set, carefully rack the bar. Always keep your back straight and avoid pushing your knees too far forward during the squat."
+  },
+  {
+    "id": "88c21fb6-5f8a-49e7-b6fe-9c4e9b7a0ac5",
+    "code": "PISTOL_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Pistol squat",
+    "description": "Stand upright with your arms down at your sides. While balancing on one leg, perform a squat, going as low as your mobility allows. As you descend, extend your arms in front of you to help distribute your weight and maintain alignment. At the bottom, contract your quadriceps to return to the starting position, then repeat with the opposite leg. Make sure not to let your knee move too far forward during the descent."
+  },
+  {
+    "id": "af8d7053-6e69-4c6e-978e-5574b30e6cc9",
+    "code": "FRONT_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Front Squat",
+    "description": "Set a barbell on a rack at a height that suits you. Rest the bar on the front of your shoulders and grip it with your palms facing up (you can also cross your arms over the bar to reduce wrist strain). Stand up to lift the bar off the rack. Step back slightly and position your feet shoulder-width apart or a bit wider. With your back straight and abs tight, bend your knees, keeping your weight on your heels for balance. Lower yourself as if sitting in a chair, maintaining a straight movement path. Once you reach the bottom (depth depending on your mobility), contract your quads and glutes to return to the starting position. After your set, re-rack the bar. Always keep your back straight and avoid pushing your knees too far forward."
+  },
+  {
+    "id": "638c1413-cc11-4095-9a72-81da047a4368",
+    "code": "LEG_EXTENSION",
+    "primaryMuscles": [
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Leg extension",
+    "description": "Sit on the machine with your back flat against the pad. Place your feet under the pad so that it rests near your ankles. Contract your quadriceps to lift the pad, extending your legs fully. Then, control the descent back to the starting position and repeat. This exercise can also be performed unilaterally, one leg at a time."
+  },
+  {
+    "id": "53afc48f-e15a-490a-9211-bddc1316b049",
+    "code": "JUMP_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Jump squat",
+    "description": "Stand with your feet shoulder-width apart or slightly wider. Extend your arms or clasp your hands in front of you, then bend your legs to perform a squat. Go as low as your mobility allows. At the bottom of the movement, jump explosively by contracting your quadriceps, landing softly on the balls of your feet and bending your legs to absorb the impact. Keep your back straight throughout the movement."
+  },
+  {
+    "id": "a096b8d5-ae96-4bc3-8df2-39de21b9c9b7",
+    "code": "JUMPING_JACKS",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      },
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Jumping Jacks",
+    "description": "Stand upright with your feet shoulder-width apart and your arms at your sides. Jump and spread your legs wider while raising your arms to the sides until your hands meet above your head. Jump again to return to the starting position, lowering your arms back to your sides and bringing your feet back to shoulder-width. Keep your posture upright throughout the movement."
+  },
+  {
+    "id": "811cb966-fc1c-4d7c-8ef9-f0bdbe57f577",
+    "code": "LUNGES",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      },
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Lunges",
+    "description": "Stand with your feet hip-width apart. Step forward and bend the front leg until it forms a 90° angle, keeping your torso upright. Your rear leg should be supported on the ball of the foot, parallel to the ground. Push through the front leg to return to the starting position. You can continue alternating legs or perform all reps on one side. Keep your back straight and avoid letting your knees go too far forward during the lunge."
+  },
+  {
+    "id": "bdd4d34f-5445-4235-badb-1a69b4fb21b7",
+    "code": "JUMPING_LUNGES",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Jumping lunges",
+    "description": "Stand with your feet hip-width apart. Step forward and bend the front leg to form a 90° angle, keeping your torso upright. Your back leg should be on the ball of the foot, parallel to the ground. Explosively push off the front leg to jump and switch legs mid-air, landing with the opposite leg forward. Land softly on the balls of your feet and bend your knees to absorb the impact. Repeat by alternating legs. Keep your back straight and avoid pushing your knees too far forward."
+  },
+  {
+    "id": "bb431f24-d31b-4cc3-919a-6d5c706e71e9",
+    "code": "LEG_PRESS",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Leg press",
+    "description": "Sit down with your back pressed firmly against the backrest. Place your feet shoulder-width apart on the platform, positioning them higher or lower depending on the muscle focus. Unlock the press using the handles, then extend your legs without locking your knees to release the weight. Bend your legs to lower the platform in a controlled manner, going as low as your mobility allows. Once at the bottom, contract your quads and glutes to push the platform back to the starting position. Keep your back and glutes in contact with the seat at all times, and avoid locking your knees when extending your legs."
+  },
+  {
+    "id": "66c82cc0-f5a4-4151-b141-9c0c1ef43972",
+    "code": "HACK_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Hack squat",
+    "description": "Step onto the platform with your back pressed firmly against the backrest and position yourself between the shoulder pads. Place your feet shoulder-width apart on the platform, adjusting their position depending on the muscle focus. Unlock the sled using the handles and extend your legs without locking your knees to engage the weight. Bend your knees to lower the sled in a controlled motion, stopping as low as your mobility allows. Once at the bottom, contract your quads and glutes to push the sled back to the starting position. Keep your back in contact with the pad at all times, maintain an upright torso, and avoid locking your knees at the top."
+  },
+  {
+    "id": "3971cab4-b61c-4ebe-b9fd-29c30f9c7fe3",
+    "code": "WALL_SIT",
+    "primaryMuscles": [
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Wall sit",
+    "description": "Stand with your back against a wall, feet shoulder-width apart or slightly wider. Lower yourself by bending your knees until they form a 90-degree angle. Rest your hands on your thighs or against the wall. Engage your thighs and hold this position for the desired duration, focusing your weight on your heels. Keep your back pressed firmly against the wall throughout the exercise."
+  },
+  {
+    "id": "c4dacb07-d7a6-4982-8306-8ae16a68a26a",
+    "code": "BURPEES",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "0e8c4828-0d9a-42b1-bf85-2717d77af1b9",
+        "code": "CHEST",
+        "color": "#D62828",
+        "name": "Chest"
+      },
+      {
+        "id": "3eea61fa-3294-4627-b3fc-d817e089892f",
+        "code": "TRICEPS",
+        "color": "#2DC653",
+        "name": "Triceps"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Burpees",
+    "description": "Stand with your feet shoulder-width apart or slightly wider. Bend your knees to perform a squat and place your hands on the ground at the bottom of the movement. While crouching, support your weight with your arms and kick your legs back to get into a plank position. Perform a push-up while keeping your body tight and your back straight. Then bring your feet back to your hands, returning to the bottom of a squat. Explosively jump up by contracting your quads and raising your arms for momentum. Land softly on your toes with bent knees to absorb the impact. Continue immediately by squatting again."
+  },
+  {
+    "id": "0d8775e1-6941-4a75-9f04-275c84ea9390",
+    "code": "GOBLET_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Goblet squat",
+    "description": "Stand with your feet shoulder-width apart or slightly wider and hold a weight with both hands. Raise it to chest level with your elbows bent. Keep your back straight and your core braced, then bend your knees while shifting the load as much as possible onto your heels to stay balanced. Lower yourself as if sitting on a chair and keep a straight path throughout the movement. Once at the bottom, as deep as your mobility allows, contract your quadriceps and glutes to return to the starting position. Make sure to keep your back straight at all times and avoid pushing your knees too far forward during the squat."
+  },
+  {
+    "id": "a7a1abcf-e994-40e6-98f2-ada018e19f7e",
+    "code": "BELT_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Belt Squat",
+    "description": "Stand on the belt squat platform with the belt securely attached around your hips. Place your feet shoulder-width apart and keep your torso upright. Bend your knees and hips to squat down until your thighs are at least parallel to the floor. Push through your heels to extend your legs and return to the starting position, keeping tension on the legs throughout the movement."
+  },
+  {
+    "id": "50f56e7a-235d-4e0d-89d0-7ee8c663a4d0",
+    "code": "BULGARIAN_SPLIT_SQUAT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Bulgarian Split Squat",
+    "description": "Stand a short distance in front of a bench and place one foot behind you on the bench. Keep your torso upright and your front foot flat on the ground. Lower your body by bending the front knee until your thigh is nearly parallel to the floor. Push through the heel of the front foot to return to the starting position. Complete all repetitions before switching legs."
+  },
+  {
+    "id": "b4a56c8f-68b4-4eb5-a324-19f57741a0be",
+    "code": "BOX_JUMPS",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Box Jumps",
+    "description": "Stand facing a box with your feet shoulder-width apart. Bend your knees and hips, then jump explosively to get onto the box. Land softly with both feet on the box, absorbing the impact by bending your knees. Step or jump back down in a controlled manner before repeating."
+  },
+  {
+    "id": "890a0ba0-d532-4774-9916-946b7de7a744",
+    "code": "LEG_CURL",
+    "primaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Leg curl",
+    "description": "Sit on the machine with your back pressed against the backrest. Place the back of your ankles under the roller pad, just above the heels. Hold the side handles to stay stable. Contract your hamstrings to bend your knees and bring the roller downward and backward. Then slowly return to the starting position without fully locking your knees, and continue."
+  },
+  {
+    "id": "97c894a4-3fb2-49d0-99fb-0aca2a0a5b09",
+    "code": "STIFF_LEG_DEADLIFT",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      },
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Stiff leg deadlift",
+    "description": "Stand in front of the barbell placed on the floor. Bend forward while keeping your back straight and legs slightly bent to grasp the bar with a pronated grip (palms facing you). Engage your lower back to lift your torso up, keeping your legs nearly straight. Pause briefly at the top, then lower the bar back to the floor while keeping your back straight. Keep your shoulders pulled back throughout the movement."
+  },
+  {
+    "id": "fd362bc1-9cb7-45b8-a133-ca55b09efe90",
+    "code": "KETTLEBELL_SWING",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "5efae196-3b6f-4cc2-a132-78b6f447191a",
+        "code": "SHOULDERS",
+        "color": "#F77F00",
+        "name": "Shoulders"
+      },
+      {
+        "id": "71a5e73f-5522-4ba2-8b38-1b12154eafbb",
+        "code": "QUADRICEPS",
+        "color": "#577590",
+        "name": "Quadriceps"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Kettlebell swing",
+    "description": "Stand with your feet shoulder-width apart or slightly wider. Bend your knees and hinge at the hips while keeping your back straight to grab the kettlebell with both hands. Initiate a slight swing with your hips and push with your legs to drive the kettlebell upward in front of you with straight arms, ideally until it's at eye level. Your arms should merely guide the movement, with minimal effort. Once at the top, control the descent, allowing the kettlebell to swing between your legs, then use your hips to continue the motion. Keep your back straight throughout the movement. If you're comfortable, you can swing the kettlebell overhead."
+  },
+  {
+    "id": "965f1eaf-ac34-4b22-9f91-194d9cab91fb",
+    "code": "GOOD_MORNINGS",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      }
+    ],
+    "types": [
+      {
+        "id": "9476eaa2-ab41-417e-91c0-c91345b038ae",
+        "code": "POLYARTICULAR",
+        "name": "Polyarticular"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Good Mornings",
+    "description": "Stand upright with a barbell resting across your upper back. Place your feet shoulder-width apart and slightly bend your knees. Engage your core and hinge forward at the hips while keeping your back straight. Lower your torso until it is nearly parallel to the floor, feeling a stretch in the hamstrings. Contract your hamstrings and glutes to return to the upright position."
+  },
+  {
+    "id": "35adbc35-e028-426f-980c-86e096bc66c1",
+    "code": "LYING_LEG_CURL",
+    "primaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Lying Leg Curl",
+    "description": "Lie face down on the leg curl machine and place your ankles under the pad. Grip the handles to stabilize your body. Contract your hamstrings to bend your knees and bring the pad toward your glutes. Pause briefly at the top, then slowly lower the weight back to the starting position under control."
+  },
+  {
+    "id": "a3a8074b-b458-468d-bedb-7bc133d3c22c",
+    "code": "NORDIC_CURL",
+    "primaryMuscles": [
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "6a32280a-1ff6-4ff9-9fee-7c7e5359cc69",
+        "code": "BODY_WEIGHT",
+        "name": "Body weight"
+      }
+    ],
+    "name": "Nordic Curl",
+    "description": "Kneel on the floor with your ankles secured under a fixed support. Keep your body straight from knees to head. Slowly lean forward by extending your knees while resisting the descent with your hamstrings. Catch yourself with your hands if needed, then push lightly to return to the starting position."
+  },
+  {
+    "id": "16e31fff-76d0-4d8d-b9f4-45893900d112",
+    "code": "HIP_TRUST",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "f5ebecfe-8498-4115-8e17-1ddf942cff31",
+        "code": "BACK",
+        "color": "#1D4ED8",
+        "name": "Back"
+      },
+      {
+        "id": "dfd7c3b1-4216-4f15-bc66-6dcc616cc53e",
+        "code": "HAMSTRINGS",
+        "color": "#90BE6D",
+        "name": "Hamstrings"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "176c2999-d840-4ea2-b03e-eef7ed5fca45",
+        "code": "FREE_WEIGHT",
+        "name": "Free weight"
+      }
+    ],
+    "name": "Hip Thrust",
+    "description": "Sit on the floor with your upper back resting against a bench and a barbell positioned over your hips. Plant your feet flat on the ground, hip-width apart. Drive through your heels and extend your hips upward until your torso is aligned with your thighs. Squeeze your glutes at the top, then lower your hips back down in a controlled manner."
+  },
+  {
+    "id": "c7d62f8c-f3cb-4db8-a991-e202def4835c",
+    "code": "CABLE_GLUTE_KICKBACK",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Cable Glute Kickback",
+    "description": "Attach an ankle strap to a low cable pulley and secure it around one ankle. Stand facing the machine while holding onto it for balance. Keep your torso stable and extend the working leg backward by contracting the glute. Slowly return to the starting position while maintaining control."
+  },
+  {
+    "id": "1ea731cd-9650-4b28-9176-ea5447a11ae6",
+    "code": "STANDING_CABLE_HIP_ABDUCTION",
+    "primaryMuscles": [
+      {
+        "id": "2f3c8b24-cd9e-418d-9ed0-526a1d21a894",
+        "code": "GLUTES",
+        "color": "#6D597A",
+        "name": "Glutes"
+      }
+    ],
+    "secondaryMuscles": [
+      {
+        "id": "f0b9615e-2395-4f77-ba7b-db49fcab716a",
+        "code": "ABDUCTORS",
+        "color": "#F8961E",
+        "name": "Abductors"
+      }
+    ],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "92fd3af4-20f6-45bc-8c07-03050e9e07b7",
+        "code": "CABLE",
+        "name": "Cable"
+      }
+    ],
+    "name": "Standing Cable Hip Abduction",
+    "description": "Attach an ankle strap to a low cable pulley and stand sideways to the machine. Secure the strap to the leg farthest from the pulley. Keeping your torso upright, move the working leg outward away from your body. Slowly return to the starting position while keeping tension on the cable."
+  },
+  {
+    "id": "09c0d709-e313-4e16-8037-925a0a42ef8d",
+    "code": "ADDUCTOR_MACHINE",
+    "primaryMuscles": [
+      {
+        "id": "002bf485-7316-4324-a20c-8529216c71f5",
+        "code": "ADDUCTORS",
+        "color": "#43AA8B",
+        "name": "Adductors"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Adductor machine",
+    "description": "Sit on the machine with your back pressed against the backrest. Position your legs so that the insides of your thighs and your feet rest against the pads. Squeeze your legs together by contracting your adductors, then slowly control the return to the starting position."
+  },
+  {
+    "id": "e6197b44-ee5f-40c6-a94c-285564b0aff0",
+    "code": "DUMBBELL_CALF_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Dumbbell calf raises",
+    "description": "Stand upright with a dumbbell in each hand, arms down by your sides, and place the balls of your feet on the edge of a step or platform. Keep your legs straight but not locked. Raise your heels by contracting your calves until you are standing on your tiptoes, then lower your heels slowly to return to the starting position."
+  },
+  {
+    "id": "a488ebcf-f4f5-4feb-8564-5922be2343a0",
+    "code": "STANDING_MACHINE_CALF_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Standing machine calf raises",
+    "description": "Stand facing the machine with the balls of your feet on the edge of the platform. Adjust the shoulder pads to rest on your shoulders. With legs straight and back upright, raise your heels by contracting your calves to stand on your tiptoes. Then lower your heels slowly to return to the starting position."
+  },
+  {
+    "id": "4c8a2dd7-27e8-427d-be38-c254ec2f1e86",
+    "code": "SEATED_CALF_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Seated calf raises",
+    "description": "Sit on the machine seat and adjust the pads so they rest securely on your thighs. Unlock the weight by raising your heels using your calves, lifting onto the balls of your feet. Then lower your heels slowly back to the starting position."
+  },
+  {
+    "id": "a4dd8343-54d0-4af5-8015-60a22188076c",
+    "code": "LEG_PRESS_CALF_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Leg press calf raises",
+    "description": "Sit with your back firmly against the backrest. Place the balls of your feet on the lower part of the platform, shoulder-width apart. Unlock the press using the handles, then extend your legs without locking your knees. Push through your calves to raise your heels and lift onto the balls of your feet. Slowly lower your heels to return to the starting position. Make sure to keep your back and glutes in contact with the seat at all times."
+  },
+  {
+    "id": "004778a4-44ab-4a7d-a2f2-d5edf5aa4f7e",
+    "code": "SMITH_MACHINE_CALF_RAISES",
+    "primaryMuscles": [
+      {
+        "id": "df09fafa-7110-498d-96c9-7e40ba17c9e3",
+        "code": "CALVES",
+        "color": "#4CC9F0",
+        "name": "Calves"
+      }
+    ],
+    "secondaryMuscles": [],
+    "types": [
+      {
+        "id": "4e2b2069-a86b-4892-85ec-9cee87fa3572",
+        "code": "ISOLATION",
+        "name": "Isolation"
+      }
+    ],
+    "categories": [
+      {
+        "id": "da690f2c-a16f-496d-94e5-cf27832f8dc2",
+        "code": "MACHINE",
+        "name": "Machine"
+      }
+    ],
+    "name": "Smith Machine Calf Raises",
+    "description": "Position yourself under the Smith machine bar with the bar resting across your upper back. Place the balls of your feet on a raised platform and keep your legs straight but not locked. Lower your heels toward the floor to stretch the calves, then push through the balls of your feet to raise your heels as high as possible. Pause briefly at the top before lowering under control."
+  }
+]

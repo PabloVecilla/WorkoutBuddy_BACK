@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken"); 
-const User = require("../models/User.model"); 
+const { User } = require("../models"); 
 
 const protect = async (req, res, next) => { 
     try {
@@ -22,9 +22,9 @@ const protect = async (req, res, next) => {
         next(); 
 
     } catch (err) {
-        res.status(500).json({
+        res.status(401).json({
             message: "Error validating token", 
-            error: err.mesage
+            error: err.message
         })
     }
 }
