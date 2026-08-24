@@ -1,7 +1,6 @@
 $kind: http-request
-url: http://localhost:3000/exercises?muscle=Shoulders
+name: Exercises
+url: http://localhost:3000/exercises/
 method: GET
-queryParams:
-  muscle: Shoulders
 settings: {}
 order: 13000

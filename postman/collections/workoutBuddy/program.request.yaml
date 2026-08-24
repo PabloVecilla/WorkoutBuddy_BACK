@@ -1,5 +1,6 @@
 $kind: http-request
-url: http://localhost:3000/programs/
+name: program
+url: http://localhost:3000/programs/41
 method: DELETE
 settings: {}
 order: 8000

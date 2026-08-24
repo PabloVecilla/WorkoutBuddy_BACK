@@ -49,12 +49,10 @@ const deleteWorkout = async (req, res) => {
         const workoutId = Number(req.params.workoutId); 
         const userId = Number(req.user.id); 
 
-        if (!programId || !workoutId || !userId) return res.status(400).json({ message: "No id's provided" });
-
         if (isNaN(programId)) return res.status(400).json({ message: "invalid Program id" }); 
         if (isNaN(workoutId)) return res.status(400).json({ message: "invalid Workout id" }); 
         if (isNaN(userId)) return res.status(400).json({ message: "invalid User id" }); 
-// destroy returns the NUMBER of rows deleted
+        // destroy returns the NUMBER of rows deleted
 
         const deletedCount = await destroyWorkoutInProgramForUser( workoutId, programId, userId ); 
         

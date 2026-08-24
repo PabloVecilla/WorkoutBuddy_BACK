@@ -1,14 +1,15 @@
 $kind: http-request
+name: CREATE program
 url: http://localhost:3000/programs/create
 method: POST
 body:
   type: json
   content: |
     {
-        "name": "PPL", 
-        "goal": "muscle_gain", 
+        "name": "Summer ready", 
+        "goal": "recomp", 
         "level": "intermediate",
-        "frecuency": "6"
+        "frequency": "5"
     }
 settings: {}
 order: 6000

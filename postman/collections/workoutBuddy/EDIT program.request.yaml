@@ -1,5 +1,15 @@
 $kind: http-request
-url: ""
-method: GET
+name: EDIT program
+url: http://localhost:3000/programs/42
+method: PATCH
+body:
+  type: json
+  content: |-
+    {
+        "name": "Summer rrrready", 
+        "goal": "recomp", 
+        "level": "intermediate",
+        "frequency": "5"
+    }
 settings: {}
 order: 11000

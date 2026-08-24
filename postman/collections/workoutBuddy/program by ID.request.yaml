@@ -1,5 +1,6 @@
 $kind: http-request
-url: http://localhost:3000/programs/12
+name: program by ID
+url: http://localhost:3000/programs/37
 method: GET
 settings: {}
 order: 9000

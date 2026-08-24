@@ -38,13 +38,11 @@ const findWorkoutByIdInProgramForUser = async (programId, workoutId, userId) =>
                                     },
     }); 
 
-const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) =>
-    Workout.destroy({ where: { id: workoutId, 
-                        programId },
-                            include: { // left join the Program checking for user being authorized
-                                model: Program,
-                                where: { userId },
-                                attributes: []
-                            } }); 
+const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) => {
+    const workoutToDelete = await findWorkoutByIdInProgramForUser(programId, workoutId, userId); 
+    if (!workoutToDelete) return 0; 
 
+    await workoutToDelete.destroy(); 
+    return 1; 
+}; 
 module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser };
