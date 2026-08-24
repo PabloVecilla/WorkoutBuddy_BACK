@@ -38,13 +38,28 @@ const findWorkoutByIdInProgramForUser = async (programId, workoutId, userId) =>
                                     },
     }); 
 
-const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) =>
-    Workout.destroy({ where: { id: workoutId, 
-                        programId },
-                            include: { // left join the Program checking for user being authorized
-                                model: Program,
-                                where: { userId },
-                                attributes: []
-                            } }); 
+const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) => {
+    const workoutToDelete = await findWorkoutByIdInProgramForUser(programId, workoutId, userId); 
+    if (!workoutToDelete) return 0; 
 
-module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser };
+    await workoutToDelete.destroy(); 
+    return 1; 
+}; 
+
+
+const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updateData) => {
+    const workout = await findWorkoutByIdInProgramForUser(programId, workoutId, userId);
+    if (!workout) return null;
+
+    // Extraxt ONLY save-to-change fields  
+    const { dayNumber, focus } = updateData;
+    
+    await workout.update({
+        ...(dayNumber !== undefined && { dayNumber }),
+        ...(focus !== undefined && { focus })
+    });
+
+    return workout;
+};
+
+module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser, updateWorkoutInProgramForUser };

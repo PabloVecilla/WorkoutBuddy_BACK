@@ -1,5 +1,6 @@
 $kind: http-request
-url: http://localhost:3000/users
+name: GET users
+url: http://localhost:3000/users/
 method: GET
 body:
   type: json

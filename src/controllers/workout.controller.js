@@ -1,4 +1,4 @@
-const { findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser,  } = require("../services/workout.service"); 
+const { findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser, updateWorkoutInProgramForUser  } = require("../services/workout.service"); 
 
 const getWorkouts = async (req, res) => {
     const userId = req.user.id; 
@@ -70,4 +70,39 @@ const deleteWorkout = async (req, res) => {
     }
 };
 
-module.exports = { deleteWorkout, getWorkoutById, getWorkouts }; 
+const updateWorkout = async (req, res) => {
+    try {
+        const programId = Number(req.params.programId); 
+        const workoutId = Number(req.params.workoutId); 
+        const userId = Number(req.user.id); 
+
+        if (isNaN(programId) || isNaN(workoutId)) {
+            return res.status(400).json({ message: "Invalid IDs provided" });
+        }
+
+        const { dayNumber, focus } = req.body;
+
+        const updatedWorkout = await updateWorkoutInProgramForUser(
+            programId, 
+            workoutId, 
+            userId, 
+            { dayNumber, focus }
+        ); 
+
+        if (!updatedWorkout) {
+            return res.status(404).json({ message: "Workout not found or unauthorized" });
+        }
+
+        res.status(200).json({
+            message: "Workout updated successfully",
+            workout: updatedWorkout
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: "Error updating Workout",
+            error: err.message
+        });
+    }
+};
+
+module.exports = { deleteWorkout, getWorkoutById, getWorkouts, updateWorkout }; 
