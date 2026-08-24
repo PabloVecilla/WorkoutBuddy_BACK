@@ -45,4 +45,21 @@ const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) => {
     await workoutToDelete.destroy(); 
     return 1; 
 }; 
-module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser };
+
+
+const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updateData) => {
+    const workout = await findWorkoutByIdInProgramForUser(programId, workoutId, userId);
+    if (!workout) return null;
+
+    // Extraxt ONLY save-to-change fields  
+    const { dayNumber, focus } = updateData;
+    
+    await workout.update({
+        ...(dayNumber !== undefined && { dayNumber }),
+        ...(focus !== undefined && { focus })
+    });
+
+    return workout;
+};
+
+module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser, updateWorkoutInProgramForUser };
