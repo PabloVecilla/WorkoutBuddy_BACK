@@ -4,10 +4,10 @@
   "description": "API to support exercise app ",
   "main": "src/app.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon src/app.js",
-    "start": "node --watch src/app.js",
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "start": "node --watch src/server.js",
     "db:init": "node create-tables.js",
-    "test": "node -e \"console.log('no tests yet')\"",
+    "test": "jest",
     "exercises:fetch": "node scripts/fetchExercises.js",
     "exercises:normalize": "node scripts/normalizeExercises.js",
     "exercises:prepare": "npm run exercises:fetch && npm run exercises:normalize", 

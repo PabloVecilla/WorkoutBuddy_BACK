@@ -56,7 +56,7 @@ const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updat
                 include: { // left join the WorkoutExercises that belong to said Workout from said Program
                     model: Program,
                     where: { userId },
-                    attributes: []
+                    attributes: ['frequency']
                 },
                 transaction
         });
@@ -67,19 +67,21 @@ const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updat
 
         const { dayNumber: newDayNumber } = updateData; 
         const currentDayNumber = workoutToUpdate.dayNumber; 
+        const programFrequency = workoutToUpdate.Program.frequency;
 
         if (newDayNumber !== undefined && newDayNumber !== currentDayNumber) {
+            if (newDayNumber > programFrequency) {
+                const error = new Error("dayNumber is greater than program frequency"); 
+                error.statusCode = 400; 
+                throw error; 
+            }
             const conflictingWorkout = await Workout.findOne( { where: {programId, dayNumber: newDayNumber}, transaction }); 
             if (conflictingWorkout) {
                 await conflictingWorkout.update({ dayNumber: currentDayNumber }, { transaction }); 
             }
+            await workoutToUpdate.update({ dayNumber: newDayNumber }, { transaction }); 
         }; 
 
-        const updatePayload = {}; 
-
-        if (newDayNumber !== undefined) updatePayload.dayNumber = newDayNumber; 
-
-        await workoutToUpdate.update(updatePayload, { transaction }); 
         await transaction.commit(); 
         return workoutToUpdate;
 
