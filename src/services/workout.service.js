@@ -48,18 +48,46 @@ const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) => {
 
 
 const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updateData) => {
-    const workout = await findWorkoutByIdInProgramForUser(programId, workoutId, userId);
-    if (!workout) return null;
+    const transaction = await sequelize.transaction(); 
 
-    // Extraxt ONLY save-to-change fields  
-    const { dayNumber, focus } = updateData;
-    
-    await workout.update({
-        ...(dayNumber !== undefined && { dayNumber }),
-        ...(focus !== undefined && { focus })
-    });
+    try {
+        const workoutToUpdate = await Workout.findOne({ where: { id: workoutId, 
+            programId },
+                include: { // left join the WorkoutExercises that belong to said Workout from said Program
+                    model: Program,
+                    where: { userId },
+                    attributes: []
+                },
+                transaction
+        });
+        if (!workoutToUpdate) {
+            await transaction.rollback();
+            return null; 
+        }; 
 
-    return workout;
+        const { dayNumber: newDayNumber } = updateData; 
+        const currentDayNumber = workoutToUpdate.dayNumber; 
+
+        if (newDayNumber !== undefined && newDayNumber !== currentDayNumber) {
+            const conflictingWorkout = await Workout.findOne( { where: {programId, dayNumber: newDayNumber}, transaction }); 
+            if (conflictingWorkout) {
+                await conflictingWorkout.update({ dayNumber: currentDayNumber }, { transaction }); 
+            }
+        }; 
+
+        const updatePayload = {}; 
+
+        if (newDayNumber !== undefined) updatePayload.dayNumber = newDayNumber; 
+
+        await workoutToUpdate.update(updatePayload, { transaction }); 
+        await transaction.commit(); 
+        return workoutToUpdate;
+
+    } catch (err) {
+        await transaction.rollback(); 
+        throw err; 
+
+    }
 };
 
 module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser, updateWorkoutInProgramForUser };

@@ -1,7 +1,7 @@
 const { findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser, updateWorkoutInProgramForUser  } = require("../services/workout.service"); 
 
 const getWorkouts = async (req, res) => {
-    const userId = req.user.id; 
+    const userId = Number(req.user.id); 
     const programId = Number(req.params.programId); 
     
     try {

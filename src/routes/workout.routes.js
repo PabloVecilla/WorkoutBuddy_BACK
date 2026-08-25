@@ -8,7 +8,7 @@ const { deleteWorkout, getWorkoutById, getWorkouts, updateWorkout } = require(".
 const protect = require("../middleware/auth.middleware");
 
 // import router 
-const router = express.Router(); 
+const router = express.Router({ mergeParams: true }); // allows access to nested params at app.js such as programId
 
 // ROUTES::
 router.get("/", protect, getWorkouts)
