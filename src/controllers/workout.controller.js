@@ -75,11 +75,11 @@ const updateWorkout = async (req, res) => {
         const programId = Number(req.params.programId); 
         const workoutId = Number(req.params.workoutId); 
         const userId = Number(req.user.id); 
-        const dayNumber  = Number(req.body.dayNumber);
+        const { dayNumber }  = req.body;
 
-        if (isNaN(programId) || isNaN(workoutId)) return res.status(400).json({ message: "Valid IDs are required" });
+        if (!Number.isInteger(programId) || !Number.isInteger(workoutId) || programId < 0 || workoutId < 0) return res.status(400).json({ message: "Valid IDs are required" });
 
-        if (dayNumber === undefined || isNaN(dayNumber)) return res.status(400).json({ message: "Valid dayNumber is required" }); 
+        if (dayNumber === undefined || dayNumber < 1 || !Number.isInteger(dayNumber)) return res.status(400).json({ message: "Valid dayNumber is required" }); 
 
         const updatedWorkout = await updateWorkoutInProgramForUser(
             programId, 
@@ -95,7 +95,8 @@ const updateWorkout = async (req, res) => {
             workout: updatedWorkout
         });
     } catch (err) {
-        res.status(500).json({
+        const status = err.statusCode || 500; 
+        res.status(status).json({
             message: "Error updating Workout order",
             error: err.message
         });

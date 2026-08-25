@@ -8,7 +8,6 @@ require("dotenv").config({
     process.env.NODE_ENV === "production" ? ".env" : ".env.local" 
 }); 
 
-const sequelize = require("../config/database"); 
 
 // ROUTES
 // _users
@@ -29,8 +28,6 @@ const cors = require("cors");
 require("./models"); 
 
 const app = express(); 
-
-const PORT = process.env.PORT || 3000; 
 
 app.use(cors ({ // use cors to define access route from frontend
   origin: process.env.FRONTEND_URL, // frontend req origin  
@@ -54,20 +51,4 @@ app.get("/", (_req, res) => {
   res.json({ message: "WorkoutBuddy API running on local" });
 });
 
-async function startServer() { // -> only accept http requests if connection is successful
-  try {
-    await sequelize.authenticate(); // -> test connection to DB
-    console.log("Database Connected"); 
-
-    await sequelize.sync(); // -> updates DB to match the sequelize model --> ONLY for development. 
-    console.log("Models synced"); 
-
-    app.listen(PORT, () => {
-      console.log(`API listening on http://localhost:${PORT}`);
-    });
-
-  } catch (err) {
-    console.error("Database connection failed: ", err); 
-  }
-}
-startServer(); 
+module.exports = app; 
