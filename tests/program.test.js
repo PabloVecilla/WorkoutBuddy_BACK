@@ -19,7 +19,7 @@ describe ("Program", () => {
             const agent = request.agent(app); // keeps active session cookies from register and login
 
             await agent.post("/auth/register").send(validUserData); 
-            const user = (await agent.post("/auth/login")).send({ email: validUserData.email, password: validUserData.password }); 
+            const user = await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const response = await agent.post("/programs/create").send(programCreationData); 
 
@@ -34,5 +34,5 @@ describe ("Program", () => {
 
         }); 
     }); 
-    describe("GET /programs")
+    // describe("GET /programs")
 })

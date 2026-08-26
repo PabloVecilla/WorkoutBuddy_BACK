@@ -11,7 +11,7 @@
     "exercises:fetch": "node scripts/fetchExercises.js",
     "exercises:normalize": "node scripts/normalizeExercises.js",
     "exercises:prepare": "npm run exercises:fetch && npm run exercises:normalize",
-    "exercises:seed": "node scripts/seedExercises"
+    "exercises:seed": "node scripts/runExerciseSeeder"
   },
   "keywords": [],
   "author": "",
