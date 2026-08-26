@@ -5,7 +5,9 @@ const cookieParser = require("cookie-parser");
 // IMPORT DOTENV
 require("dotenv").config({
   path:
-    process.env.NODE_ENV === "production" ? ".env" : ".env.local" 
+    process.env.NODE_ENV === "production" ? ".env" 
+    : process.env.NODE_ENV === "test" ? ".env.test" 
+    : ".env.local" 
 }); 
 
 
