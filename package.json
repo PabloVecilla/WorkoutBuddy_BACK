@@ -7,10 +7,10 @@
     "dev": "NODE_ENV=development nodemon src/server.js",
     "start": "node --watch src/server.js",
     "db:init": "node create-tables.js",
-    "test": "jest",
+    "test": "NODE_ENV=test jest --runInBand",
     "exercises:fetch": "node scripts/fetchExercises.js",
     "exercises:normalize": "node scripts/normalizeExercises.js",
-    "exercises:prepare": "npm run exercises:fetch && npm run exercises:normalize", 
+    "exercises:prepare": "npm run exercises:fetch && npm run exercises:normalize",
     "exercises:seed": "node scripts/seedExercises"
   },
   "keywords": [],
@@ -29,5 +29,14 @@
     "pg": "^8.20.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.js"
+    ]
   }
 }

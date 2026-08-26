@@ -69,7 +69,7 @@ const login = async (req, res) => {
             maxAge: Number(process.env.COOKIE_MAX_AGE)
         }); 
 
-        res.json({ // sends final response  with modified headers  
+        res.status(200).json({ // sends final response  with modified headers  
             message: "Login successful", 
             user: {
                 id: user.id, 

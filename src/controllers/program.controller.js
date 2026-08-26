@@ -16,13 +16,12 @@ const createProgram = async (req, res) => {
         }); 
         if (!frequency) return res.status(400).json({
             message: "Frequency required"
-        }); 
-        // if (!name || !goal || !level || !frequency) return res.status(400).json({
-        //     message: "Name, goal, level and frequency required"
-        // }); 
+        });
 
         const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
+
         if (!program) return res.status(500).json({message: "Error generating or saving program"})
+            
         res.status(201).json({
             message: "Program created successfully", 
             program

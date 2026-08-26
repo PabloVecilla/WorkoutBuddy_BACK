@@ -31,7 +31,6 @@ const destroyProgramForUser = async (data) =>
     Program.destroy({ where: { id: data.programId, userId: data.userId } })
 
 const generateAndSaveProgramForUser = async (data) => {
-    console.log("Generate and save program for user function reached");  
     const { name, goal, level, frequency, userId } = data;
     try {
         const result = await sequelize.transaction(async (t) => { 
@@ -44,13 +43,7 @@ const generateAndSaveProgramForUser = async (data) => {
                 level: generatedProgram.level, 
                 frequency: generatedProgram.frequency, 
                 userId 
-            }, { transaction: t, 
-                logging: console.log
-             } ); 
-            const checkProgram = await Program.findByPk(addedProgram.id, {transaction: t}); 
-            console.log("Program inside transaction: ", checkProgram?.toJSON()); 
-
-            console.log("Added program id: ", addedProgram.id)
+            }, { transaction: t } ); 
 
             await createWorkoutsForProgram(generatedProgram.workouts, addedProgram.id, t );  // t passes over to workout service
             return addedProgram; 
