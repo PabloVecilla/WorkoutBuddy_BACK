@@ -77,7 +77,7 @@ const updateWorkout = async (req, res) => {
         const userId = Number(req.user.id); 
         const { dayNumber }  = req.body;
 
-        if (!Number.isInteger(programId) || !Number.isInteger(workoutId) || programId < 0 || workoutId < 0) return res.status(400).json({ message: "Valid IDs are required" });
+        if (!Number.isInteger(programId) || !Number.isInteger(workoutId) || programId < 1|| workoutId < 1) return res.status(400).json({ message: "Valid IDs are required" });
 
         if (dayNumber === undefined || dayNumber < 1 || !Number.isInteger(dayNumber)) return res.status(400).json({ message: "Valid dayNumber is required" }); 
 
