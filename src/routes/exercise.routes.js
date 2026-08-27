@@ -15,7 +15,7 @@ router.get("/", protect, getExercises);
 
 router.get("/:id", protect, getExerciseById); 
 
-router.get("/:movementPattern", protect, getExercisesByMovementPattern)
+router.get("/movement-pattern/:movementPattern", protect, getExercisesByMovementPattern)
 
 
 // Export routes
