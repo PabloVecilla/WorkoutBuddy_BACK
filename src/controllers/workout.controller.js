@@ -90,7 +90,7 @@ const updateWorkout = async (req, res) => {
             { dayNumber }
         ); 
 
-        if (!updatedWorkout) return res.status(404).json({ message: "Workout not found in this program" });
+        if (!updatedWorkout) return res.status(404).json({ message: "Workout not found in this Program" });
 
         res.status(200).json({
             message: "Workout order updated successfully",
