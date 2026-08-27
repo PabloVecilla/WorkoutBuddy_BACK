@@ -7,6 +7,8 @@ const getWorkouts = async (req, res) => {
     try {
         const workouts = await findAllWorkoutsInProgramForUser(userId, programId ); 
 
+        if (!workouts || workouts.length === 0) return res.status(404).json({message: "No workouts found"}); 
+
         res.status(200).json({
             message: "Workouts found", 
             workouts}); 
@@ -88,7 +90,7 @@ const updateWorkout = async (req, res) => {
             { dayNumber }
         ); 
 
-        if (!updatedWorkout) return res.status(404).json({ message: "Workout not found or unauthorized" });
+        if (!updatedWorkout) return res.status(404).json({ message: "Workout not found in this program" });
 
         res.status(200).json({
             message: "Workout order updated successfully",

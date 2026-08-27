@@ -2,25 +2,23 @@ const { Program, Workout, sequelize } = require('../models');
 const workoutExerciseService = require('./workoutExercise.service');
 
 const createWorkoutsForProgram = async (workoutsData, programId, transaction) => {
-    console.log("Program id in workout service: ", programId); 
     for (const workoutData of workoutsData) {
-        const [rows] = await sequelize.query('SELECT id from programs where id = :programId', {replacements: {programId}, transaction, logging: console.log});
-        console.log("RAW SQL program lookup: ", rows); 
-            // Create workout
-            const addedWorkout = await Workout.create({
-                dayNumber: workoutData.dayNumber,
-                focus: workoutData.focus,
-                programId
-            }, { transaction, 
-                logging: console.log
-             }); 
+        const [rows] = await sequelize.query('SELECT id from programs where id = :programId', {replacements: {programId}, transaction });
 
-            // Delegamos los ejercicios al servicio correspondiente (pasándole la transacción)
-            await workoutExerciseService.createExercisesForWorkout({
-                exercises: workoutData.exercises, 
-                workoutId: addedWorkout.id, 
-                transaction
-            });
+        // Create workout
+        const addedWorkout = await Workout.create({
+            dayNumber: workoutData.dayNumber,
+            focus: workoutData.focus,
+            programId
+        }, { transaction, 
+            }); 
+
+        // Call service for exercise creation (giving esefcises data, workoutId and transaction)
+        await workoutExerciseService.createExercisesForWorkout({
+            exercises: workoutData.exercises, 
+            workoutId: addedWorkout.id, 
+            transaction
+        });
     }
 };
 

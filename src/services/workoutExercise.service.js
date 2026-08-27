@@ -1,20 +1,5 @@
 const { WorkoutExercise, Workout, Program } = require("../models"); 
 
-// const findAllWorkoutExercisesByUserId = async (userId) => {
-//     return await WorkoutExercise.findAll({  
-//         include: [{
-//             model: Workout, 
-//             as: "workout",
-//             required: true,
-//             include: [{
-//                 model: Program,
-//                 required: true,
-//                 where: { userId }
-//             }]
-//         }]
-//     }); 
-// }; 
-
 const findUserWorkoutExerciseById = async (userId, workoutExerciseId) => {
     return await WorkoutExercise.findOne({ where: {id: workoutExerciseId}, 
         include: [{
@@ -61,7 +46,6 @@ const deleteWorkoutExerciseForUser = async (userId, workoutExerciseId) => {
 
 const createExercisesForWorkout = async ({exercises, workoutId, transaction}) => {
     // Map exercises with workout ID
-    console.log("Exercises prepared for workout: ", exercises)
     const exercisesWithId = exercises.map(exercise => ({
         ...exercise,
         workoutId

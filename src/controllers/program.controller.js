@@ -45,6 +45,7 @@ const getPrograms = async (req, res) => {
     const userId = req.user.id; 
     try {
         const programs = await findAllProgramsForUser(userId); 
+        if (!programs || programs.length === 0) return res.status(404).json({message: "No programs found"}); 
 
         res.status(200).json(programs); 
 
