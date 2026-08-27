@@ -163,12 +163,13 @@ describe("Workout", () => {
             const programId2 = programResponse2.body.program.id;
 
             await Promise.all(workouts.map(async (workout) => {
-                const response = await agent.patch(`/programs/${programId2}/workouts/${workout.id}`); 
+                const response = await agent.patch(`/programs/${programId2}/workouts/${workout.id}`).send({ dayNumber: 2 }); 
+
                 expect(response.status).toBe(404); 
                 expect(response.body.message).toBe("Workout not found in this Program"); 
                 expect(response.body.workout).toBeUndefined(); 
             }))
         })
-        
+
     })
 })

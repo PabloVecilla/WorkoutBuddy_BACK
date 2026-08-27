@@ -69,6 +69,7 @@ const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updat
 
         if (newDayNumber !== undefined && newDayNumber !== currentDayNumber) {
             if (newDayNumber > programFrequency) {
+                await transaction.rollback(); 
                 const error = new Error("dayNumber is greater than program frequency"); 
                 error.statusCode = 400; 
                 throw error; 
@@ -84,9 +85,13 @@ const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updat
         return workoutToUpdate;
 
     } catch (err) {
-        await transaction.rollback(); 
-        throw err; 
-
+        if(transaction && !transaction.finished) {
+            try {
+                await transaction.rollback(); 
+            } catch(rollBackErr) {
+                console.error("Rollback error", rollBackErr); 
+            }
+        }
     }
 };
 
