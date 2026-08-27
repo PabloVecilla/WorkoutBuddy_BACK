@@ -2,7 +2,7 @@
 const express = require("express"); 
 
 // import controller functions 
-const { getExercises, getExerciseById } = require("../controllers/exercise.controller"); 
+const { getExercises, getExerciseById, getExercisesByMovementPattern } = require("../controllers/exercise.controller"); 
 
 // import auth middleware::
 const protect = require("../middleware/auth.middleware"); 
@@ -14,6 +14,8 @@ const router = express.Router();
 router.get("/", protect, getExercises); 
 
 router.get("/:id", protect, getExerciseById); 
+
+router.get("/:movementPattern", protect, getExercisesByMovementPattern)
 
 
 // Export routes
