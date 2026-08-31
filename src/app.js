@@ -22,6 +22,8 @@ const programRoutes = require("../src/routes/program.routes");
 const workoutRoutes = require("../src/routes/workout.routes"); 
 // _exercise
 const exerciseRoutes = require("../src/routes/exercise.routes"); 
+// _workoutExercise
+const workoutExerciseRoutes = require("../src/routes/workoutExercise.routes"); 
 
 // CORS
 const cors = require("cors"); 
@@ -48,6 +50,8 @@ app.use("/programs", programRoutes);
 app.use("/programs/:programId/workouts", workoutRoutes); 
 
 app.use("/exercises", exerciseRoutes); 
+
+app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExerciseRoutes); 
 
 app.get("/", (_req, res) => {
   res.json({ message: "WorkoutBuddy API running on local" });

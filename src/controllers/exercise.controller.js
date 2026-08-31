@@ -49,7 +49,7 @@ const getExercisesByMovementPattern = async (req, res) => {
     try {
         const exercises = await findExercisesByMovementPattern(movementPattern); 
 
-        if (!exercises) return res.status(404).json( {  message: "Exercise not found"}); 
+        if (!exercises || exercises.length === 0) return res.status(404).json( {  message: "Exercise not found"}); 
 
         res.status(200).json({
             success: true,

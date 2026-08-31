@@ -1,5 +1,4 @@
 $kind: http-request
-name: workouts in program
 url: http://localhost:3000/programs/43/workouts
 method: GET
-order: 3900446047378527
+order: 4116372295912129

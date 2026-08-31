@@ -1,0 +1,6 @@
+$kind: http-request
+name: Exercise by movementPattern
+url: http://localhost:3000/exercises/movement-pattern/shoulder_shrug
+method: GET
+settings: {}
+order: 209452155465107
