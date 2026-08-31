@@ -1,0 +1,6 @@
+$kind: http-request
+name: Exercise by ID
+url: http://localhost:3000/exercises/480
+method: GET
+settings: {}
+order: 207297161272656
