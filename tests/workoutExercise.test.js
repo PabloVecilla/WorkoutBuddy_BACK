@@ -21,10 +21,13 @@ describe("WokroutExercise", () => {
     
         await agent.post("/auth/register").send(userData);
     
-        await agent.post("/auth/login").send({
+        const loginResponse = await agent.post("/auth/login").send({
             email: userData.email,
             password: userData.password
         });
+
+        expect(loginResponse.status).toBe(200);
+        expect(loginResponse.headers["set-cookie"]).toBeDefined();
     
         return agent;
     };

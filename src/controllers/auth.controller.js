@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt"); 
+const bcrypt = require("bcrypt"); // hasher
 const jwt = require("jsonwebtoken"); 
 // Import service query functions
 const { findUserByEmail, createUser } = require("../services/user.service");

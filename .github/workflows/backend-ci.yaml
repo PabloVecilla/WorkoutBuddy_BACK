@@ -33,6 +33,8 @@ jobs:
       DB_PASSWORD: workoutbuddy_password
       DB_NAME: workoutbuddy_test
       JWT_SECRET: super_secret_change_later
+      JWT_EXPIRES_IN: 24h
+      COOKIE_MAX_AGE: 86400000
 
     steps:
       - name: Checkout repository
@@ -51,4 +53,6 @@ jobs:
         run: npm ci
 
       - name: Run tests
+        env: 
+          NODE_ENV: test
         run: npm test
