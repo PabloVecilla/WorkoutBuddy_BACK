@@ -15,8 +15,8 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: workoutbuddy_user
+          POSTGRES_PASSWORD: workoutbuddy_password
           POSTGRES_DB: workoutbuddy_test
         ports:
           - 5432:5432
