@@ -1,3 +1,12 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main, develop]
+
+  pull_request:
+    branches: [main, develop]
+
 jobs:
   backend-checks:
     runs-on: ubuntu-latest
@@ -6,8 +15,8 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: workoutbuddy_user
+          POSTGRES_PASSWORD: workoutbuddy_password
           POSTGRES_DB: workoutbuddy_test
         ports:
           - 5432:5432
@@ -28,6 +37,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Debug files
+        run: ls -la
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
