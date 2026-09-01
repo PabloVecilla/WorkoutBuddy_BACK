@@ -1,10 +1,12 @@
-
 // Import models && Import sequelize to enable transaction
 const { sequelize, Program, Workout, WorkoutExercise } = require("../models"); 
 // Import programBuilder
 const { generateProgram } = require("./programBuilder"); 
 // import workout inyection function
 const { createWorkoutsForProgram } = require("./workout.service"); 
+
+// Import appError
+const AppError = require("../utils/AppError"); 
 
 const findAllProgramsForUser = async (userId) =>
     Program.findAll( { where: { userId } }); 
@@ -32,37 +34,24 @@ const destroyProgramForUser = async (data) =>
 
 const generateAndSaveProgramForUser = async (data) => {
     const { name, goal, level, frequency, userId } = data;
-    try {
-        const result = await sequelize.transaction(async (t) => { 
-            const generatedProgram = await generateProgram({ name, goal, level, frequency }); 
-            if (!generatedProgram) throw new Error("BAD_REQUEST: Unable to generate program with given input"); 
 
-            const addedProgram = await Program.create({
-                name: generatedProgram.name, 
-                goal: generatedProgram.goal, 
-                level: generatedProgram.level, 
-                frequency: generatedProgram.frequency, 
-                userId 
-            }, { transaction: t } ); 
+    const result = await sequelize.transaction(async (t) => { 
+        const generatedProgram = await generateProgram({ name, goal, level, frequency }); 
+        if (!generatedProgram) throw new AppError(400, "PROGRAM_GENERSATION_FAILED", "Unable to generate program with given input"); 
 
-            await createWorkoutsForProgram(generatedProgram.workouts, addedProgram.id, t );  // t passes over to workout service
-            return addedProgram; 
+        const addedProgram = await Program.create({
+            name: generatedProgram.name, 
+            goal: generatedProgram.goal, 
+            level: generatedProgram.level, 
+            frequency: generatedProgram.frequency, 
+            userId 
+        }, { transaction: t } ); 
 
-        }); 
-        return result; 
+        await createWorkoutsForProgram(generatedProgram.workouts, addedProgram.id, t );  // t passes over to workout service
+        return addedProgram; 
 
-    } catch (err) {
-        // console.error("[ProgramService Error]:", err.message); 
-        console.error("MESSAGE: ", err.message); 
-        console.error("DETAIL: ", err.parent?.detail); 
-        console.error("TABLE: ", err.parent?.table); 
-        console.error("CONSTRAINT: ", err.patent?.constraint); 
-        console.error("PARAMETERS: ", err.parameters); 
-        console.error("SQL: ", err.sql); 
-
-        throw err; // re-throw error for program.controller to catch. 
-    }
-    
+    }); 
+    return result;  
 };
 
 const updateProgramForUser = async (input) => {

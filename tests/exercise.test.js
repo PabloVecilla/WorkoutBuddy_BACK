@@ -75,7 +75,7 @@ describe("Exercise", () => {
 
             expect(response.status).toBe(404); 
             expect(response.body.exercise).toBeUndefined(); 
-            expect(response.body.message).toBe("Exercise not found"); 
+            expect(response.body.error.message).toBe("Exercise not found"); 
         })
 
         it("returns unauthorized to valid id to invalid user", async () => {
