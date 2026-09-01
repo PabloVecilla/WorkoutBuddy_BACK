@@ -25,6 +25,12 @@ const exerciseRoutes = require("../src/routes/exercise.routes");
 // _workoutExercise
 const workoutExerciseRoutes = require("../src/routes/workoutExercise.routes"); 
 
+// IMPORT NOT FOUND handler
+const notFound = require("../src/middleware/notFound.middleware"); 
+
+// IMPORT ERROR handler
+const errorHandler = require("../src/middleware/error.middleware"); 
+
 // CORS
 const cors = require("cors"); 
 
@@ -56,5 +62,10 @@ app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExe
 app.get("/", (_req, res) => {
   res.json({ message: "WorkoutBuddy API running on local" });
 });
+
+// not found AFTER routes to be usable by all
+app.use(notFound); 
+//  error handler AFTER routes to be usable by all && AFTER 404
+app.use(errorHandler); 
 
 module.exports = app; 
