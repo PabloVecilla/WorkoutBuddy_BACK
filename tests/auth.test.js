@@ -31,7 +31,7 @@ describe ("Authentication", () => {
             await request(app).post("/auth/register").send(validUserData); 
             const response = await request(app).post("/auth/register").send(validUserData); 
             expect(response.status).toBe(409); 
-            expect(response.body.message).toBe("User already registered"); 
+            expect(response.body.error.message).toBe("User already registered"); 
 
             expect(response.body.user).toBeUndefined(); 
 

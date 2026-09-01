@@ -119,7 +119,7 @@ describe("WokroutExercise", () => {
                 });
         
             expect(response.status).toBe(404);
-            expect(response.body.message).toBe("Exercise not found");
+            expect(response.body.error.message).toBe("Exercise not found");
         });
 
         it("returns 404 when user tries to update unauthorized workoutExercise", async () => {
@@ -158,7 +158,7 @@ describe("WokroutExercise", () => {
                 });
         
             expect(response.status).toBe(404);
-            expect(response.body.message).toBe("Exercise not found");
+            expect(response.body.error.message).toBe("Exercise not found");
         });
     })
 })

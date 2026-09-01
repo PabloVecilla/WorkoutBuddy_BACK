@@ -1,68 +1,45 @@
 const { findAllExercises, findExerciseById, findExercisesByMovementPattern } = require("../services/exercise.service");
+const AppError = require("../utils/AppError");
 
 const getExercises = async (req, res) => {
     const filters = req.query
-    try {
-        const exercises = await findAllExercises(filters); 
 
-        return res.status(200).json({ 
-            success: true, 
-            message: "Exercises fetched successfully", 
-            count: exercises.length,
-            exercises,
-        }); 
+    const exercises = await findAllExercises(filters); 
 
-    } catch (err) {
-        return res.status(500).json({
-            success: false,
-            message: "Error fetching exercises",
-            error: err.message
-        }); 
-    }
+    return res.status(200).json({ 
+        success: true, 
+        message: "Exercises fetched successfully", 
+        count: exercises.length,
+        exercises,
+    }); 
 };
 
 const getExerciseById = async (req, res) => {
     const id = req.params.id; 
 
-    try {
-        const exercise = await findExerciseById(id); 
+    const exercise = await findExerciseById(id); 
 
-        if (!exercise) return res.status(404).json( {  message: "Exercise not found"}); 
+    if (!exercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found"); 
 
-        res.status(200).json({
-            success: true,
-            message: "Exercise found", 
-            exercise
-        })
-
-    } catch (err) {
-        res.status(500).json( { 
-            message: "Error fetching exercise", 
-            error: err.message
-         }); 
-    }
+    res.status(200).json({
+        success: true,
+        message: "Exercise found", 
+        exercise
+    })
 }; 
 
 const getExercisesByMovementPattern = async (req, res) => {
     const movementPattern = req.params.movementPattern; 
 
-    try {
-        const exercises = await findExercisesByMovementPattern(movementPattern); 
+    const exercises = await findExercisesByMovementPattern(movementPattern); 
 
-        if (!exercises || exercises.length === 0) return res.status(404).json( {  message: "Exercise not found"}); 
+    if (!exercises || exercises.length === 0) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found"); 
 
-        res.status(200).json({
-            success: true,
-            message: "Exercise found", 
-            exercises
-        })
-
-    } catch (err) {
-        res.status(500).json( { 
-            message: "Error fetching exercises", 
-            error: err.message
-         }); 
-    }
+    res.status(200).json({
+        success: true,
+        message: "Exercise found", 
+        exercises
+    })
 }; 
 
 module.exports = { //updateExercise, deleteExercise, 
