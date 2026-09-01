@@ -81,7 +81,7 @@ describe("Workout", () => {
             const response = await agent.get(`/programs/${programId}/workouts`); 
 
             expect(response.status).toBe(404); 
-            expect(response.body.message).toBe("No workouts found"); 
+            expect(response.body.error.message).toBe("Workout not found"); 
             expect(response.body.programId).toBeUndefined(); 
 
         })
@@ -130,7 +130,7 @@ describe("Workout", () => {
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.get(`/programs/${programId}/workouts/${workout.id}`); 
                 expect(response.status).toBe(404); 
-                expect(response.body.message).toBe("Workout not found"); 
+                expect(response.body.error.message).toBe("Workout not found"); 
                 expect(response.body.workout).toBeUndefined(); 
             }))
         })
@@ -159,7 +159,7 @@ describe("Workout", () => {
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.get(`/programs/${programId2}/workouts/${workout.id}`); 
                 expect(response.status).toBe(404); 
-                expect(response.body.message).toBe("Workout not found"); 
+                expect(response.body.error.message).toBe("Workout not found"); 
                 expect(response.body.workout).toBeUndefined(); 
             }))
         })  

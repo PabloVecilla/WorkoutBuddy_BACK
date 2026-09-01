@@ -1,5 +1,6 @@
 const { Program, Workout, sequelize } = require('../models');
 const workoutExerciseService = require('./workoutExercise.service');
+const AppError = require("../utils/AppError"); 
 
 const createWorkoutsForProgram = async (workoutsData, programId, transaction) => {
     for (const workoutData of workoutsData) {
@@ -69,9 +70,11 @@ const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updat
 
         if (newDayNumber !== undefined && newDayNumber !== currentDayNumber) {
             if (newDayNumber > programFrequency) {
-                const error = new Error("dayNumber is greater than program frequency"); 
-                error.statusCode = 400; 
-                throw error; 
+                throw new AppError(
+                    400,
+                    "INVALID_DAY_NUMBER",
+                    "dayNumber cannot exceed program frequency"
+                  );
             }
             const conflictingWorkout = await Workout.findOne( { where: {programId, dayNumber: newDayNumber}, transaction }); 
             if (conflictingWorkout) {
@@ -85,11 +88,7 @@ const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updat
 
     } catch (err) {
         if(transaction && !transaction.finished) {
-            try {
                 await transaction.rollback(); 
-            } catch(rollBackErr) {
-                console.error("Rollback error", rollBackErr); 
-            }
         }
         throw err; 
     }
