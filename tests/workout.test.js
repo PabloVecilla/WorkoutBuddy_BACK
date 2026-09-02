@@ -1,5 +1,6 @@
 const request = require("supertest"); 
 const app = require("../src/app"); 
+const loginLimiter = require("../src/middleware/rateLimit.middleware"); 
 const { Program, Workout } = require("../src/models"); 
 
 describe("Workout", () => {
@@ -14,6 +15,13 @@ describe("Workout", () => {
         level: "intermediate",
         frequency: 5
     }; 
+    beforeEach(() => {
+      if (loginLimiter && typeof loginLimiter.resetKey === 'function') {
+          loginLimiter.resetKey('::1');
+          loginLimiter.resetKey('127.0.0.1');
+          loginLimiter.resetKey('::ffff:127.0.0.1');
+      }
+  });
     describe("GET /programs/:programId/workouts", () => {
         it("returns workouts in existing program for authenticated user", async () => {
             const agent = request.agent(app); // keeps active session cookies from register and login
