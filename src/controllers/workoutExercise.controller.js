@@ -6,7 +6,7 @@ const getWorkoutExercises = async (req, res) => {
     const programId = Number(req.params.programId);
     const workoutId = Number(req.params.workoutId);
 
-    if (isNaN(programId) || isNaN(workoutId)) return res.status(400).json({ message: "Invalid program or workout id" });
+    if (isNaN(programId) || isNaN(workoutId)) throw new AppError(400, "INVALID_ID", "Invalid program or workout id"); 
 
     const workoutExercises = await getWorkoutExercisesForUser(userId, programId, workoutId);
 
@@ -47,7 +47,7 @@ const deleteWorkoutExercise = async (req, res) => {
         workoutExerciseId
     );
 
-    if (!workoutExercise) throw new AppError(400, "EXERCISE_NOT_FOUND", "Exercise not found"); 
+    if (!workoutExercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found"); 
 
     return res.status(200).json({
         message: "Exercise deleted successfully",

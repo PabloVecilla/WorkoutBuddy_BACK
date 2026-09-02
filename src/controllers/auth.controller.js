@@ -8,8 +8,7 @@ const AppError = require("../utils/AppError");
 const register = async (req, res) => {
     const { name, email, password } = req.body; 
 
-    if( !name || !email || !password) return res.status(400).json({ 
-        message: "Please fill all the required fields" }); 
+    if( !name || !email || !password) throw new AppError(400, "MISSING_FIELDS", "Please fill all the required fields"); 
 
     const existingUser = await findUserByEmail(email);
 
@@ -35,7 +34,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body; 
 
-    if (!email || !password) return res.status(401).json({message: "Enter email and password"}); 
+    if (!email || !password) throw new AppError(400, "MISSING_FIELDS", "Enter email and password")
 
     const user = await findUserByEmail(email); 
 

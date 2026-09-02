@@ -65,7 +65,7 @@ describe("Workout", () => {
             const response = await agent.get(`/programs/${programId}/workouts`); 
 
             expect(response.status).toBe(401); 
-            expect(response.body.message).toBe("Unauthorized"); 
+            expect(response.body.error.message).toBe("Unauthorized"); 
             expect(response.body.workouts).toBeUndefined(); 
 
         })
@@ -316,7 +316,7 @@ describe("Workout", () => {
                 const response = await agent.patch(`/programs/${programId}/workouts/${workout.id}`).send({ dayNumber: 2 }); 
 
                 expect(response.status).toBe(404); 
-                expect(response.body.message).toBe("Workout not found"); 
+                expect(response.body.error.message).toBe("Workout not found"); 
                 expect(response.body.workout).toBeUndefined(); 
             }))
         })
@@ -346,7 +346,7 @@ describe("Workout", () => {
                 const response = await agent.patch(`/programs/${programId2}/workouts/${workout.id}`).send({ dayNumber: 2 }); 
 
                 expect(response.status).toBe(404); 
-                expect(response.body.message).toBe("Workout not found"); 
+                expect(response.body.error.message).toBe("Workout not found"); 
                 expect(response.body.workout).toBeUndefined(); 
             }))
         })

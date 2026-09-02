@@ -99,7 +99,7 @@ describe ("Authentication", () => {
             await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
             const response = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
 
-            expect(response.body.message).toBe('Login limit exceeded. Try again later.'); 
+            expect(response.body.error.message).toBe('Too many login attempts. Try again later.'); 
             expect(response.status).toBe(429); 
         })
     }); 

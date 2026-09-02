@@ -19,7 +19,7 @@ const getWorkoutById = async (req, res) => {
     const workoutId = Number(req.params.workoutId); 
     const userId = Number(req.user.id); 
 
-    if (isNaN(programId) || isNaN(workoutId)) return res.status(400).json({ message: "Invalid id's" }); 
+    if (isNaN(programId) || isNaN(workoutId)) throw new AppError(400, "INVALID_ID", "Invalid id's"); 
 
     const workout = await findWorkoutByIdInProgramForUser(programId, workoutId, userId); 
 
@@ -36,7 +36,7 @@ const deleteWorkout = async (req, res) => {
     const workoutId = Number(req.params.workoutId); 
     const userId = Number(req.user.id); 
 
-    if (!programId || !workoutId || !userId) return res.status(400).json({ message: "No id's provided" });
+    if (!programId || !workoutId || !userId) throw new AppError(400, "NO_ID", "No id's provided"); 
 
     if (isNaN(programId)) return res.status(400).json({ message: "invalid Program id" }); 
     if (isNaN(workoutId)) return res.status(400).json({ message: "invalid Workout id" }); 
@@ -67,7 +67,7 @@ const updateWorkout = async (req, res) => {
         { dayNumber }
     ); 
 
-    if (!updatedWorkout) return res.status(404).json({ message: "Workout not found" });
+    if (!updatedWorkout) throw new AppError(404, "WORKOUT_NOT_FOUND", "Workout not found"); 
 
     res.status(200).json({
         message: "Workout order updated successfully",

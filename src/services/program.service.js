@@ -37,7 +37,7 @@ const generateAndSaveProgramForUser = async (data) => {
 
     const result = await sequelize.transaction(async (t) => { 
         const generatedProgram = await generateProgram({ name, goal, level, frequency }); 
-        if (!generatedProgram) throw new AppError(400, "PROGRAM_GENERSATION_FAILED", "Unable to generate program with given input"); 
+        if (!generatedProgram) throw new AppError(400, "PROGRAM_GENERATION_FAILED", "Unable to generate program with given input"); 
 
         const addedProgram = await Program.create({
             name: generatedProgram.name, 
