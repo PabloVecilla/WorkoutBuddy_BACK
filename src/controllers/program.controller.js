@@ -64,16 +64,16 @@ const deleteProgram = async (req, res) => {
 const updateProgram = async (req, res) => {
     const userId = req.user.id; 
     const programId = Number(req.params.id); 
-    const { name, goal, level, frequency } = req.body; 
+    const { name } = req.body; 
 
     if (isNaN(programId)) throw new AppError(400, "INVALID_ID", "Invalid program id"); 
 
-    const updatedProgram = await updateProgramForUser({ programId, userId, data: { name, goal, level, frequency } }); 
+    const updatedProgram = await updateProgramForUser({ programId, userId, data: { name } }); 
 
     if (!updatedProgram) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
     res.status(200).json({
-        message: "Program edited successfully", 
+        message: "Program name edited successfully", 
         updatedProgram
     }); 
 }

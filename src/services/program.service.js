@@ -57,16 +57,13 @@ const generateAndSaveProgramForUser = async (data) => {
 const updateProgramForUser = async (input) => {
 
     const { programId, userId } = input; 
-    const { name, goal, level, frequency } = input.data; 
+    const { name } = input.data; 
 
     const program = await Program.findOne( { where: {id: programId, userId } }); 
     if (!program) return null;  
 
     return await program.update({
         name: name ?? program.name, 
-        goal: goal ?? program.goal, 
-        level: level ?? program.level, 
-        frequency: frequency ?? program.frequency
     }); 
 }; 
 
