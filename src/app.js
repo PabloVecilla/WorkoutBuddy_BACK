@@ -10,6 +10,8 @@ require("dotenv").config({
     : ".env.local" 
 }); 
 
+// Import Helmet
+const helmet = require("helmet"); 
 
 // ROUTES
 // _users
@@ -38,6 +40,8 @@ const cors = require("cors");
 require("./models"); 
 
 const app = express(); 
+
+app.use(helmet()); 
 
 app.use(cors ({ // use cors to define access route from frontend
   origin: process.env.FRONTEND_URL, // frontend req origin  
