@@ -1,5 +1,6 @@
 const request = require("supertest"); 
 const app = require("../src/app"); 
+const loginLimiter = require("../src/middleware/rateLimit.middleware"); 
 const { User } = require("../src/models"); 
 
 describe ("Authentication", () => {
@@ -8,6 +9,19 @@ describe ("Authentication", () => {
         email: "carla@example.com",
         password: "123456"
       }
+      const invalidUserData = {
+        name: "Carla",
+        email: "carla123@example.com",
+        password: "12345"
+      }
+    beforeEach(() => {
+        if (loginLimiter && typeof loginLimiter.resetKey === 'function') {
+            loginLimiter.resetKey('::1');
+            loginLimiter.resetKey('127.0.0.1');
+            loginLimiter.resetKey('::ffff:127.0.0.1');
+        }
+    });
+
     describe("POST /auth/register", () => {
         it("registers a new user", async () => {
             const response = await request(app).post("/auth/register").send(validUserData); 
@@ -61,13 +75,40 @@ describe ("Authentication", () => {
             expect(loginUser.body.user.passwordHash).toBeUndefined(); 
 
         }); 
-        it.todo("rejects invalid credentials"); 
+        it("rejects invalid credentials", async () => {
+            const existingUser = await request(app).post("/auth/register").send(validUserData); 
+
+            const loginUser = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+
+            expect(loginUser.status).toBe(404);
+            
+            expect(loginUser.body).toEqual({
+                success: false,
+                error: {
+                    code: "USER_NOT_FOUND",
+                    message: "User not found"
+                }
+            });
+        }); 
+
+        it("rate limits more than 5 invalid credentials login tries", async () => {
+            await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+            await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+            await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+            await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+            await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+            const response = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
+
+            expect(response.body.message).toBe('Login limit exceeded. Try again later.'); 
+            expect(response.status).toBe(429); 
+        })
     }); 
 
     describe("GET /auth/me", () => {
-        const agent = request.agent(app); 
+        
         it("returns the current user when authenticated", async () => {
-            await agent
+            const agent = request.agent(app); 
+            const registerResponse = await agent
                 .post("/auth/register")
                 .send(validUserData);
 
