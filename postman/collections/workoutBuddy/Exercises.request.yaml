@@ -1,6 +1,8 @@
 $kind: http-request
 name: Exercises
-url: http://localhost:3000/exercises/
+url: http://localhost:3000/exercises?page=10
 method: GET
+queryParams:
+  page: "10"
 settings: {}
 order: 13000
