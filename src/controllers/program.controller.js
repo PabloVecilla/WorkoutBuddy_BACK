@@ -35,7 +35,7 @@ const getProgramById = async (req, res) => {
 
     const program = await findProgramByIdForUser( { id: numericId, userId } ); 
 
-    if (!program) throw new AppError(404, "PROGRAM:NOT_FOUND", "Program not found"); 
+    if (!program) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
     res.status(200).json({
         message: "Program found", 

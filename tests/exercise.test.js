@@ -30,7 +30,7 @@ describe("Exercise", () => {
             const response = await request(app).get("/exercises"); 
 
             expect(response.status).toBe(401); 
-            expect(response.body.message).toBe("Unauthorized"); 
+            expect(response.body.error.message).toBe("Unauthorized"); 
         })
     })
 
@@ -82,7 +82,7 @@ describe("Exercise", () => {
             const response = await request(app).get("/exercises"); 
 
             expect(response.status).toBe(401); 
-            expect(response.body.message).toBe("Unauthorized"); 
+            expect(response.body.error.message).toBe("Unauthorized"); 
         })
     })
     describe("GET /movement-pattern/:movementPattern", () => {

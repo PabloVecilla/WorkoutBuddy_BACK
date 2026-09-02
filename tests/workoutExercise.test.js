@@ -73,7 +73,7 @@ describe("WokroutExercise", () => {
             const response = await request(app).get(`/programs/${programId}/workouts/${workoutId}/workout-exercises`); 
 
             expect(response.status).toBe(401); 
-            expect(response.body.message).toBe("Unauthorized"); 
+            expect(response.body.error.message).toBe("Unauthorized"); 
             expect(response.body.workoutExercises).toBeUndefined(); 
         })
         it("returns 404 when user tries to get workout-exercises from invalid workout", async () => {
