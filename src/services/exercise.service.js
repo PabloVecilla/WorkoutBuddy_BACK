@@ -3,7 +3,7 @@ const { Exercise } = require("../models");
 const findAllExercises = async (page, limit) => {
     const total = await Exercise.count(); 
     if (!page || page === 0 || page*10 > total) page = 1; 
-    return await Exercise.findAndCountAll({ limit, offset: (page-1)*limit });
+    return await Exercise.findAndCountAll({ attributes: { exclude: ["raw"] }, limit, offset: (page-1)*limit });
 }; 
 
 const findExerciseById = async (id) => {
