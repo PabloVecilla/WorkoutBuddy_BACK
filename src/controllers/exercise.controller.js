@@ -2,9 +2,10 @@ const { findAllExercises, findExerciseById, findExercisesByMovementPattern } = r
 const AppError = require("../utils/AppError");
 
 const getExercises = async (req, res) => {
-    const filters = req.query
+    const page = req.query.page; 
+    const limit = 10; 
 
-    const exercises = await findAllExercises(filters); 
+    const exercises = await findAllExercises(page, limit); 
 
     return res.status(200).json({ 
         success: true, 

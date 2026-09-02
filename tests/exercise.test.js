@@ -23,7 +23,7 @@ describe("Exercise", () => {
             expect(response.status).toBe(200); 
 
             const exercisesInDB = await Exercise.findAll(); 
-            expect(response.body.count).toBe(exercisesInDB.length); 
+            expect(response.body.exercises.count).toBe(exercisesInDB.length); 
         })
 
         it("rejects unauthorized requests", async () => {
