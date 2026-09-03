@@ -1,11 +1,12 @@
 const { WorkoutExercise, Workout, Program, Exercise } = require("../models"); 
 
 const getWorkoutExercisesForUser = async ( userId, programId, workoutId) => {
-    return await WorkoutExercise.findAll({ where: { workoutId },
+    return await WorkoutExercise.findAll({ where: { workoutId }, 
         include: [
             {
                 model: Exercise,
-                as: "exercise"
+                as: "exercise",
+                attributes: { exclude: ["raw"]},
             },
             {
                 model: Workout,

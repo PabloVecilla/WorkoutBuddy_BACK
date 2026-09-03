@@ -1,8 +1,16 @@
 const bcrypt = require("bcrypt"); // hasher
 const jwt = require("jsonwebtoken"); 
 // Import service query functions
-const { findUserByEmail, createUser } = require("../services/user.service");
+const { findUserByEmail, findUserByEmailForUser, createUser } = require("../services/user.service");
 const AppError = require("../utils/AppError"); 
+
+// User serializer
+const serializeUser = (user) => ({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    createdAt: user.createdAt
+}); 
 
 // Register
 const register = async (req, res) => {
@@ -19,13 +27,10 @@ const register = async (req, res) => {
     const user = await createUser(name, email, passwordHash); 
 
     res.status(201).json({
-        message: "User registered successfully", 
-        user: {
-            id: user.id, 
-            name: user.name, 
-            email: user.email, 
-            createdAt: user.createdAt
-        }
+        success: true,
+        data: serializeUser(user),
+        message: "User registered successfully",
+        meta: {}
     })        
 
 }; 
@@ -36,9 +41,9 @@ const login = async (req, res) => {
 
     if (!email || !password) throw new AppError(400, "MISSING_FIELDS", "Enter email and password")
 
-    const user = await findUserByEmail(email); 
+    const user = await findUserByEmailForUser(email); 
 
-    if (!user) throw new AppError(404, "USER_NOT_FOUND", "User not found"); 
+    if (!user) throw new AppError(401, "INVALID_CREDENTIALS", "Invalid credentials"); 
 
     const passwordIsValid = await bcrypt.compare(password, user.passwordHash); 
 
@@ -56,17 +61,15 @@ const login = async (req, res) => {
     res.cookie("token", token, { // modifies the response headers; 
         httpOnly: true, 
         secure: process.env.NODE_ENV === "production", 
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
+        sameSite: process.env.NODE_ENV === "test" ? false : (process.env.NODE_ENV === "production" ? "none" : "lax"), 
         maxAge: Number(process.env.COOKIE_MAX_AGE)
     }); 
 
     res.status(200).json({ // sends final response  with modified headers  
-        message: "Login successful", 
-        user: {
-            id: user.id, 
-            name: user.name, 
-            email: user.email
-        }
+        success: true,
+        data: serializeUser(user),
+        message: "Login successful",
+        meta: {}
     }); 
 }; 
 

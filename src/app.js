@@ -39,8 +39,13 @@ const cors = require("cors");
 // IMPORT_MODELS
 require("./models"); 
 
-const app = express(); 
+// CREATE express engine
+const app = express();
 
+// Mandatory for express-rate-limit to function properly  
+app.set('trust proxy', 1); 
+
+// Helmet protection
 app.use(helmet()); 
 
 app.use(cors ({ // use cors to define access route from frontend

@@ -10,8 +10,11 @@ const getWorkouts = async (req, res) => {
     if (!workouts || workouts.length === 0) throw new AppError(404, "WORKOUTS_NOT_FOUND", "Workout not found"); 
 
     res.status(200).json({
+        success: true,
+        data: workouts,
         message: "Workouts found", 
-        workouts}); 
+        meta: {}
+    }); 
 };
 
 const getWorkoutById = async (req, res) => {
@@ -26,8 +29,10 @@ const getWorkoutById = async (req, res) => {
     if (!workout) throw new AppError(404, "WORKOUT_NOT_FOUND", "Workout not found"); 
 
     res.status(200).json({
+        success: true,
+        data: workout,
         message: "Workout found", 
-        workout
+        meta: {}
     }); 
 }; 
 
@@ -47,7 +52,12 @@ const deleteWorkout = async (req, res) => {
     
     if (deletedCount === 0) throw new AppError(404, "WORKOUT_NOT_FOUND", "Workout not found");  
 
-    res.status(200).json({ message: "Workout deleted successfully" });
+    res.status(200).json({
+        success: true,
+        data: `${deletedCount} workouts deleted`,
+        message: "Workout deleted successfully", 
+        meta: {}
+    }); 
 };
 
 const updateWorkout = async (req, res) => {
@@ -70,8 +80,10 @@ const updateWorkout = async (req, res) => {
     if (!updatedWorkout) throw new AppError(404, "WORKOUT_NOT_FOUND", "Workout not found"); 
 
     res.status(200).json({
+        success: true,
+        data: updatedWorkout,
         message: "Workout order updated successfully",
-        workout: updatedWorkout
+        meta: {}
     });
 };
 

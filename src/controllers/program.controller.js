@@ -10,10 +10,12 @@ const createProgram = async (req, res) => {
     const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
 
     if (!program) throw new AppError(500, "DB_ERROR", "Error generating or saving program"); 
-        
+
     res.status(201).json({
-        message: "Program created successfully", 
-        program
+        success: true,
+        data: program,
+        message: "Program created successfully",
+        meta: {}
     }); 
 }; 
 
@@ -23,7 +25,13 @@ const getPrograms = async (req, res) => {
     const programs = await findAllProgramsForUser(userId); 
     if (!programs || programs.length === 0) throw new AppError(404, "PROGRAM_NOT_FOUND", "No programs found"); 
 
-    res.status(200).json(programs); 
+    res.status(200).json({
+        success: true,
+        data: programs,
+        message: "Programs found successfully",
+        meta: {}
+    }); 
+
 };
 
 const getProgramById = async (req, res) => {
@@ -38,8 +46,10 @@ const getProgramById = async (req, res) => {
     if (!program) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
     res.status(200).json({
-        message: "Program found", 
-        program
+        success: true,
+        data: program,
+        message: "Program found",
+        meta: {}
     }); 
 }; 
 
@@ -58,7 +68,12 @@ const deleteProgram = async (req, res) => {
     
     if (deletedCount === 0) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
-    res.status(200).json({ message: "Program deleted successfully" });
+    res.status(200).json({
+        success: true,
+        data: `Deleted count: ${deletedCount}`,
+        message: "Program deleted successfully",
+        meta: {}
+    }); 
 }; 
 
 const updateProgram = async (req, res) => {
@@ -73,8 +88,10 @@ const updateProgram = async (req, res) => {
     if (!updatedProgram) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
     res.status(200).json({
-        message: "Program name edited successfully", 
-        updatedProgram
+        success: true,
+        data: updatedProgram,
+        message: "Program name edited successfully",
+        meta: {}
     }); 
 }
 
