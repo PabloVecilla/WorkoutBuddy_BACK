@@ -23,7 +23,7 @@ describe("Exercise", () => {
             expect(response.status).toBe(200); 
 
             const exercisesInDB = await Exercise.findAll(); 
-            expect(response.body.exercises.count).toBe(exercisesInDB.length); 
+            expect(response.body.meta.total).toBe(exercisesInDB.length); 
         })
 
         it("rejects unauthorized requests", async () => {
@@ -51,7 +51,7 @@ describe("Exercise", () => {
             const response = await agent.get(`/exercises/${firstExerciseId}`); 
 
             expect(response.status).toBe(200); 
-            expect(response.body.exercise).toEqual( // toBe() for exact values  toEqual() for objects
+            expect(response.body.data).toEqual( // toBe() for exact values  toEqual() for objects
                 expect.objectContaining({
                   id: firstExerciseId,
                 })
@@ -102,7 +102,7 @@ describe("Exercise", () => {
             const response = await agent.get(`/exercises/movement-pattern/${movementPattern}`); 
 
             expect(response.status).toBe(200); 
-            expect(response.body.exercises[0].movementPattern).toBe(movementPattern); 
+            expect(response.body.data[0].movementPattern).toBe(movementPattern); 
         })
         it("rejects unauthorized exercise-by-movement-pattern requests", async () => {
             const exercise = await Exercise.findOne({ 

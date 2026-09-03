@@ -41,9 +41,9 @@ describe("WokroutExercise", () => {
     };
     const createAndFindProgramAndWorkoutIdForUser = async (agent) => {
         const programResponse = await agent.post("/programs/create").send(programCreationData);
-        const programId = programResponse.body.program.id;
+        const programId = programResponse.body.data.id;
         const workoutResponse = await agent.get(`/programs/${programId}/workouts`); 
-        const workoutId = workoutResponse.body.workouts[0]?.id; 
+        const workoutId = workoutResponse.body.data[0]?.id; 
         return { programId, workoutId }; 
     }
 
@@ -59,7 +59,7 @@ describe("WokroutExercise", () => {
             const workoutExercises = await WorkoutExercise.findAll({ where: { workoutId }}); 
             const firstWorkoutExercise = workoutExercises[0]; 
 
-            expect(response.body.workoutExercises[0]).toEqual( // toBe() for exact values  toEqual() for objects
+            expect(response.body.data[0]).toEqual( // toBe() for exact values  toEqual() for objects
                 expect.objectContaining({
                   id: firstWorkoutExercise.id
                 })

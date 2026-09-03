@@ -1,6 +1,10 @@
 const { User } = require("../models");  
 
 const findUserByEmail = async (email) => {
+    return User.findOne({where: {  email }, attributes: ["id", "name", "email", "createdAt"]}); 
+}; 
+
+const findUserByEmailForUser = async (email) => {
     return User.findOne({where: {  email }}); 
 }; 
 
@@ -9,11 +13,12 @@ const createUser = async (name, email, passwordHash) => {
         name, 
         email, 
         passwordHash
-    }); 
+    },
+    { returning: ["id", "name", "email", "created_at"] }); 
 }; 
 
 const findAllUsers = async () => {
     return User.findAll({ attributes:{ exclude: ["passwordHash"]} }); 
 }; 
   
-module.exports = { findUserByEmail, createUser, findAllUsers }; 
+module.exports = { findUserByEmail, findUserByEmailForUser, createUser, findAllUsers }; 

@@ -4,9 +4,14 @@ const AppError = require("../utils/AppError");
 const getAllUsers = async (_req, res) => {
 
     const users = await findAllUsers(); 
-    if (!users) throw new AppError(404, "USER_NOT_FOUND", "No users found")
+    if (!users || users.length === 0) throw new AppError(404, "USER_NOT_FOUND", "No users found")
 
-    res.status(200).json(users); 
+    res.status(200).json({
+        success: true,
+        data: users,
+        message: `${users.length} Users found successfully`,
+        meta: {}
+    }); 
 }
 
 const getUserByEmail = async (req, res) => {
@@ -16,9 +21,14 @@ const getUserByEmail = async (req, res) => {
     if (!user) throw new AppError(404, "USER_NOT_FOUND", "User not found")
 
     res.status(200).json({
-        user: user.name,
-        mail: user.email
-    })
+        success: true,
+        data: {
+            user: user.name,
+            mail: user.email
+        },
+        message: "User found successfully",
+        meta: {}
+    }); 
 
 }
 

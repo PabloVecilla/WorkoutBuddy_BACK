@@ -12,7 +12,12 @@ const getWorkoutExercises = async (req, res) => {
 
     if (workoutExercises.length === 0) throw new AppError(404, "EXERCISES_NOT_FOUND", "Workout exercises not found"); 
 
-    return res.status(200).json({ workoutExercises });
+    res.status(200).json({
+        success: true,
+        data: workoutExercises,
+        message: "Workout exercises found successfully",
+        meta: {}
+    });
 };
 
 const updateWorkoutExercise = async (req, res) => {
@@ -23,13 +28,16 @@ const updateWorkoutExercise = async (req, res) => {
     const { exerciseId, sets, reps, restSeconds, order } = req.body || {}; 
     if (isNaN(workoutExerciseId)) throw new AppError(400, "INVALID_ID", "Invalid workoutExercise id"); 
 
-    const workoutExercise = await updateWorkoutExerciseForUser(userId, programId, workoutId, workoutExerciseId, {exerciseId, sets, reps, restSeconds, order})
+    const UpdatedWorkoutExercise = await updateWorkoutExerciseForUser(userId, programId, workoutId, workoutExerciseId, {exerciseId, sets, reps, restSeconds, order})
 
-    if (!workoutExercise) throw new AppError(404, "EXERCISE_NOT_ FOUND", "Exercise not found");
+    if (!UpdatedWorkoutExercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found");
 
     res.status(200).json({
-        message: "Exercise edited successfully"
-    }); 
+        success: true,
+        data: UpdatedWorkoutExercise,
+        message: "Exercise edited successfully",
+        meta: {}
+    });
 }; 
 
 const deleteWorkoutExercise = async (req, res) => {
@@ -49,9 +57,11 @@ const deleteWorkoutExercise = async (req, res) => {
 
     if (!workoutExercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found"); 
 
-    return res.status(200).json({
+    res.status(200).json({
+        success: true,
+        data: `${workoutExercise} workout exercises deleted`,
         message: "Exercise deleted successfully",
-        workoutExercise
+        meta: {}
     });
 };
 

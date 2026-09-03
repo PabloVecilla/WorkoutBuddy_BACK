@@ -27,11 +27,11 @@ describe ("Authentication", () => {
             const response = await request(app).post("/auth/register").send(validUserData); 
 
             expect(response.status).toBe(201); 
-            expect(response.body.user.name).toBe("Carla"); 
-            expect(response.body.user.email).toBe("carla@example.com"); 
+            expect(response.body.data.name).toBe("Carla"); 
+            expect(response.body.data.email).toBe("carla@example.com"); 
 
-            expect(response.body.user.passwordHash).toBeUndefined();
-            expect(response.body.user.password).toBeUndefined();
+            expect(response.body.data.passwordHash).toBeUndefined();
+            expect(response.body.data.password).toBeUndefined();
           
             const createdUser = await User.findOne({
               where: { email: "carla@example.com" }
@@ -66,13 +66,13 @@ describe ("Authentication", () => {
 
             expect(loginUser.status).toBe(200); 
             expect(loginUser.body.message).toBe("Login successful"); 
-            expect(loginUser.body.user.name).toBe(existingUser.body.user.name); 
-            expect(loginUser.body.user.email).toBe(existingUser.body.user.email); 
+            expect(loginUser.body.data.name).toBe(existingUser.body.data.name); 
+            expect(loginUser.body.data.email).toBe(existingUser.body.data.email); 
 
             expect(loginUser.headers["set-cookie"]).toBeDefined(); 
             expect(loginUser.headers["set-cookie"][0]).toContain("HttpOnly"); 
-            expect(loginUser.body.user.password).toBeUndefined(); 
-            expect(loginUser.body.user.passwordHash).toBeUndefined(); 
+            expect(loginUser.body.data.password).toBeUndefined(); 
+            expect(loginUser.body.data.passwordHash).toBeUndefined(); 
 
         }); 
         it("rejects invalid credentials", async () => {
@@ -80,13 +80,13 @@ describe ("Authentication", () => {
 
             const loginUser = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
 
-            expect(loginUser.status).toBe(404);
+            expect(loginUser.status).toBe(401);
             
             expect(loginUser.body).toEqual({
                 success: false,
                 error: {
-                    code: "USER_NOT_FOUND",
-                    message: "User not found"
+                    code: "INVALID_CREDENTIALS",
+                    message: "Invalid credentials"
                 }
             });
         }); 

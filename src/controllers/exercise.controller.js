@@ -2,16 +2,21 @@ const { findAllExercises, findExerciseById, findExercisesByMovementPattern } = r
 const AppError = require("../utils/AppError");
 
 const getExercises = async (req, res) => {
-    const page = req.query.page; 
+    const page = Number(req.query.page); 
     const limit = 10; 
 
     const exercises = await findAllExercises(page, limit); 
 
     return res.status(200).json({ 
         success: true, 
-        message: "Exercises fetched successfully", 
-        count: exercises.length,
-        exercises,
+        data: exercises.rows,
+        message: "Exercises found successfully",
+        meta: {
+            page,
+            limit,
+            total: exercises.count,
+            totalPages: Math.ceil(exercises.count/10)
+        }
     }); 
 };
 
@@ -22,11 +27,12 @@ const getExerciseById = async (req, res) => {
 
     if (!exercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found"); 
 
-    res.status(200).json({
+    res.status(200).json({ // sends final response  with modified headers  
         success: true,
-        message: "Exercise found", 
-        exercise
-    })
+        data: exercise,
+        message: "Exercise found",
+        meta: {}
+    }); 
 }; 
 
 const getExercisesByMovementPattern = async (req, res) => {
@@ -36,11 +42,12 @@ const getExercisesByMovementPattern = async (req, res) => {
 
     if (!exercises || exercises.length === 0) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found"); 
 
-    res.status(200).json({
+    res.status(200).json({ // sends final response  with modified headers  
         success: true,
-        message: "Exercise found", 
-        exercises
-    })
+        data: exercises,
+        message: "Exercise found",
+        meta: {}
+    }); 
 }; 
 
 module.exports = { //updateExercise, deleteExercise, 

@@ -30,17 +30,17 @@ describe("Workout", () => {
             const user = await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
             const response = await agent.get(`/programs/${programId}/workouts`); 
 
             expect(response.status).toBe(200); 
             expect(response.body.message).toBe("Workouts found"); 
-            expect(response.body.workouts).toBeDefined(); 
-            expect(response.body.workouts).toHaveLength(programCreationData.frequency); 
+            expect(response.body.data).toBeDefined(); 
+            expect(response.body.data).toHaveLength(programCreationData.frequency); 
 
             expect(
-                response.body.workouts.every(
+                response.body.data.every(
                   workout => workout.programId === programId
                 )
               ).toBe(true); // .every returns a boolean, checks a yes/no fact
@@ -48,7 +48,7 @@ describe("Workout", () => {
             const program = await Program.findByPk(programId); 
             const programOwner = program.userId; 
 
-            expect(programOwner).toBe(user.body.user.id); 
+            expect(programOwner).toBe(user.body.data.id); 
         })
 
         it("rejects access to unauthenticated user", async () => {
@@ -58,7 +58,7 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
             await agent.post("/auth/logout"); 
 
@@ -66,7 +66,7 @@ describe("Workout", () => {
 
             expect(response.status).toBe(401); 
             expect(response.body.error.message).toBe("Unauthorized"); 
-            expect(response.body.workouts).toBeUndefined(); 
+            expect(response.body.data).toBeUndefined(); 
 
         })
 
@@ -77,7 +77,7 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
@@ -90,7 +90,7 @@ describe("Workout", () => {
 
             expect(response.status).toBe(404); 
             expect(response.body.error.message).toBe("Workout not found"); 
-            expect(response.body.programId).toBeUndefined(); 
+            expect(response.body.data).toBeUndefined(); 
 
         })
 
@@ -103,17 +103,17 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.get(`/programs/${programId}/workouts/${workout.id}`); 
                 expect(response.status).toBe(200); 
                 expect(response.body.message).toBe("Workout found"); 
-                expect(response.body.workout.programId).toBe(programId); 
-                expect(response.body.workout.dayNumber).toBe(workout.dayNumber); 
+                expect(response.body.data.programId).toBe(programId); 
+                expect(response.body.data.dayNumber).toBe(workout.dayNumber); 
             }))
         })
 
@@ -124,9 +124,9 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
@@ -139,7 +139,7 @@ describe("Workout", () => {
                 const response = await agent.get(`/programs/${programId}/workouts/${workout.id}`); 
                 expect(response.status).toBe(404); 
                 expect(response.body.error.message).toBe("Workout not found"); 
-                expect(response.body.workout).toBeUndefined(); 
+                expect(response.body.data).toBeUndefined(); 
             }))
         })
 
@@ -150,9 +150,9 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse1 = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse1.body.program.id;
+            const programId = programResponse1.body.data.id;
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
@@ -162,13 +162,13 @@ describe("Workout", () => {
                                                     password: "123456" }); 
 
             const programResponse2 = await agent.post("/programs/create").send(programCreationData); 
-            const programId2 = programResponse2.body.program.id;
+            const programId2 = programResponse2.body.data.id;
 
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.get(`/programs/${programId2}/workouts/${workout.id}`); 
                 expect(response.status).toBe(404); 
                 expect(response.body.error.message).toBe("Workout not found"); 
-                expect(response.body.workout).toBeUndefined(); 
+                expect(response.body.data).toBeUndefined(); 
             }))
         })  
     })
@@ -180,10 +180,10 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             const dayOne = workouts.find(
                 workout => workout.dayNumber === 1
@@ -198,7 +198,7 @@ describe("Workout", () => {
                 .send({ dayNumber: 2 });
               
               expect(response.status).toBe(200);
-              expect(response.body.workout.dayNumber).toBe(2);
+              expect(response.body.data.dayNumber).toBe(2);
 
               const updatedDay1 = await Workout.findByPk(dayOne.id); 
               const updatedDay2 = await Workout.findByPk(dayTwo.id);
@@ -217,10 +217,10 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             const dayOne = workouts.find(
                 workout => workout.dayNumber === 1
@@ -243,12 +243,12 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
 
-            const programFrequency = programResponse.body.program.frequency; 
+            const programFrequency = programResponse.body.data.frequency; 
 
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             const dayOne = workouts.find(
                 workout => workout.dayNumber === 1
@@ -272,12 +272,10 @@ describe("Workout", () => {
             await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
-
-            const programFrequency = programResponse.body.program.frequency; 
+            const programId = programResponse.body.data.id;
 
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             const dayOne = workouts.find(
                 workout => workout.dayNumber === 1
@@ -301,9 +299,9 @@ describe("Workout", () => {
             const user = await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse.body.program.id;
+            const programId = programResponse.body.data.id;
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
@@ -328,9 +326,9 @@ describe("Workout", () => {
             const user = await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
 
             const programResponse1 = await agent.post("/programs/create").send(programCreationData);
-            const programId = programResponse1.body.program.id;
+            const programId = programResponse1.body.data.id;
             const workoutsResponse = await agent.get(`/programs/${programId}/workouts`); 
-            const workouts = workoutsResponse.body.workouts; 
+            const workouts = workoutsResponse.body.data; 
 
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
@@ -340,7 +338,7 @@ describe("Workout", () => {
                                                     password: "123456" }); 
 
             const programResponse2 = await agent.post("/programs/create").send(programCreationData); 
-            const programId2 = programResponse2.body.program.id;
+            const programId2 = programResponse2.body.data.id;
 
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.patch(`/programs/${programId2}/workouts/${workout.id}`).send({ dayNumber: 2 }); 

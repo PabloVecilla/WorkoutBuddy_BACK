@@ -26,12 +26,12 @@ describe ("Program", () => {
 
             expect(response.status).toBe(201); 
             expect(response.body.message).toBe("Program created successfully"); 
-            expect(response.body.program.userId).toBe(user.body.user.id); 
+            expect(response.body.data.userId).toBe(user.body.data.id); 
 
             const programCreated = await Program.findOne({ where: { name: programCreationData.name, goal: programCreationData.goal, level: programCreationData.level, frequency: programCreationData.frequency } }); 
 
             expect(programCreated).not.toBeNull(); // findOne returns null when 404
-            expect(programCreated.userId).toBe(user.body.user.id); 
+            expect(programCreated.userId).toBe(user.body.data.id); 
 
         }); 
     }); 
@@ -47,7 +47,7 @@ describe ("Program", () => {
             const response = await agent.get("/programs"); 
 
             expect(response.status).toBe(200); 
-            expect(response.body[0].userId).toBe(user.body.user.id); 
-        })
-    })
+            expect(response.body.data[0].userId).toBe(user.body.data.id); 
+        }); 
+    }); 
 })
