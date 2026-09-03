@@ -54,7 +54,7 @@ const deleteWorkout = async (req, res) => {
 
     res.status(200).json({
         success: true,
-        data: `${deletedCount} workouts deleted`,
+        data: { deletedCount },
         message: "Workout deleted successfully", 
         meta: {}
     }); 

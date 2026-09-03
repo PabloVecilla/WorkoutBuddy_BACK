@@ -1,9 +1,9 @@
 const { Exercise } = require("../models");  
 
 const findAllExercises = async (page, limit) => {
-    const total = await Exercise.count(); 
-    if (!page || !Number.isInteger(page) || page < 1 || page*limit > total ) page = 1; 
-    return await Exercise.findAndCountAll({ attributes: { exclude: ["raw"] }, limit, offset: (page-1)*limit });
+    const offset = (page - 1) * limit;
+
+    return await Exercise.findAndCountAll({ attributes: { exclude: ["raw"] }, limit, offset });
 }; 
 
 const findExerciseById = async (id) => {

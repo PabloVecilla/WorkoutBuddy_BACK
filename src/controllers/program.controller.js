@@ -70,7 +70,7 @@ const deleteProgram = async (req, res) => {
 
     res.status(200).json({
         success: true,
-        data: `Deleted count: ${deletedCount}`,
+        data: { deletedCount },
         message: "Program deleted successfully",
         meta: {}
     }); 
