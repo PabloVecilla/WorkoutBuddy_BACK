@@ -1,6 +1,13 @@
 require("../src/app");
 const sequelize = require("../config/database");
 const seedExercises = require("../scripts/seedExercises"); 
+const { apiLimiter, loginLimiter } = require("../src/middleware/rateLimit.middleware");
+
+const resetLimiter = (limiter) => {
+  limiter.resetKey("::1");
+  limiter.resetKey("127.0.0.1");
+  limiter.resetKey("::ffff:127.0.0.1");
+};
 
 beforeAll(async () => {
   await sequelize.authenticate();
@@ -22,6 +29,9 @@ beforeEach(async () => {
         restartIdentity: true
       });
     }
+
+    resetLimiter(apiLimiter);
+    resetLimiter(loginLimiter);
   });
 
 afterAll(async () => {

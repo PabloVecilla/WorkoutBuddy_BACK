@@ -15,7 +15,7 @@ const findProgramByIdForUser = async (data) =>
     Program.findOne({ where: { id: data.id, 
                                 userId: data.userId }, 
                                 include: [{ // left join the Workouts that BELONG to said user and said program
-                                    model: Workout, 
+                                    model: Workout,
                                     required: false,
                                     include: [{ // left join the WorkoutExercises that belong to said WOrkout from said Program of said User
                                         model: WorkoutExercise,

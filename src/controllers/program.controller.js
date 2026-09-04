@@ -47,8 +47,14 @@ const createProgram = async (req, res) => {
 const getPrograms = async (req, res) => {
     const userId = req.user.id; 
 
-    const programs = await findAllProgramsForUser(userId); 
-    if (!programs || programs.length === 0) throw new AppError(404, "PROGRAM_NOT_FOUND", "No programs found"); 
+    const programs = await findAllProgramsForUser(userId);
+    
+    if(programs.length === 0) return res.status(200).json({
+        success: true,
+        data: programs,
+        message: "You have no programs yet",
+        meta: {}
+    })
 
     res.status(200).json({
         success: true,

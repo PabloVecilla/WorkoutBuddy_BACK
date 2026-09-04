@@ -16,4 +16,19 @@ const loginLimiter = rateLimit({
     }
 }); 
 
-module.exports = loginLimiter; 
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 150,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_req, _res, next) => {
+      next(
+        new AppError(
+          429,
+          "LOGIN_RATE_LIMIT_EXCEEDED",
+          "Too many login attempts. Try again later."
+        ));
+  }
+}); 
+
+module.exports = { loginLimiter, apiLimiter }; 
