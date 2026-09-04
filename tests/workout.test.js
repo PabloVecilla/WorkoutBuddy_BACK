@@ -7,7 +7,7 @@ describe("Workout", () => {
     const validUserData = {
         name: "Carla",
         email: "carla@example.com",
-        password: "123456"
+        password: "TestUser1!"
     };
     const programCreationData = {
         name: "Summer ready", 
@@ -82,9 +82,9 @@ describe("Workout", () => {
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
                                                     email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
             await agent.post("/auth/login").send({ email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
 
             const response = await agent.get(`/programs/${programId}/workouts`); 
 
@@ -131,9 +131,9 @@ describe("Workout", () => {
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
                                                     email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
             await agent.post("/auth/login").send({ email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
 
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.get(`/programs/${programId}/workouts/${workout.id}`); 
@@ -157,9 +157,9 @@ describe("Workout", () => {
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
                                                     email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
             await agent.post("/auth/login").send({ email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
 
             const programResponse2 = await agent.post("/programs/create").send(programCreationData); 
             const programId2 = programResponse2.body.data.id;
@@ -306,9 +306,9 @@ describe("Workout", () => {
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
                                                     email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
             await agent.post("/auth/login").send({ email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
 
             await Promise.all(workouts.map(async (workout) => {
                 const response = await agent.patch(`/programs/${programId}/workouts/${workout.id}`).send({ dayNumber: 2 }); 
@@ -333,9 +333,9 @@ describe("Workout", () => {
             await agent.post("/auth/logout"); 
             await agent.post("/auth/register").send({ name: "Carlos",
                                                     email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
             await agent.post("/auth/login").send({ email: "carlos@example.com",
-                                                    password: "123456" }); 
+                                                    password: "TestUser1!" }); 
 
             const programResponse2 = await agent.post("/programs/create").send(programCreationData); 
             const programId2 = programResponse2.body.data.id;

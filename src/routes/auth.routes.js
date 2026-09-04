@@ -10,13 +10,13 @@ router.post("/register", register);
 /* TEST JSON:: {
     "name": "Carlos",
     "mail": "carlos@example.com",
-    "pass": "123456"
+    "pass": "TestUser1!"
     } */
 
 router.post("/login", loginLimiter, login); 
 /* TEST JSON:: {
     "mail": "carlos@example.com",
-    "pass": "123456"
+    "pass": "TestUser1!"
     } */
 
 router.get("/me", protect, me); 

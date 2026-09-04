@@ -16,6 +16,12 @@ const getAllUsers = async (_req, res) => {
 
 const getUserByEmail = async (req, res) => {
     const email = req.params.mail; 
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const validEmail = emailRegex.test(email) ;
+
+    if (!validEmail) throw new AppError(400, "INVALID_EMAIL", "Invalid email address");
+
     const user = await findUserByEmail( email ); 
 
     if (!user) throw new AppError(404, "USER_NOT_FOUND", "User not found")

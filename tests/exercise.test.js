@@ -6,7 +6,7 @@ describe("Exercise", () => {
     const validUserData = {
         name: "Carla",
         email: "carla@example.com",
-        password: "123456"
+        password: "TestUser1!"
     };
 
     const loginData = { email: validUserData.email, password: validUserData.password }

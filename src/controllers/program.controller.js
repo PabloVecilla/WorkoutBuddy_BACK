@@ -7,6 +7,31 @@ const createProgram = async (req, res) => {
 
     if (!name || !goal || !level || !frequency) throw new AppError(400, "INVALID_DATA", "Name, goal, level and frequency required"); 
 
+    const nameRegex = /^(?=.{2,60}$)[\p{L}\p{M}\d][\p{L}\p{M}\d _'-]*$/u;
+    const goalRegex = /^(muscle_gain|fat_loss|strength|recomp)$/;
+    const levelRegex = /^(beginner|intermediate)$/;
+
+    const allowedFrequencies = {
+    beginner: [2, 3, 4],
+    intermediate: [3, 4, 5, 6],
+    };
+
+    const frequencyNumber = Number(frequency);
+
+    const isValid =
+        nameRegex.test(name?.trim()) &&
+        goalRegex.test(goal) &&
+        levelRegex.test(level) &&
+        Number.isInteger(frequencyNumber) &&
+        allowedFrequencies[level]?.includes(frequencyNumber);
+
+    if (!isValid) {
+    throw new AppError(
+        400,
+        "INVALID_PROGRAM_DATA",
+        "Invalid name, goal, level, or frequency"
+    ); }
+
     const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
 
     if (!program) throw new AppError(500, "DB_ERROR", "Error generating or saving program"); 
@@ -82,6 +107,12 @@ const updateProgram = async (req, res) => {
     const { name } = req.body; 
 
     if (isNaN(programId)) throw new AppError(400, "INVALID_ID", "Invalid program id"); 
+
+    const nameRegex = /^(?=.{2,60}$)[\p{L}\p{M}\d][\p{L}\p{M}\d _'-]*$/u;
+
+    const nameValid = nameRegex.test(name?.trim());
+
+    if (!nameValid) throw new AppError(400, "INVALID_PROGRAM_DATA", "Invalid name");
 
     const updatedProgram = await updateProgramForUser({ programId, userId, data: { name } }); 
 

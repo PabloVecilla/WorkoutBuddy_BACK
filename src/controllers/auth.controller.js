@@ -18,6 +18,19 @@ const register = async (req, res) => {
 
     if( !name || !email || !password) throw new AppError(400, "MISSING_FIELDS", "Please fill all the required fields"); 
 
+    const nameRegex = /^(?=.{2,60}$)[\p{L}\p{M}\d][\p{L}\p{M}\d _'-]*$/u;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])\S{8,64}$/;
+
+    const validName = nameRegex.test(name?.trim()); 
+    const validEmail = emailRegex.test(email) ;
+    const validPassword = passwordRegex.test(password);
+
+    if (!validName) throw new AppError(400, "INVALID_NAME", "Invalid name. Must have between 2 and 60 characters");
+    if (!validEmail) throw new AppError(400, "INVALID_EMAIL", "Invalid email address");
+    if (!validPassword) throw new AppError(400,"INVALID_PASSWORD",
+        "Password must contain 8–64 characters, including uppercase, lowercase, number, and special character"); 
+
     const existingUser = await findUserByEmail(email);
 
     if (existingUser) throw new AppError(409, "USER_REGISTERED", "User already registered"); 

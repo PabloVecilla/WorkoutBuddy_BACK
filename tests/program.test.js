@@ -12,7 +12,7 @@ describe ("Program", () => {
     const validUserData = {
         name: "Carla",
         email: "carla@example.com",
-        password: "123456"
+        password: "TestUser1!"
     }; 
     describe("POST/ programs/create", () => {
 
