@@ -1,6 +1,5 @@
 const request = require("supertest"); 
 const app = require("../src/app"); 
-const loginLimiter = require("../src/middleware/rateLimit.middleware"); 
 const { WorkoutExercise, Exercise } = require("../src/models"); 
 
 describe("WokroutExercise", () => {
@@ -16,13 +15,6 @@ describe("WokroutExercise", () => {
         level: "intermediate",
         frequency: 5
     };
-    beforeEach(() => {
-        if (loginLimiter && typeof loginLimiter.resetKey === 'function') {
-            loginLimiter.resetKey('::1');
-            loginLimiter.resetKey('127.0.0.1');
-            loginLimiter.resetKey('::ffff:127.0.0.1');
-        }
-    });
 
     const registerAndLoginUser = async (userData = validUserData) => {
         const agent = request.agent(app);

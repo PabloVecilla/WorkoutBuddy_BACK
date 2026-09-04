@@ -3,7 +3,9 @@ const AppError = require("../utils/AppError");
 
 const getExercises = async (req, res) => {
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
-    const limit = Math.max(1, parseInt(req.query.limit, 10) || 10);
+    let limit = Math.max(1, parseInt(req.query.limit, 10) || 10);
+
+    if (limit > 10) limit = 10; 
 
     const { rows, count } = await findAllExercises(page, limit);
 
@@ -36,7 +38,32 @@ const getExerciseById = async (req, res) => {
 }; 
 
 const getExercisesByMovementPattern = async (req, res) => {
-    const movementPattern = req.params.movementPattern; 
+    const movementPattern = String(req.params.movementPattern || "").trim(); 
+    const acceptedMovementPatterns = [
+        "shoulder_abduction",
+        "shoulder_horizontal_abduction",
+        "shoulder_flexion",
+        "vertical_press",
+        "vertical_pull",
+        "horizontal_pull",
+        "shoulder_shrug",
+        "back_extension",
+        "horizontal_press",
+        "horizontal_adduction",
+        "vertical_push",
+        "elbow_flexion",
+        "elbow_extension",
+        "knee_extension",
+        "squat_pattern",
+        "knee_flexion",
+        "hip_adduction",
+        "hip_abduction",
+        "hip_hinge",
+        "glute_flexion",
+        "calf_flexion",
+        "spinal_flexion"
+      ]
+    if (!acceptedMovementPatterns.includes(movementPattern)) throw new AppError(401, "INVALID_MOVEMENT_PATTERN", "Invalid movement pattern"); 
 
     const exercises = await findExercisesByMovementPattern(movementPattern); 
 

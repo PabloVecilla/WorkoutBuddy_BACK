@@ -1,6 +1,5 @@
 const request = require("supertest"); 
 const app = require("../src/app"); 
-const loginLimiter = require("../src/middleware/rateLimit.middleware"); 
 const { User } = require("../src/models"); 
 
 describe ("Authentication", () => {
@@ -14,19 +13,14 @@ describe ("Authentication", () => {
         email: "carla123@example.com",
         password: "TestUser33!"
       }
-    beforeEach(() => {
-        if (loginLimiter && typeof loginLimiter.resetKey === 'function') {
-            loginLimiter.resetKey('::1');
-            loginLimiter.resetKey('127.0.0.1');
-            loginLimiter.resetKey('::ffff:127.0.0.1');
-        }
-    });
 
     describe("POST /auth/register", () => {
         it("registers a new user", async () => {
             const response = await request(app).post("/auth/register").send(validUserData); 
 
             expect(response.status).toBe(201); 
+            expect(response.body.success).toBe(true); 
+            expect(response.body.message).toBe("User registered successfully"); 
             expect(response.body.data.name).toBe("Carla"); 
             expect(response.body.data.email).toBe("carla@example.com"); 
 
@@ -99,6 +93,7 @@ describe ("Authentication", () => {
 
             expect(loginUser.status).toBe(200); 
             expect(loginUser.body.message).toBe("Login successful"); 
+            expect(loginUser.body.success).toBe(true); 
             expect(loginUser.body.data.name).toBe(existingUser.body.data.name); 
             expect(loginUser.body.data.email).toBe(existingUser.body.data.email); 
 
@@ -136,8 +131,14 @@ describe ("Authentication", () => {
             await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
             const response = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
 
-            expect(response.body.error.message).toBe('Too many login attempts. Try again later.'); 
             expect(response.status).toBe(429); 
+            expect(response.body).toEqual({
+                success: false,
+                error: {
+                    code: "LOGIN_RATE_LIMIT_EXCEEDED",
+                    message: "Too many login attempts. Try again later."
+                }
+            });
         })
     }); 
 
@@ -158,16 +159,47 @@ describe ("Authentication", () => {
 
             const response = await agent.get("/auth/me");
 
-            expect(response.body.data.email).toBe(validUserData.email); 
+            expect(response.status).toBe(200); 
+            expect(response.body).toEqual({
+                    success: true,
+                    data: response.body.data,
+                    message: "User returned successfully",
+                    meta: {}
+                }); 
         }); 
         it("rejects unauthenticated requests", async () => {
             const response = await request(app).get("/auth/me"); 
 
             expect(response.status).toBe(401); 
+            expect(response.body).toEqual({
+                success: false, 
+                error: {
+                    code:"UNAUTHORIZED", 
+                    message: "Unauthorized"
+                }
+            })
         }); 
     })
-} ); 
+    describe("POST /auth/logout", () => {
+        it("logs out user", async () => {
+            const agent = request.agent(app); 
+            await agent.post("/auth/register").send(validUserData);
+            const loginResponse = await agent.post("/auth/login").send({ email: validUserData.email, password: validUserData.password }); 
+            expect(loginResponse.headers["set-cookie"]).toBeDefined(); 
 
+            const response = await agent.post("/auth/logout"); 
+
+            expect(response.status).toBe(200); 
+            expect(response.body).toEqual({
+                    success: true,
+                    data: [],
+                    message: "Logout successfull",
+                    meta: {}
+            }); 
+            expect(response.headers["set-cookie"][0]).toContain("token=;"); 
+        }); 
+    })
+} );
 // Arrange
 // act
 // assert

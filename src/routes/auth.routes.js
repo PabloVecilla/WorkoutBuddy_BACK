@@ -1,5 +1,5 @@
 const express = require("express"); 
-const loginLimiter = require("../middleware/rateLimit.middleware"); 
+const { loginLimiter } = require("../middleware/rateLimit.middleware"); 
 
 const { register, login, me, logout } = require("../controllers/auth.controller"); 
 const protect = require("../middleware/auth.middleware"); 

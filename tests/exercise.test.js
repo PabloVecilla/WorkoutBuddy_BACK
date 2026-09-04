@@ -12,7 +12,7 @@ describe("Exercise", () => {
     const loginData = { email: validUserData.email, password: validUserData.password }
 
     describe("GET /exercises", () => {
-        it("returns all exercises to a logged in user", async () => {
+        it("returns page 1, limit 10 exercises to a logged in user when no query params are provided", async () => {
             const agent = request.agent(app); 
 
             await agent.post("/auth/register").send(validUserData); 
@@ -23,7 +23,67 @@ describe("Exercise", () => {
             expect(response.status).toBe(200); 
 
             const exercisesInDB = await Exercise.findAll(); 
-            expect(response.body.meta.total).toBe(exercisesInDB.length); 
+
+            expect(response.body).toEqual({
+                success: true,
+                data: response.body.data,
+                message: "Exercises found successfully",
+                meta: {
+                    page: 1,
+                    limit: 10,
+                    total: exercisesInDB.length,
+                    totalPages: Math.ceil(response.body.meta.total / 10) || 1
+                }
+            })
+        })
+
+        it("returns page 3, limit 7 exercises to a logged in user when query params are provided", async () => {
+            const agent = request.agent(app); 
+
+            await agent.post("/auth/register").send(validUserData); 
+            await agent.post("/auth/login").send(loginData); 
+
+            const response = await agent.get("/exercises?limit=7&page=3"); 
+
+            expect(response.status).toBe(200); 
+
+            const exercisesInDB = await Exercise.findAll(); 
+
+            expect(response.body).toEqual({
+                success: true,
+                data: response.body.data,
+                message: "Exercises found successfully",
+                meta: {
+                    page: 3,
+                    limit: 7,
+                    total: exercisesInDB.length,
+                    totalPages: Math.ceil(response.body.meta.total / 7)
+                }
+            })
+        })
+        it("returns limit 10 exercises when limit > 10", async () => {
+            const agent = request.agent(app); 
+
+            await agent.post("/auth/register").send(validUserData); 
+            await agent.post("/auth/login").send(loginData); 
+
+            const response = await agent.get("/exercises?limit=70"); 
+
+            expect(response.status).toBe(200); 
+
+            const exercisesInDB = await Exercise.findAll(); 
+
+            expect(response.body).toEqual({
+                success: true,
+                data: response.body.data,
+                message: "Exercises found successfully",
+                meta: {
+                    page: 1,
+                    limit: 10,
+                    total: exercisesInDB.length,
+                    totalPages: Math.ceil(response.body.meta.total / 10)
+                }
+            })
         })
 
         it("rejects unauthorized requests", async () => {
@@ -85,7 +145,7 @@ describe("Exercise", () => {
             expect(response.body.error.message).toBe("Unauthorized"); 
         })
     })
-    describe("GET /movement-pattern/:movementPattern", () => {
+    describe("GET exercises/movement-pattern/:movementPattern", () => {
         it("returns exercises by valid movement pattern to an authenticated user", async () => {
             const agent = request.agent(app); 
 
@@ -117,7 +177,7 @@ describe("Exercise", () => {
             expect(response.status).toBe(401); 
             expect(response.body.exercises).toBeUndefined(); 
         })
-        it("returns 404 to user with invalid movement-pattern requests", async () => {
+        it("returns 401 to user with invalid movement-pattern requests", async () => {
             const agent = request.agent(app); 
 
             await agent.post("/auth/register").send(validUserData); 
@@ -125,7 +185,7 @@ describe("Exercise", () => {
             
             const response = await agent.get("/exercises/movement-pattern/shoulder_shruggg"); 
 
-            expect(response.status).toBe(404); 
+            expect(response.status).toBe(401); 
             expect(response.body.exercises).toBeUndefined(); 
         })
     })

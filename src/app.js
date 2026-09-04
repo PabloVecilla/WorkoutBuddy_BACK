@@ -39,6 +39,9 @@ const cors = require("cors");
 // IMPORT_MODELS
 require("./models"); 
 
+// Import api rateLimiter
+const { apiLimiter } = require("../src/middleware/rateLimit.middleware"); 
+
 // CREATE express engine
 const app = express();
 
@@ -55,6 +58,8 @@ app.use(cors ({ // use cors to define access route from frontend
 app.use(express.json()); // Parseamos a JSON para que sea un objeto legible por JS
 app.use(express.urlencoded({extended: false})) //parseamos el formulario desde XML
 app.use(cookieParser()) //cookie
+
+app.use(apiLimiter); 
 
 app.use("/", userRoutes); 
 
