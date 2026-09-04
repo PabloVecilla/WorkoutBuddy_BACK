@@ -7,12 +7,12 @@ describe ("Authentication", () => {
     const validUserData = {
         name: "Carla",
         email: "carla@example.com",
-        password: "123456"
+        password: "TestUser1!"
       }
       const invalidUserData = {
         name: "Carla",
         email: "carla123@example.com",
-        password: "12345"
+        password: "TestUser33!"
       }
     beforeEach(() => {
         if (loginLimiter && typeof loginLimiter.resetKey === 'function') {
@@ -54,7 +54,40 @@ describe ("Authentication", () => {
 
         }); 
         
-        it.todo("rejects invalid input"); 
+        it("rejects invalid name", async () => {
+            const response = await request(app).post("/auth/register").send({
+                name: "C",
+                email: "carla@example.com",
+                password: "TestUser1!"
+              }); 
+            expect(response.status).toBe(400); 
+            expect(response.body.error.message).toBe("Invalid name. Must have between 2 and 60 characters"); 
+
+            expect(response.body.data).toBeUndefined(); 
+        }); 
+        it("rejects invalid email", async () => {
+            const response = await request(app).post("/auth/register").send({
+                name: "Carla",
+                email: "carlaexample.com",
+                password: "TestUser1!"
+              }); 
+            expect(response.status).toBe(400); 
+            expect(response.body.error.message).toBe("Invalid email address"); 
+
+            expect(response.body.data).toBeUndefined(); 
+        }); 
+
+        it("rejects invalid password", async () => {
+            const response = await request(app).post("/auth/register").send({
+                name: "Carla",
+                email: "carla@example.com",
+                password: "123456"
+              }); 
+            expect(response.status).toBe(400); 
+            expect(response.body.error.message).toBe("Password must contain 8–64 characters, including uppercase, lowercase, number, and special character"); 
+
+            expect(response.body.data).toBeUndefined(); 
+        }); 
     }); 
 
     describe("POST /auth/login", () => {
@@ -76,7 +109,11 @@ describe ("Authentication", () => {
 
         }); 
         it("rejects invalid credentials", async () => {
-            const existingUser = await request(app).post("/auth/register").send(validUserData); 
+            const existingUser = await request(app).post("/auth/register").send({
+                name: "Carla",
+                email: "carla123@example.com",
+                password: "TestUser1!"
+              }); 
 
             const loginUser = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
 

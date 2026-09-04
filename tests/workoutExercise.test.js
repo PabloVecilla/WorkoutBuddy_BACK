@@ -8,7 +8,7 @@ describe("WokroutExercise", () => {
     const validUserData = {
         name: "Carla",
         email: "carla@example.com",
-        password: "123456"
+        password: "TestUser1!"
     };
     const programCreationData = {
         name: "Summer ready", 
@@ -139,7 +139,7 @@ describe("WokroutExercise", () => {
             const secondUserData = {
                 name: "Pedro",
                 email: "pedro@example.com",
-                password: "123456"
+                password: "TestUser1!"
             };
         
             const secondAgent = await registerAndLoginUser(secondUserData);
