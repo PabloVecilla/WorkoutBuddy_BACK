@@ -121,7 +121,7 @@ describe ("Authentication", () => {
 
             const response = await agent.get("/auth/me");
 
-            expect(response.body.user.email).toBe(validUserData.email); 
+            expect(response.body.data.email).toBe(validUserData.email); 
         }); 
         it("rejects unauthenticated requests", async () => {
             const response = await request(app).get("/auth/me"); 
@@ -133,4 +133,4 @@ describe ("Authentication", () => {
 
 // Arrange
 // act
-// assesrt
+// assert

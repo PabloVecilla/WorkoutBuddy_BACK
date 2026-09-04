@@ -69,7 +69,12 @@ app.use("/exercises", exerciseRoutes);
 app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExerciseRoutes); 
 
 app.get("/", (_req, res) => {
-  res.json({ message: "WorkoutBuddy API running on local" });
+  res.json({ 
+    success: true,
+    data: [],
+    message: "WorkoutBuddy API running on port" + process.env.PORT,
+    meta: {}
+  });
 });
 
 // not found AFTER routes to be usable by all

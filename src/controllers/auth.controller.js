@@ -74,8 +74,11 @@ const login = async (req, res) => {
 }; 
 
 const me = async (req, res) => {
-    res.json({
-        user: req.user
+    res.status(200).json({
+        success: true,
+        data: req.user,
+        message: "User returned successfully",
+        meta: {}
     }); 
 }; 
 
@@ -85,8 +88,11 @@ const logout = async (_req, res) => {
         secure: process.env.NODE_ENV === "production", // have to be === to the ones we created the token with
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
     }); 
-    res.json({
-        message: "logout successfull"
+    res.status(200).json({
+        success: true,
+        data: [],
+        message: "Logout successfull",
+        meta: {}
     }); 
 }; 
 
