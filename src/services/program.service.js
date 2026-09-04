@@ -1,5 +1,5 @@
 // Import models && Import sequelize to enable transaction
-const { sequelize, Program, Workout, WorkoutExercise } = require("../models"); 
+const { sequelize, Program, Workout, WorkoutExercise, Exercise } = require("../models"); 
 // Import programBuilder
 const { generateProgram } = require("./programBuilder"); 
 // import workout inyection function
@@ -20,9 +20,15 @@ const findProgramByIdForUser = async (data) =>
                                     include: [{ // left join the WorkoutExercises that belong to said WOrkout from said Program of said User
                                         model: WorkoutExercise,
                                         as: "workoutExercises",
-                                        required: false
+                                        required: false, 
+                                        include: [{
+                                            model: Exercise, 
+                                            as: "exercise", 
+                                            required: false, 
+                                            attributes: {exclude: ["raw"]}
+                                        }]
                                     }],
-                                }], 
+                                }],
                                 order: [
                                     [Workout, "dayNumber", "ASC"],
                                     [Workout, { model: WorkoutExercise, as: "workoutExercises" }, "order", "ASC"]
