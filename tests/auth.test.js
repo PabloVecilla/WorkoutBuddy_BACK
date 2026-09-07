@@ -131,6 +131,8 @@ describe ("Authentication", () => {
             await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
             const response = await request(app).post("/auth/login").send({ email: invalidUserData.email, password: invalidUserData.password }); 
 
+            console.log("RESPONSE: ", response); 
+
             expect(response.status).toBe(429); 
             expect(response.body).toEqual({
                 success: false,
