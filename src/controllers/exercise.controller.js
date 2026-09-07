@@ -63,7 +63,7 @@ const getExercisesByMovementPattern = async (req, res) => {
         "calf_flexion",
         "spinal_flexion"
       ]
-    if (!acceptedMovementPatterns.includes(movementPattern)) throw new AppError(401, "INVALID_MOVEMENT_PATTERN", "Invalid movement pattern"); 
+    if (!acceptedMovementPatterns.includes(movementPattern)) throw new AppError(400, "INVALID_MOVEMENT_PATTERN", "Invalid movement pattern"); 
 
     const exercises = await findExercisesByMovementPattern(movementPattern); 
 

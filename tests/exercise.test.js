@@ -177,7 +177,7 @@ describe("Exercise", () => {
             expect(response.status).toBe(401); 
             expect(response.body.exercises).toBeUndefined(); 
         })
-        it("returns 401 to user with invalid movement-pattern requests", async () => {
+        it("returns 400 to user with invalid movement-pattern requests", async () => {
             const agent = request.agent(app); 
 
             await agent.post("/auth/register").send(validUserData); 
@@ -185,7 +185,7 @@ describe("Exercise", () => {
             
             const response = await agent.get("/exercises/movement-pattern/shoulder_shruggg"); 
 
-            expect(response.status).toBe(401); 
+            expect(response.status).toBe(400); 
             expect(response.body.exercises).toBeUndefined(); 
         })
     })
