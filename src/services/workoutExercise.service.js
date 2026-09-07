@@ -1,37 +1,49 @@
-const { WorkoutExercise, Workout, Program } = require("../models"); 
+const { WorkoutExercise, Workout, Program, Exercise } = require("../models"); 
 
-// const findAllWorkoutExercisesByUserId = async (userId) => {
-//     return await WorkoutExercise.findAll({  
-//         include: [{
-//             model: Workout, 
-//             as: "workout",
-//             required: true,
-//             include: [{
-//                 model: Program,
-//                 required: true,
-//                 where: { userId }
-//             }]
-//         }]
-//     }); 
-// }; 
+const getWorkoutExercisesForUser = async ( userId, programId, workoutId) => {
+    return await WorkoutExercise.findAll({ where: { workoutId }, 
+        include: [
+            {
+                model: Exercise,
+                as: "exercise",
+                attributes: { exclude: ["raw"]},
+            },
+            {
+                model: Workout,
+                as: "workout",
+                required: true,
+                where: { id: workoutId },
+                include: [
+                    {
+                        model: Program,
+                        required: true,
+                        where: { id: programId, userId }
+                    }
+                ]
+            }
+        ],
+        order: [["order", "ASC"]]
+    });
+};
 
-const findUserWorkoutExerciseById = async (userId, workoutExerciseId) => {
+const findUserWorkoutExerciseById = async (userId, programId, workoutId, workoutExerciseId) => {
     return await WorkoutExercise.findOne({ where: {id: workoutExerciseId}, 
         include: [{
             model: Workout, 
             as: "workout",
             required: true,
+            where: { id: workoutId },
             include: [{
                 model: Program,
                 required: true,
-                where: { userId }
+                where: { id: programId, userId }
             }]
         }]
     }); 
 };  
 
-const updateWorkoutExerciseForUser = async (userId, workoutExerciseId, updates) => {
-    const workoutExercise = await findUserWorkoutExerciseById(userId, workoutExerciseId); 
+const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workoutExerciseId, updates) => {
+    const workoutExercise = await findUserWorkoutExerciseById(userId, programId, workoutId, workoutExerciseId); 
     if (!workoutExercise) return null; 
 
     const {
@@ -52,16 +64,18 @@ const updateWorkoutExerciseForUser = async (userId, workoutExerciseId, updates) 
 }; 
 
 
-const deleteWorkoutExerciseForUser = async (userId, workoutExerciseId) => {
-        const workoutExercise =  await findUserWorkoutExerciseById(userId, workoutExerciseId); 
-        if (!workoutExercise) return null
-        await workoutExercise.destroy(); 
-        return workoutExercise; 
-}; 
+const deleteWorkoutExerciseForUser = async (userId, programId, workoutId, workoutExerciseId) => {
+    const workoutExercise = await findUserWorkoutExerciseById(userId, programId, workoutId, workoutExerciseId);
+
+    if (!workoutExercise) return null;
+
+    await workoutExercise.destroy();
+
+    return workoutExercise;
+};
 
 const createExercisesForWorkout = async ({exercises, workoutId, transaction}) => {
     // Map exercises with workout ID
-    console.log("Exercises prepared for workout: ", exercises)
     const exercisesWithId = exercises.map(exercise => ({
         ...exercise,
         workoutId
@@ -71,4 +85,4 @@ const createExercisesForWorkout = async ({exercises, workoutId, transaction}) =>
     return await WorkoutExercise.bulkCreate(exercisesWithId, { transaction });
 };
 
-module.exports = { updateWorkoutExerciseForUser, deleteWorkoutExerciseForUser, createExercisesForWorkout }; 
+module.exports = { getWorkoutExercisesForUser, updateWorkoutExerciseForUser, deleteWorkoutExerciseForUser, createExercisesForWorkout }; 

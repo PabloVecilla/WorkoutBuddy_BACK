@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/programs/43/workouts
+method: GET
+order: 4116372295912129

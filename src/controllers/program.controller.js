@@ -1,135 +1,135 @@
 const { findAllProgramsForUser, findProgramByIdForUser, updateProgramForUser, destroyProgramForUser, generateAndSaveProgramForUser,  } = require("../services/program.service"); 
+const AppError = require("../utils/AppError");
 
 const createProgram = async (req, res) => {
-    try {
-        const { name, goal, level, frequency } = req.body; 
-        const userId = req.user.id
+    const { name, goal, level, frequency } = req.body; 
+    const userId = req.user.id
 
-        if (!name) return res.status(400).json({
-            message: "Name required"
-        }); 
-        if (!goal) return res.status(400).json({
-            message: "Goal, level and frequency required"
-        }); 
-        if (!level) return res.status(400).json({
-            message: "Level required"
-        }); 
-        if (!frequency) return res.status(400).json({
-            message: "Frequency required"
-        }); 
-        // if (!name || !goal || !level || !frequency) return res.status(400).json({
-        //     message: "Name, goal, level and frequency required"
-        // }); 
+    if (!name || !goal || !level || !frequency) throw new AppError(400, "INVALID_DATA", "Name, goal, level and frequency required"); 
 
-        const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
-        if (!program) return res.status(500).json({message: "Error generating or saving program"})
-        res.status(201).json({
-            message: "Program created successfully", 
-            program
-        }); 
+    const nameRegex = /^(?=.{2,60}$)[\p{L}\p{M}\d][\p{L}\p{M}\d _'-]*$/u;
+    const goalRegex = /^(muscle_gain|fat_loss|strength|recomp)$/;
+    const levelRegex = /^(beginner|intermediate)$/;
 
-    } catch (err) {
-        if(err.message.includes("BAD_REQUEST"))
-            return res.status(400).json({
-                message: "Invalid input data to generate Program", 
-                error: err.message
-            }); 
+    const allowedFrequencies = {
+    beginner: [2, 3, 4],
+    intermediate: [3, 4, 5, 6],
+    };
 
-        res.status(500).json({
-            message: "Error saving Program",
-            error: err.message
-        }); 
-    }
+    const frequencyNumber = Number(frequency);
+
+    const isValid =
+        nameRegex.test(name?.trim()) &&
+        goalRegex.test(goal) &&
+        levelRegex.test(level) &&
+        Number.isInteger(frequencyNumber) &&
+        allowedFrequencies[level]?.includes(frequencyNumber);
+
+    if (!isValid) {
+    throw new AppError(
+        400,
+        "INVALID_PROGRAM_DATA",
+        "Invalid name, goal, level, or frequency"
+    ); }
+
+    const program = await generateAndSaveProgramForUser({name, goal, level, frequency, userId}); 
+
+    if (!program) throw new AppError(500, "DB_ERROR", "Error generating or saving program"); 
+
+    res.status(201).json({
+        success: true,
+        data: program,
+        message: "Program created successfully",
+        meta: {}
+    }); 
 }; 
 
 const getPrograms = async (req, res) => {
     const userId = req.user.id; 
-    try {
-        const programs = await findAllProgramsForUser(userId); 
 
-        res.status(200).json(programs); 
+    const programs = await findAllProgramsForUser(userId);
+    
+    if(programs.length === 0) return res.status(200).json({
+        success: true,
+        data: programs,
+        message: "You have no programs yet",
+        meta: {}
+    })
 
-    } catch (err) {
-        res.status(500).json({
-            message: "Error finding programs", 
-            error: err.message
-        }); 
-    }
+    res.status(200).json({
+        success: true,
+        data: programs,
+        message: "Programs found successfully",
+        meta: {}
+    }); 
+
 };
 
 const getProgramById = async (req, res) => {
-    try {
-        const { id } = req.params; 
-        const numericId = Number(id); 
-        const userId = req.user.id; 
+    const { id } = req.params; 
+    const numericId = Number(id); 
+    const userId = req.user.id; 
 
-        if (isNaN(numericId)) return res.status(400).json({ message: "Invalid id" }); 
+    if (isNaN(numericId)) throw new AppError(400, "INVALID_ID", "Invalid id");
 
-        const program = await findProgramByIdForUser( { id: numericId, userId } ); 
+    const program = await findProgramByIdForUser( { id: numericId, userId } ); 
 
-        if (!program) return res.status(404).json({ message: "Program not found" }); 
+    if (!program) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
-        res.status(200).json({
-            message: "Program found", 
-            program
-        }); 
-    } catch (err) {
-        res.status(500).json({
-            message: "Error getting the program", 
-            error: err.message
-        }); 
-    }
+    res.status(200).json({
+        success: true,
+        data: program,
+        message: "Program found",
+        meta: {}
+    }); 
 }; 
 
 const deleteProgram = async (req, res) => {
-    try {
-        const userId = req.user.id; 
-        const { id } = req.params; 
+    const userId = req.user.id; 
+    const { id } = req.params; 
 
-        if (!id) return res.status(400).json({ message: "No id provided" });
+    if (!id) throw new AppError(400, "MISSING_ID", "No id provided"); 
 
-        const programId = Number(id); 
+    const programId = Number(id); 
 
-        if (isNaN(programId)) return res.status(400).json({ message: "invalid id" }); 
-// destroy returns the NUMBER of rows deleted
+    if (isNaN(programId)) throw new AppError(400, "INVALID_ID", "invalid id");
 
-        const deletedCount = await destroyProgramForUser({ programId, userId }); 
-        
-        if (deletedCount === 0) return res.status(404).json({ message: "Program not found" }); 
+    // destroy returns the NUMBER of rows deleted
+    const deletedCount = await destroyProgramForUser({ programId, userId }); 
+    
+    if (deletedCount === 0) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
 
-        res.status(200).json({ message: "Program deleted successfully" });
-
-    } catch (err) {
-        res.status(500).json({
-            message: "Error deleting Program", 
-            error: err.message
-        }); 
-    }
+    res.status(200).json({
+        success: true,
+        data: { deletedCount },
+        message: "Program deleted successfully",
+        meta: {}
+    }); 
 }; 
 
 const updateProgram = async (req, res) => {
-    try {
-        const userId = req.user.id; 
-        const programId = Number(req.params.id); 
-        const { name, goal, level, frequency } = req.body; 
+    const userId = req.user.id; 
+    const programId = Number(req.params.id); 
+    const { name } = req.body; 
 
-        if (isNaN(programId)) return res.status(400).json({ message: "Invalid program id" }); 
+    if (isNaN(programId)) throw new AppError(400, "INVALID_ID", "Invalid program id"); 
 
-        const updatedProgram = await updateProgramForUser({ programId, userId, data: { name, goal, level, frequency } }); 
+    const nameRegex = /^(?=.{2,60}$)[\p{L}\p{M}\d][\p{L}\p{M}\d _'-]*$/u;
 
-        if (!updatedProgram) return res.status(404).json({ message: "Program not found" }); 
+    const nameValid = nameRegex.test(name?.trim());
 
-        res.status(200).json({
-            message: "Program edited successfully", 
-            updatedProgram
-        }); 
+    if (!nameValid) throw new AppError(400, "INVALID_PROGRAM_DATA", "Invalid name");
 
-    } catch (err) {
-        res.status(500).json({
-            message: "Error editing Program", 
-            error: err.message
-        }); 
-    }
+    const updatedProgram = await updateProgramForUser({ programId, userId, data: { name } }); 
+
+    if (!updatedProgram) throw new AppError(404, "PROGRAM_NOT_FOUND", "Program not found"); 
+
+    res.status(200).json({
+        success: true,
+        data: updatedProgram,
+        message: "Program name edited successfully",
+        meta: {}
+    }); 
 }
 
 module.exports = {

@@ -1,93 +1,97 @@
-const bcrypt = require("bcrypt"); 
+const bcrypt = require("bcrypt"); // hasher
 const jwt = require("jsonwebtoken"); 
 // Import service query functions
-const { findUserByEmail, createUser } = require("../services/user.service");
+const { findUserByEmail, findUserByEmailForUser, createUser } = require("../services/user.service");
+const AppError = require("../utils/AppError"); 
+
+// User serializer
+const serializeUser = (user) => ({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    createdAt: user.createdAt
+}); 
 
 // Register
 const register = async (req, res) => {
-    try {
-        const { name, email, password } = req.body; 
+    const { name, email, password } = req.body; 
 
-        if( !name || !email || !password) return res.status(400).json({ 
-            message: "Please fill all the required fields" }); 
+    if( !name || !email || !password) throw new AppError(400, "MISSING_FIELDS", "Please fill all the required fields"); 
 
-        const existingUser = await findUserByEmail(email);
+    const nameRegex = /^(?=.{2,60}$)[\p{L}\p{M}\d][\p{L}\p{M}\d _'-]*$/u;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])\S{8,64}$/;
 
-        if (existingUser) return res.status(409).json({ message: "User already registered"}); 
+    const validName = nameRegex.test(name?.trim()); 
+    const validEmail = emailRegex.test(email) ;
+    const validPassword = passwordRegex.test(password);
 
-        const passwordHash = await bcrypt.hash(password, 10); 
+    if (!validName) throw new AppError(400, "INVALID_NAME", "Invalid name. Must have between 2 and 60 characters");
+    if (!validEmail) throw new AppError(400, "INVALID_EMAIL", "Invalid email address");
+    if (!validPassword) throw new AppError(400,"INVALID_PASSWORD",
+        "Password must contain 8–64 characters, including uppercase, lowercase, number, and special character"); 
 
-        const user = await createUser(name, email, passwordHash); 
+    const existingUser = await findUserByEmail(email);
 
-        res.status(201).json({
-            message: "User registered successfully", 
-            user: {
-                id: user.id, 
-                name: user.name, 
-                email: user.email, 
-                createdAt: user.createdAt
-            }
-        })        
+    if (existingUser) throw new AppError(409, "USER_REGISTERED", "User already registered"); 
 
-    } catch (err) {
-        res.status(500).json({
-            message: "Error registering user", 
-            error: err.message
-        }); 
-    }
+    const passwordHash = await bcrypt.hash(password, 10); 
+
+    const user = await createUser(name, email, passwordHash); 
+
+    res.status(201).json({
+        success: true,
+        data: serializeUser(user),
+        message: "User registered successfully",
+        meta: {}
+    })        
 
 }; 
 
 // Login::
 const login = async (req, res) => {
-    try {
-        const { email, password } = req.body; 
+    const { email, password } = req.body; 
 
-        if (!email || !password) return res.status(401).json({message: "Enter email and password"}); 
+    if (!email || !password) throw new AppError(400, "MISSING_FIELDS", "Enter email and password")
 
-        const user = await findUserByEmail(email); 
+    const user = await findUserByEmailForUser(email); 
 
-        if (!user) return res.status(404).json({ message: "User not found" }); 
+    if (!user) throw new AppError(401, "INVALID_CREDENTIALS", "Invalid credentials"); 
 
-        const passwordIsValid = await bcrypt.compare(password, user.passwordHash); 
+    const passwordIsValid = await bcrypt.compare(password, user.passwordHash); 
 
-        if (!passwordIsValid) return res.status(401).json({ message: "Invalid credentials" }); 
+    if (!passwordIsValid) throw new AppError(401, "INVALID_CREDENTIALS", "Invalid credentials"); 
 
-        const token = jwt.sign(
-            {
-                id:user.id,
-                email: user.email
-            }, 
-            process.env.JWT_SECRET, 
-            { expiresIn: process.env.JWT_EXPIRES_IN }
-        ); 
+    const token = jwt.sign(
+        {
+            id:user.id,
+            email: user.email
+        }, 
+        process.env.JWT_SECRET, 
+        { expiresIn: process.env.JWT_EXPIRES_IN }
+    ); 
 
-        res.cookie("token", token, { // modifies the response headers; 
-            httpOnly: true, 
-            secure: process.env.NODE_ENV === "production", 
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
-            maxAge: Number(process.env.COOKIE_MAX_AGE)
-        }); 
+    res.cookie("token", token, { // modifies the response headers; 
+        httpOnly: true, 
+        secure: process.env.NODE_ENV === "production", 
+        sameSite: process.env.NODE_ENV === "test" ? false : (process.env.NODE_ENV === "production" ? "none" : "lax"), 
+        maxAge: Number(process.env.COOKIE_MAX_AGE)
+    }); 
 
-        res.json({ // sends final response  with modified headers  
-            message: "Login successful", 
-            user: {
-                id: user.id, 
-                name: user.name, 
-                email: user.email
-            }
-        }); 
-    } catch(err) {
-        res.status(500).json({
-            message: "Error during login",
-            error: err.message
-        }); 
-    }
+    res.status(200).json({ // sends final response  with modified headers  
+        success: true,
+        data: serializeUser(user),
+        message: "Login successful",
+        meta: {}
+    }); 
 }; 
 
 const me = async (req, res) => {
-    res.json({
-        user: req.user
+    res.status(200).json({
+        success: true,
+        data: req.user,
+        message: "User returned successfully",
+        meta: {}
     }); 
 }; 
 
@@ -97,8 +101,11 @@ const logout = async (_req, res) => {
         secure: process.env.NODE_ENV === "production", // have to be === to the ones we created the token with
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
     }); 
-    res.json({
-        message: "logout successfull"
+    res.status(200).json({
+        success: true,
+        data: [],
+        message: "Logout successfull",
+        meta: {}
     }); 
 }; 
 

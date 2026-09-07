@@ -1,26 +1,25 @@
 const { Program, Workout, sequelize } = require('../models');
 const workoutExerciseService = require('./workoutExercise.service');
+const AppError = require("../utils/AppError"); 
 
 const createWorkoutsForProgram = async (workoutsData, programId, transaction) => {
-    console.log("Program id in workout service: ", programId); 
     for (const workoutData of workoutsData) {
-        const [rows] = await sequelize.query('SELECT id from programs where id = :programId', {replacements: {programId}, transaction, logging: console.log});
-        console.log("RAW SQL program lookup: ", rows); 
-            // Create workout
-            const addedWorkout = await Workout.create({
-                dayNumber: workoutData.dayNumber,
-                focus: workoutData.focus,
-                programId
-            }, { transaction, 
-                logging: console.log
-             }); 
+        const [rows] = await sequelize.query('SELECT id from programs where id = :programId', {replacements: {programId}, transaction });
 
-            // Delegamos los ejercicios al servicio correspondiente (pasándole la transacción)
-            await workoutExerciseService.createExercisesForWorkout({
-                exercises: workoutData.exercises, 
-                workoutId: addedWorkout.id, 
-                transaction
-            });
+        // Create workout
+        const addedWorkout = await Workout.create({
+            dayNumber: workoutData.dayNumber,
+            focus: workoutData.focus,
+            programId
+        }, { transaction, 
+            }); 
+
+        // Call service for exercise creation (giving esefcises data, workoutId and transaction)
+        await workoutExerciseService.createExercisesForWorkout({
+            exercises: workoutData.exercises, 
+            workoutId: addedWorkout.id, 
+            transaction
+        });
     }
 };
 
@@ -45,4 +44,54 @@ const destroyWorkoutInProgramForUser = async (workoutId, programId, userId) => {
     await workoutToDelete.destroy(); 
     return 1; 
 }; 
-module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser };
+
+
+const updateWorkoutInProgramForUser = async (programId, workoutId, userId, updateData) => {
+    const transaction = await sequelize.transaction(); 
+
+    try {
+        const workoutToUpdate = await Workout.findOne({ where: { id: workoutId, 
+            programId },
+                include: { // left join the WorkoutExercises that belong to said Workout from said Program
+                    model: Program,
+                    where: { userId },
+                    attributes: ['frequency']
+                },
+                transaction
+        });
+        if (!workoutToUpdate) {
+            await transaction.rollback();
+            return null; 
+        }; 
+
+        const { dayNumber: newDayNumber } = updateData; 
+        const currentDayNumber = workoutToUpdate.dayNumber; 
+        const programFrequency = workoutToUpdate.Program.frequency;
+
+        if (newDayNumber !== undefined && newDayNumber !== currentDayNumber) {
+            if (newDayNumber > programFrequency) {
+                throw new AppError(
+                    400,
+                    "INVALID_DAY_NUMBER",
+                    "dayNumber cannot exceed program frequency"
+                  );
+            }
+            const conflictingWorkout = await Workout.findOne( { where: {programId, dayNumber: newDayNumber}, transaction }); 
+            if (conflictingWorkout) {
+                await conflictingWorkout.update({ dayNumber: currentDayNumber }, { transaction }); 
+            }
+            await workoutToUpdate.update({ dayNumber: newDayNumber }, { transaction }); 
+        }; 
+
+        await transaction.commit(); 
+        return workoutToUpdate;
+
+    } catch (err) {
+        if(transaction && !transaction.finished) {
+                await transaction.rollback(); 
+        }
+        throw err; 
+    }
+};
+
+module.exports = { createWorkoutsForProgram, findAllWorkoutsInProgramForUser, findWorkoutByIdInProgramForUser, destroyWorkoutInProgramForUser, updateWorkoutInProgramForUser };

@@ -5,10 +5,13 @@ const cookieParser = require("cookie-parser");
 // IMPORT DOTENV
 require("dotenv").config({
   path:
-    process.env.NODE_ENV === "production" ? ".env" : ".env.local" 
+    process.env.NODE_ENV === "production" ? ".env" 
+    : process.env.NODE_ENV === "test" ? ".env.test" 
+    : ".env.local" 
 }); 
 
-const sequelize = require("../config/database"); 
+// Import Helmet
+const helmet = require("helmet"); 
 
 // ROUTES
 // _users
@@ -21,6 +24,14 @@ const programRoutes = require("../src/routes/program.routes");
 const workoutRoutes = require("../src/routes/workout.routes"); 
 // _exercise
 const exerciseRoutes = require("../src/routes/exercise.routes"); 
+// _workoutExercise
+const workoutExerciseRoutes = require("../src/routes/workoutExercise.routes"); 
+
+// IMPORT NOT FOUND handler
+const notFound = require("../src/middleware/notFound.middleware"); 
+
+// IMPORT ERROR handler
+const errorHandler = require("../src/middleware/error.middleware"); 
 
 // CORS
 const cors = require("cors"); 
@@ -28,9 +39,17 @@ const cors = require("cors");
 // IMPORT_MODELS
 require("./models"); 
 
-const app = express(); 
+// Import api rateLimiter
+const { apiLimiter } = require("../src/middleware/rateLimit.middleware"); 
 
-const PORT = process.env.PORT || 3000; 
+// CREATE express engine
+const app = express();
+
+// Mandatory for express-rate-limit to function properly  
+app.set('trust proxy', 1); 
+
+// Helmet protection
+app.use(helmet()); 
 
 app.use(cors ({ // use cors to define access route from frontend
   origin: process.env.FRONTEND_URL, // frontend req origin  
@@ -39,6 +58,8 @@ app.use(cors ({ // use cors to define access route from frontend
 app.use(express.json()); // Parseamos a JSON para que sea un objeto legible por JS
 app.use(express.urlencoded({extended: false})) //parseamos el formulario desde XML
 app.use(cookieParser()) //cookie
+
+app.use(apiLimiter); 
 
 app.use("/", userRoutes); 
 
@@ -50,24 +71,20 @@ app.use("/programs/:programId/workouts", workoutRoutes);
 
 app.use("/exercises", exerciseRoutes); 
 
+app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExerciseRoutes); 
+
 app.get("/", (_req, res) => {
-  res.json({ message: "WorkoutBuddy API running on local" });
+  res.json({ 
+    success: true,
+    data: [],
+    message: "WorkoutBuddy API running on port" + process.env.PORT,
+    meta: {}
+  });
 });
 
-async function startServer() { // -> only accept http requests if connection is successful
-  try {
-    await sequelize.authenticate(); // -> test connection to DB
-    console.log("Database Connected"); 
+// not found AFTER routes to be usable by all
+app.use(notFound); 
+//  error handler AFTER routes to be usable by all && AFTER 404
+app.use(errorHandler); 
 
-    await sequelize.sync(); // -> updates DB to match the sequelize model --> ONLY for development. 
-    console.log("Models synced"); 
-
-    app.listen(PORT, () => {
-      console.log(`API listening on http://localhost:${PORT}`);
-    });
-
-  } catch (err) {
-    console.error("Database connection failed: ", err); 
-  }
-}
-startServer(); 
+module.exports = app; 
