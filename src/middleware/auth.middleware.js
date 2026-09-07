@@ -13,7 +13,7 @@ const protect = async (req, res, next) => {
         // jwt.verify -> checks token integrity (no changes to the valid JWT signed); checks if it's expired -- gets info from the token json defined @ auth.controller
         // Compares token and JWT_SECRET; if successfull, user data from token is stored @ decoded (const); -- if not successfull --> catch
     } catch {
-        throw new AppError(401, "TOKEN_ERROR", "Unauthrized"); 
+        throw new AppError(401, "TOKEN_ERROR", "Unauthorized"); 
     }
     
     const user = await User.findByPk(decoded.id, {

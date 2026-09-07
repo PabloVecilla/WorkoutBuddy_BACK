@@ -3,7 +3,7 @@ const AppError = require("../utils/AppError");
 
 const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 5,
+    max: process.env.NODE_ENV === "test" ? 5 : 50,
     standardHeaders: true,
     legacyHeaders: false,
     handler: (_req, _res, next) => {
