@@ -2,8 +2,10 @@ const { findAllExercises, findExerciseById, findExercisesByMovementPattern } = r
 const AppError = require("../utils/AppError");
 
 const getExercises = async (req, res) => {
-    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
-    let limit = Math.max(1, parseInt(req.query.limit, 10) || 10);
+    const page = Number(req.query.page ?? 1); 
+    let limit = Number(req.query.limit ?? 10); 
+
+    if (!Number.isInteger(page) || !Number.isInteger(limit) || page < 1 || limit < 1) throw new AppError(400, "INVALID_INPUT", "Page and Limit input must be numbers above 0"); 
 
     if (limit > 10) limit = 10; 
 
