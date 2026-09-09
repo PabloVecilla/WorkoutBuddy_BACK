@@ -48,6 +48,7 @@ const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workou
 
     const {
         exerciseId,
+        weightKg,
         sets,
         reps,
         restSeconds,
@@ -56,6 +57,7 @@ const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workou
 
     return workoutExercise.update({
         exerciseId: exerciseId ?? workoutExercise.exerciseId,
+        weightKg: weightKg ?? workoutExercise.weightKg,
         sets: sets ?? workoutExercise.sets, 
         reps: reps ?? workoutExercise.reps, 
         restSeconds: restSeconds ?? workoutExercise.restSeconds, 

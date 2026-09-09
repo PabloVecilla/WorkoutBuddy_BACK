@@ -7,11 +7,15 @@
     "dev": "NODE_ENV=development nodemon src/server.js",
     "start": "node --watch src/server.js",
     "db:init": "node create-tables.js",
-    "test": "NODE_ENV=test jest --runInBand",
     "exercises:fetch": "node scripts/fetchExercises.js",
     "exercises:normalize": "node scripts/normalizeExercises.js",
     "exercises:prepare": "npm run exercises:fetch && npm run exercises:normalize",
-    "exercises:seed": "node scripts/runExerciseSeeder"
+    "exercises:seed": "node scripts/runExerciseSeeder",
+    "db:migrate": "NODE_ENV=development sequelize-cli db:migrate --env development",
+    "db:migrate:test": "NODE_ENV=test sequelize-cli db:migrate --env test",
+    "db:migrate:status": "NODE_ENV=development sequelize-cli db:migrate:status --env development",
+    "db:migrate:undo": "NODE_ENV=development sequelize-cli db:migrate:undo --env development",
+    "test": "npm run db:migrate:test && NODE_ENV=test jest --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +38,7 @@
   },
   "devDependencies": {
     "jest": "^30.4.2",
+    "sequelize-cli": "^6.6.5",
     "supertest": "^7.2.2"
   },
   "jest": {

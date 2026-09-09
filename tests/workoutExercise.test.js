@@ -92,7 +92,7 @@ describe("WokroutExercise", () => {
             const workoutExercise = await WorkoutExercise.findOne({where: { workoutId }, order: [["order", "ASC"]]}); 
             const workoutExerciseId = workoutExercise.id; 
 
-            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExerciseId}`).send({ exerciseId: 1, sets: 1, reps: 1, restSeconds: 10, order: 2 }); 
+            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExerciseId}`).send({ exerciseId: 1, weightKg: 1, sets: 1, reps: 1, restSeconds: 10, order: 2 }); 
 
             expect(response.status).toBe(200); 
 
@@ -106,17 +106,8 @@ describe("WokroutExercise", () => {
         
             const invalidWorkoutExerciseId = 999999;
         
-            const response = await agent
-                .patch(
-                    `/programs/${programId}/workouts/${workoutId}/workout-exercises/${invalidWorkoutExerciseId}`
-                )
-                .send({
-                    exerciseId: 1,
-                    sets: 1,
-                    reps: 1,
-                    restSeconds: 10,
-                    order: 2
-                });
+            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${invalidWorkoutExerciseId}`)
+                .send({ exerciseId: 1, weightKg: 10, sets: 1, reps: 1, restSeconds: 10, order: 2 });
         
             expect(response.status).toBe(404);
             expect(response.body.error.message).toBe("Exercise not found");
@@ -151,6 +142,7 @@ describe("WokroutExercise", () => {
                 )
                 .send({
                     exerciseId: 1,
+                    weightKg: 10,
                     sets: 1,
                     reps: 1,
                     restSeconds: 10,
