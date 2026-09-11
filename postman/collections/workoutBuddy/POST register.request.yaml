@@ -6,9 +6,9 @@ body:
   type: json
   content: |-
     {
-            "name": "Carla",
-            "email": "carla@example.com",
-            "password": "TestUser1!"
+            "name": "Carlaaa",
+            "email": "carlaaa@example.com",
+            "password": "123456"
     }
 settings: {}
 order: 1000

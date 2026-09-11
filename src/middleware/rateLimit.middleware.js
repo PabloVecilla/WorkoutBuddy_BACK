@@ -25,8 +25,8 @@ const apiLimiter = rateLimit({
       next(
         new AppError(
           429,
-          "LOGIN_RATE_LIMIT_EXCEEDED",
-          "Too many login attempts. Try again later."
+          "API_RATE_LIMIT_EXCEEDED",
+          "Rate limit exceeded. Try again later."
         ));
   }
 }); 

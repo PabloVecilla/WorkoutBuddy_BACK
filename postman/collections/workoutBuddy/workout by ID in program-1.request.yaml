@@ -1,5 +1,5 @@
 $kind: http-request
 name: workout by ID in program
-url: ""
+url: http://localhost:3000/programs/43/workouts/100
 method: PATCH
 order: 4248360855284590
