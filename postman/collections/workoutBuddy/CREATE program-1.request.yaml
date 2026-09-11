@@ -1,0 +1,20 @@
+$kind: http-request
+name: CREATE program
+description: ""
+url: http://localhost:3000/programs/create
+method: POST
+body:
+  type: json
+  content: |
+    {
+        "name": "Muscle mommy", 
+        "goal": "muscle_gain", 
+        "level": "intermediate",
+        "frequency": "5"
+    }
+settings:
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 4458904784726812

@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon src/server.js",
-    "start": "node --watch src/server.js",
+    "start": "node src/server.js",
     "db:init": "node create-tables.js",
     "exercises:fetch": "node scripts/fetchExercises.js",
     "exercises:normalize": "node scripts/normalizeExercises.js",
@@ -14,6 +14,8 @@
     "db:migrate": "NODE_ENV=development sequelize-cli db:migrate --env development",
     "db:migrate:test": "NODE_ENV=test sequelize-cli db:migrate --env test",
     "db:migrate:status": "NODE_ENV=development sequelize-cli db:migrate:status --env development",
+    "db:migrate:prod": "NODE_ENV=production sequelize-cli db:migrate --env production",
+    "db:migrate:prod:status": "NODE_ENV=production sequelize-cli db:migrate:status --env production",
     "db:migrate:undo": "NODE_ENV=development sequelize-cli db:migrate:undo --env development",
     "test": "npm run db:migrate:test && NODE_ENV=test jest --runInBand"
   },

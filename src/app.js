@@ -61,7 +61,7 @@ app.use(cookieParser()) //cookie
 
 app.use(apiLimiter); 
 
-app.use("/", userRoutes); 
+// app.use("/", userRoutes); 
 
 app.use("/auth", authRoutes); 
 
@@ -72,6 +72,18 @@ app.use("/programs/:programId/workouts", workoutRoutes);
 app.use("/exercises", exerciseRoutes); 
 
 app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExerciseRoutes); 
+
+// Dedicated for Infrastructure / Monitors
+app.get("/health", async (_req, res) => {
+  try {
+    // Optional: Add a quick DB ping here later if using Sequelize
+    // await sequelize.authenticate(); 
+    
+    res.status(200).json({ status: "UP", timestamp: new Date() });
+  } catch (error) {
+    res.status(503).json({ status: "DOWN", error: error.message });
+  }
+});
 
 app.get("/", (_req, res) => {
   res.json({ 
