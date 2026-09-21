@@ -13,10 +13,11 @@
     "exercises:seed": "node scripts/runExerciseSeeder",
     "db:migrate": "NODE_ENV=development sequelize-cli db:migrate --env development",
     "db:migrate:test": "NODE_ENV=test sequelize-cli db:migrate --env test",
-    "db:migrate:status": "NODE_ENV=development sequelize-cli db:migrate:status --env development",
+    "db:migrate:test:undo": "NODE_ENV=test sequelize-cli db:migrate:undo --env test",
+    "db:migrate:develop:status": "NODE_ENV=development sequelize-cli db:migrate:status --env development",
+    "db:migrate:develop:undo": "NODE_ENV=development sequelize-cli db:migrate:undo --env development",
     "db:migrate:prod": "NODE_ENV=production sequelize-cli db:migrate --env production",
     "db:migrate:prod:status": "NODE_ENV=production sequelize-cli db:migrate:status --env production",
-    "db:migrate:undo": "NODE_ENV=development sequelize-cli db:migrate:undo --env development",
     "test": "npm run db:migrate:test && NODE_ENV=test jest --runInBand"
   },
   "keywords": [],

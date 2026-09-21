@@ -14,31 +14,39 @@ const modelNames = Object.keys(sequelize.models);
 beforeAll(async () => {
   await sequelize.authenticate();
 
-  for (const modelName of modelNames) {
-    await sequelize.models[modelName].truncate({ 
-      cascade: true, 
-      restartIdentity: true
-    });
+  const tablesToTruncate = Object.keys(sequelize.models).map( modelName => `"${sequelize.models[modelName].tableName}"`); 
+
+  const sql = `TRUNCATE TABLE ${tablesToTruncate.join(', ')} RESTART IDENTITY CASCADE;`;
+
+  try {
+    if (tablesToTruncate.length > 0) {
+      await sequelize.query(sql);
+    }
+  } catch (err) {
+    console.error('FAILED SQL:', sql);
+    console.error('POSTGRES ERROR:', err.parent || err);
+    throw err;
   }
 
-  await seedExercises(); 
+  await seedExercises();
 });
 
 beforeEach(async () => {
-  
-    for (const modelName of modelNames) {
+  // Collect physical table names for all models except Exercise
+  const tablesToTruncate = Object.keys(sequelize.models)
+    .filter((modelName) => modelName !== 'Exercise')
+    .map((modelName) => `"${sequelize.models[modelName].tableName}"`);
 
-      if (modelName === 'Exercise') continue; 
-  
-      await sequelize.models[modelName].truncate({ 
-        cascade: true, 
-        restartIdentity: true
-      });
-    }
+  if (tablesToTruncate.length > 0) {
+    // Single query execution resolves dependencies atomically
+    await sequelize.query(
+      `TRUNCATE TABLE ${tablesToTruncate.join(', ')} RESTART IDENTITY CASCADE;`
+    );
+  }
 
-    resetLimiter(apiLimiter);
-    resetLimiter(loginLimiter);
-  });
+  resetLimiter(apiLimiter);
+  resetLimiter(loginLimiter);
+});
 
 afterAll(async () => {
   await sequelize.close();
