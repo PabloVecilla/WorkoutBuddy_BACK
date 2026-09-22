@@ -26,6 +26,8 @@ const workoutRoutes = require("../src/routes/workout.routes");
 const exerciseRoutes = require("../src/routes/exercise.routes"); 
 // _workoutExercise
 const workoutExerciseRoutes = require("../src/routes/workoutExercise.routes"); 
+// _workoutSession
+const workoutSessionRoutes = require("../src/routes/workoutSession.routes"); 
 
 // IMPORT NOT FOUND handler
 const notFound = require("../src/middleware/notFound.middleware"); 
@@ -41,6 +43,7 @@ require("./models");
 
 // Import api rateLimiter
 const { apiLimiter } = require("../src/middleware/rateLimit.middleware"); 
+const { WorkoutSession } = require("./models");
 
 // CREATE express engine
 const app = express();
@@ -72,6 +75,8 @@ app.use("/programs/:programId/workouts", workoutRoutes);
 app.use("/exercises", exerciseRoutes); 
 
 app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExerciseRoutes); 
+
+app.use("/", workoutSessionRoutes); 
 
 // Dedicated for Infrastructure / Monitors
 app.get("/health", async (_req, res) => {
