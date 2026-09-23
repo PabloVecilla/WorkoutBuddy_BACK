@@ -14,8 +14,6 @@ require("dotenv").config({
 const helmet = require("helmet"); 
 
 // ROUTES
-// _users
-const userRoutes = require("../src/routes/user.routes"); 
 // _auth
 const authRoutes = require("../src/routes/auth.routes"); 
 // _program
@@ -28,6 +26,8 @@ const exerciseRoutes = require("../src/routes/exercise.routes");
 const workoutExerciseRoutes = require("../src/routes/workoutExercise.routes"); 
 // _workoutSession
 const workoutSessionRoutes = require("../src/routes/workoutSession.routes"); 
+// _workoutSet
+const workoutSetRoutes = require("../src/routes/workoutSet.routes"); 
 
 // IMPORT NOT FOUND handler
 const notFound = require("../src/middleware/notFound.middleware"); 
@@ -77,6 +77,8 @@ app.use("/exercises", exerciseRoutes);
 app.use("/programs/:programId/workouts/:workoutId/workout-exercises", workoutExerciseRoutes); 
 
 app.use("/", workoutSessionRoutes); 
+
+app.use("/workout-sessions/:sessionId/sets", workoutSetRoutes); 
 
 // Dedicated for Infrastructure / Monitors
 app.get("/health", async (_req, res) => {
