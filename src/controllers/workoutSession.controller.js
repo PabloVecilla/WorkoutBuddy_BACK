@@ -22,16 +22,16 @@ const getWorkoutSession = async (req, res) => {
 
 const finishWorkoutSession = async (req, res) => {
     const userId = req.user.id; 
-    const workoutSessionId = Number(req.params.id); 
+    const workoutSessionId = Number(req.params.sessionId); 
     if (isNaN(workoutSessionId)) throw new AppError(400, "INVALID_ID", "Invalid workoutSession id"); 
 
     const updatedWorkoutSession = await finishWorkoutSessionForUser(userId, workoutSessionId); 
 
-    if (!updatedWorkoutSession) throw new AppError(404, "SESSION_NOT_FOUND", "Workout Session not found");
+    if (updatedWorkoutSession === null) throw new AppError(404, "SESSION_NOT_FOUND", "Workout Session not found");
 
     res.status(200).json({
         success: true,
-        data: updatedWorkoutExercise,
+        data: updatedWorkoutSession,
         message: "Session finished successfully",
         meta: {}
     });

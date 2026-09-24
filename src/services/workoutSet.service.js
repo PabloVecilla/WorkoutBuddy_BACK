@@ -1,10 +1,10 @@
-const { WorkoutExercises, WorkoutSession, WorkoutSet, sequelize } = require('../models');
+const { WorkoutExercise, WorkoutSession, WorkoutSet, sequelize } = require('../models');
 const AppError = require("../utils/AppError"); 
 
 const createWorkoutSetsForSession = async (data) => {
-    const {workoutSessionId, workoutId, transaction} = data; 
+    const { workoutSessionId, workoutId, transaction } = data; 
 
-    const workoutExercises = await WorkoutExercises.findAll({ where: { workoutId }, attributes: ["id", "exerciseId", "order", "sets", "reps"], order: [["order", "ASC"]], transaction }); 
+    const workoutExercises = await WorkoutExercise.findAll({ where: { workoutId }, attributes: ["id", "exerciseId", "order", "sets", "reps"], order: [["order", "ASC"]], transaction }); 
 
     const setsToCreate = workoutExercises.flatMap((we) => { // Extract plain attributes from Sequelize instance
         const exercise = we.get({ plain: true });
@@ -40,14 +40,17 @@ const patchWorkoutSet = async (userId, sessionId, setId, updateData) => {
     if (isNaN(Number(updateData.executedReps)) || isNaN(Number(updateData.weightKg)) || 
     !Number.isInteger(Number(updateData.executedReps)) || Number(updateData.executedReps) < 1 ||  
     Number(updateData.executedReps) > 30 || Number(updateData.weightKg) < 0 || Number(updateData.weightKg) > 999.99 ||
-    updateData.isCompleted !== "true" || updateData.isCompleted !== "false" ) throw new AppError(400, "INVALID_DATA", "Invalid input data");
+    ![true, false, "true", "false"].includes(updateData.isCompleted) ) throw new AppError(400, "INVALID_DATA", "Invalid input data");
 
     const setExistsAndIsAuth = await WorkoutSet.findOne({ where: { id: setId },  
                                                             include: [{
                                                                 model: WorkoutSession, 
                                                                 where: { id: sessionId, userId }
-                                                            }]
+                                                            }], 
                                                         })
+    
+    
+                                                        
     if (!setExistsAndIsAuth) return null; 
 
     if (setExistsAndIsAuth?.WorkoutSession?.completedAt !== null) throw new AppError (409, "SESSION_FINISHED", "Impossible to update a set in a finished session");
