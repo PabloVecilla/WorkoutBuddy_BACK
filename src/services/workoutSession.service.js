@@ -1,4 +1,5 @@
 const { Workout, Program, WorkoutSession, WorkoutSet, sequelize } = require("../models"); 
+const AppError = require("../utils/AppError");
 
 const { createWorkoutSetsForSession } = require("./workoutSet.service"); 
 
@@ -9,6 +10,7 @@ const getWorkoutSessionForUser = async ( userId, workoutSessionId) => {
 const finishWorkoutSessionForUser = async (userId,workoutSessionId) => {
     const workoutSession = await getWorkoutSessionForUser(userId, workoutSessionId); 
     if (!workoutSession) return null; 
+    if (workoutSession.isInProgress === false) throw new AppError(409, "SESSION_NOT_ACTIVE", "Unable to finish a non-active session"); 
 
     return workoutSession.update({
         isInProgress: false, 
@@ -26,12 +28,12 @@ const createWorkoutSessionForUser = async (userId, programId, workoutId) => {
     if (!workout) return null; 
 
     const existingWorkoutSession = await WorkoutSession.findOne({ where: {userId, workoutId, completedAt: null}, 
-                                                                include: [{ model: WorkoutSet, as: 'workoutSets' }] 
+                                                                include: [{ model: WorkoutSet, as: 'WorkoutSets' }] 
                                                             }); 
 
     if(existingWorkoutSession) return existingWorkoutSession; 
 
-    const result = await sequelize.transaction (async (t) => {
+    return await sequelize.transaction (async (t) => {
         const createdWorkoutSession = await WorkoutSession.create({
             userId,
             workoutId,
@@ -49,8 +51,8 @@ const createWorkoutSessionForUser = async (userId, programId, workoutId) => {
         // Attach created sets array to the response payload without making another DB read
         createdWorkoutSession.setDataValue('workoutSets', createdSets);
     
-        return createdWorkoutSession;
+        return createdWorkoutSession; 
     });
-}; 
+};
 
 module.exports = { getWorkoutSessionForUser, finishWorkoutSessionForUser, createWorkoutSessionForUser }; 

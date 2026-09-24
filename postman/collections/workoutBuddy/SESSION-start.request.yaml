@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:3000/programs/50/workouts/109/sessions
+method: POST
+body:
+  type: json
+  content: ""
+order: 4485786028112113
