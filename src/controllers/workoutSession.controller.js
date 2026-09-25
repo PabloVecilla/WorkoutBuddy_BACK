@@ -3,18 +3,17 @@ const AppError = require("../utils/AppError");
 
 const getWorkoutSession = async (req, res) => {
     const userId = req.user.id;
-    const programId = Number(req.params.programId);
-    const workoutId = Number(req.params.workoutId);
+    const sessionId = Number(req.params.sessionId);
 
-    if (isNaN(programId) || isNaN(workoutId)) throw new AppError(400, "INVALID_ID", "Invalid program or workout id"); 
+    if (isNaN(sessionId)) throw new AppError(400, "INVALID_ID", "Invalid session id"); 
 
-    const workoutSession = await getWorkoutSessionForUser(userId, programId, workoutId);
+    const workoutSession = await getWorkoutSessionForUser(userId, sessionId);
 
-    if (workoutSession.length < 1 || workoutSesion === null) throw new AppError(404, "SESSION_NOT_FOUND", "Workout Session not found"); 
+    if (workoutSession.length < 1 || workoutSession === null) throw new AppError(404, "SESSION_NOT_FOUND", "Workout Session not found"); 
 
     res.status(200).json({
         success: true,
-        data: workoutExercises,
+        data: workoutSession,
         message: "Workout Session found successfully",
         meta: {}
     });
