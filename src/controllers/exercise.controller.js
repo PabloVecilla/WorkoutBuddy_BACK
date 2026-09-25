@@ -41,7 +41,9 @@ const getExerciseById = async (req, res) => {
 
 const getExercisesByMovementPattern = async (req, res) => {
     const movementPattern = String(req.params.movementPattern || "").trim(); 
+    console.log("movementPattern: ", movementPattern); 
     const acceptedMovementPatterns = [
+        "cardio",
         "shoulder_abduction",
         "shoulder_horizontal_abduction",
         "shoulder_flexion",
