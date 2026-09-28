@@ -78,6 +78,7 @@ WorkoutExercise.belongsTo(Exercise, { // helps sequelize find a Exercise from th
 
 WorkoutSession.hasMany(WorkoutSet, {
     foreignKey: "workoutSessionId", 
+    as: "workoutSets",
     onDelete: "CASCADE"
 }); 
 

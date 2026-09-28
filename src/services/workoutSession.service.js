@@ -28,7 +28,7 @@ const createWorkoutSessionForUser = async (userId, programId, workoutId) => {
     if (!workout) return null; 
 
     const existingWorkoutSession = await WorkoutSession.findOne({ where: {userId, workoutId, completedAt: null}, 
-                                                                include: [{ model: WorkoutSet, as: 'WorkoutSets' }] 
+                                                                include: [{ model: WorkoutSet, as: 'workoutSets' }] 
                                                             }); 
 
     if(existingWorkoutSession) return existingWorkoutSession; 
