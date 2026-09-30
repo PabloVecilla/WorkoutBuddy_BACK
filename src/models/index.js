@@ -74,6 +74,20 @@ WorkoutExercise.belongsTo(Exercise, { // helps sequelize find a Exercise from th
     onDelete: "RESTRICT" 
 });
 
+// Exercise → WorkoutSet
+
+Exercise.hasMany(WorkoutSet, {
+    foreignKey: "exerciseId",
+    as: "workoutSets",
+    onDelete: "RESTRICT",
+  });
+  
+  WorkoutSet.belongsTo(Exercise, {
+    foreignKey: "exerciseId",
+    as: "exercise",
+    onDelete: "RESTRICT",
+  });
+
 // WorkoutSession --> WorkoutSet
 
 WorkoutSession.hasMany(WorkoutSet, {
