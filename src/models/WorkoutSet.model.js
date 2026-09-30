@@ -32,15 +32,30 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: true
             },
+            targetDurationMinutes: {
+                type: DataTypes.INTEGER, 
+                allowNull: true, 
+                validate: { min: 1, max: 180 }
+            },
             executedReps: {
                 type: DataTypes.INTEGER, 
                 allowNull: true
             }, 
+            durationMinutes: {
+                type: DataTypes.INTEGER, 
+                allowNull: true, 
+                validate: { min: 1, max: 180 }
+            },
             weightKg: {
                 type: DataTypes.DECIMAL(5, 2),
                 allowNull: true, 
                 validate: { min: 0 }
             }, 
+            intensityLevel: {
+                type: DataTypes.INTEGER,
+                allowNull: true, 
+                validate: { min: 1, max: 10 }
+            },
             isCompleted: {
                 type: DataTypes.BOOLEAN, 
                 defaultValue: false
