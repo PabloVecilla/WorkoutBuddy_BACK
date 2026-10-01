@@ -59,9 +59,8 @@ describe("WokroutSet", () => {
             expect(updatedSet.body.data.weightKg).toBe(10);
             expect(updatedSet.body.data.isCompleted).toBe(true);  
         })
-    })
-    describe("PATCH /workout-sessions/:sessionId/set/:setId", () => {
-        it("pweightKg of 0 is valid", async () => {
+
+        it("weightKg of 0 is valid", async () => {
             const agent = await registerAndLoginUser(); 
             const { programId, workoutId } = await createAndFindProgramAndWorkoutIdForUser(agent); 
 
@@ -80,9 +79,7 @@ describe("WokroutSet", () => {
             expect(updatedSet.body.data.weightKg).toBe(0);
             expect(updatedSet.body.data.isCompleted).toBe(true);  
         })
-    })
 
-    describe("PATCH /workout-sessions/:sessionId/set/:setId", () => {
         it("invalid numbers return 400", async () => {
             const agent = await registerAndLoginUser(); 
             const { programId, workoutId } = await createAndFindProgramAndWorkoutIdForUser(agent); 
@@ -115,5 +112,59 @@ describe("WokroutSet", () => {
             expect(response.status).toBe(409); 
             
         }); 
+
+        it("updates cardio metrics through the complete route contract", async () => {
+            const agent = await registerAndLoginUser();
+          
+            const { programId, workoutId } =
+              await createAndFindProgramAndWorkoutIdForUser(agent);
+          
+            const sessionResponse = await agent.post(
+              `/programs/${programId}/workouts/${workoutId}/sessions`
+            );
+          
+            expect(sessionResponse.status).toBe(200);
+          
+            const session = sessionResponse.body.data;
+          
+            const cardioSet = session.workoutSets.find(
+              (set) => set.targetDurationMinutes !== null
+            );
+          
+            expect(cardioSet).toBeDefined();
+            expect(cardioSet.targetDurationMinutes).toBeGreaterThan(0);
+            expect(cardioSet.targetReps).toBeNull();
+          
+            const response = await agent.patch(`/workout-sessions/${session.id}/sets/${cardioSet.id}`).send({
+                durationMinutes: 12,
+                intensityLevel: 7,
+                isCompleted: true,
+              });
+          
+            expect(response.status).toBe(200);
+          
+            expect(response.body.data).toEqual(
+              expect.objectContaining({
+                id: cardioSet.id,
+                targetDurationMinutes:
+                  cardioSet.targetDurationMinutes,
+                durationMinutes: 12,
+                intensityLevel: 7,
+                executedReps: null,
+                weightKg: null,
+                isCompleted: true,
+              })
+            );
+          
+            const persistedSet = await WorkoutSet.findByPk(
+              cardioSet.id
+            );
+          
+            expect(persistedSet.durationMinutes).toBe(12);
+            expect(persistedSet.intensityLevel).toBe(7);
+            expect(persistedSet.executedReps).toBeNull();
+            expect(persistedSet.weightKg).toBeNull();
+            expect(persistedSet.isCompleted).toBe(true);
+          });
     })
 })
