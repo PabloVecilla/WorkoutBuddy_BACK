@@ -12,6 +12,6 @@ const findExerciseById = async (id) => {
 
 const findExercisesByMovementPattern = async (movementPattern) => {
     return await Exercise.findAll({ where: { movementPattern }, attributes: { exclude: ["raw"] } }); 
-}
+}; 
   
 module.exports = { findAllExercises, findExerciseById, findExercisesByMovementPattern }; 

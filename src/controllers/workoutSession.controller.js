@@ -9,7 +9,7 @@ const getWorkoutSession = async (req, res) => {
 
     const workoutSession = await getWorkoutSessionForUser(userId, sessionId);
 
-    if (workoutSession.length < 1 || workoutSession === null) throw new AppError(404, "SESSION_NOT_FOUND", "Workout Session not found"); 
+    if (!workoutSession) throw new AppError(404, "SESSION_NOT_FOUND", "Workout Session not found"); 
 
     res.status(200).json({
         success: true,

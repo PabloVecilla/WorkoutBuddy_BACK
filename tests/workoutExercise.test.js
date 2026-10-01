@@ -89,15 +89,17 @@ describe("WokroutExercise", () => {
             const agent = await registerAndLoginUser(); 
             const { programId, workoutId } = await createAndFindProgramAndWorkoutIdForUser(agent); 
 
-            const workoutExercise = await WorkoutExercise.findOne({where: { workoutId }, order: [["order", "ASC"]]}); 
+            const workoutExercise = await WorkoutExercise.findOne({where: { workoutId }, include: [{model: Exercise, as: "exercise", attributes: ["movementPattern"]}], order: [["order", "ASC"]]}); 
             const workoutExerciseId = workoutExercise.id; 
 
-            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExerciseId}`).send({ exerciseId: 1, weightKg: 1, sets: 1, reps: 1, restSeconds: 10, order: 2 }); 
+            const validExercise = await Exercise.findOne({where: {movementPattern: workoutExercise.exercise.movementPattern}}); 
+
+            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExerciseId}`).send({ exerciseId: validExercise.id, weightKg: 1, sets: 1, reps: 1, restSeconds: 10, order: 2 }); 
 
             expect(response.status).toBe(200); 
 
             const workoutExerciseEdited = await WorkoutExercise.findByPk(workoutExerciseId); 
-            expect(workoutExerciseEdited.exerciseId).toBe(1); 
+            expect(workoutExerciseEdited.exerciseId).toBe(validExercise.id); 
         })
         it("returns 404 when user tries to update invalid workoutExercise", async () => {
             const agent = await registerAndLoginUser();
