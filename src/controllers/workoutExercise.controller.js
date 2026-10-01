@@ -28,13 +28,13 @@ const updateWorkoutExercise = async (req, res) => {
     const { exerciseId, weightKg, sets, reps, restSeconds, order } = req.body || {}; 
     if (isNaN(workoutExerciseId)) throw new AppError(400, "INVALID_ID", "Invalid workoutExercise id"); 
 
-    const UpdatedWorkoutExercise = await updateWorkoutExerciseForUser(userId, programId, workoutId, workoutExerciseId, {exerciseId, weightKg, sets, reps, restSeconds, order})
+    const updatedWorkoutExercise = await updateWorkoutExerciseForUser(userId, programId, workoutId, workoutExerciseId, {exerciseId, weightKg, sets, reps, restSeconds, order})
 
-    if (!UpdatedWorkoutExercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found");
+    if (!updatedWorkoutExercise) throw new AppError(404, "EXERCISE_NOT_FOUND", "Exercise not found");
 
     res.status(200).json({
         success: true,
-        data: UpdatedWorkoutExercise,
+        data: updatedWorkoutExercise,
         message: "Exercise edited successfully",
         meta: {}
     });

@@ -1,4 +1,5 @@
 const { WorkoutExercise, Workout, Program, Exercise } = require("../models"); 
+const AppError = require("../utils/AppError");
 
 const getWorkoutExercisesForUser = async ( userId, programId, workoutId) => {
     return await WorkoutExercise.findAll({ where: { workoutId }, 
@@ -29,6 +30,11 @@ const getWorkoutExercisesForUser = async ( userId, programId, workoutId) => {
 const findUserWorkoutExerciseById = async (userId, programId, workoutId, workoutExerciseId) => {
     return await WorkoutExercise.findOne({ where: {id: workoutExerciseId}, 
         include: [{
+            model: Exercise, 
+            as: "exercise", 
+            required: true, 
+            attributes: ["id", "movementPattern"]
+        }, {
             model: Workout, 
             as: "workout",
             required: true,
@@ -54,6 +60,19 @@ const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workou
         restSeconds,
         order
       } = updates;
+
+    // Only validate movement pattern if exerciseId is actually changing
+    if (exerciseId && exerciseId !== workoutExercise.exerciseId) {
+        const newExercise = await Exercise.findByPk(exerciseId); 
+        if (!newExercise) return null; 
+
+        // Verify movement pattern matches
+        const isValidMovementPattern = workoutExercise.exercise.movementPattern === newExercise.movementPattern; 
+
+        if (!isValidMovementPattern) throw new AppError(400, "INVALID_MOVEMENT_PATTERN", "Replacement exercise must have the same movement pattern"); 
+    }
+
+    
 
     return workoutExercise.update({
         exerciseId: exerciseId ?? workoutExercise.exerciseId,
