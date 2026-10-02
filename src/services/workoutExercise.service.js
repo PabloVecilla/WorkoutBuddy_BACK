@@ -1,4 +1,4 @@
-const { WorkoutExercise, Workout, Program, Exercise } = require("../models"); 
+const { WorkoutExercise, Workout, Program, Exercise, WorkoutSession } = require("../models"); 
 const AppError = require("../utils/AppError");
 
 const getWorkoutExercisesForUser = async ( userId, programId, workoutId) => {
@@ -51,6 +51,9 @@ const findUserWorkoutExerciseById = async (userId, programId, workoutId, workout
 const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workoutExerciseId, updates) => {
     const workoutExercise = await findUserWorkoutExerciseById(userId, programId, workoutId, workoutExerciseId); 
     if (!workoutExercise) return null; 
+
+    const session = await WorkoutSession.findOne({where: {userId, workoutId}}); 
+    if (session && session.isInProgress) throw new AppError(409, "NO_EXERCISE_UPDATE_ON_ACTIVE_SESSION", "Exercise update in an active session is not allowed"); 
 
     const {
         exerciseId,
