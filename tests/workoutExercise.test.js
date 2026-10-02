@@ -1,8 +1,9 @@
 const request = require("supertest"); 
 const app = require("../src/app"); 
-const { WorkoutExercise, Exercise } = require("../src/models"); 
+const { WorkoutExercise, Exercise, WorkoutSet } = require("../src/models"); 
+const { Op } = require('sequelize');
 
-describe("WokroutExercise", () => {
+describe("WorkoutExercise", () => {
     let agent; 
     const validUserData = {
         name: "Carla",
@@ -101,6 +102,36 @@ describe("WokroutExercise", () => {
             const workoutExerciseEdited = await WorkoutExercise.findByPk(workoutExerciseId); 
             expect(workoutExerciseEdited.exerciseId).toBe(validExercise.id); 
         })
+        it("rejects update for invalid movement pattern exercises", async () => {
+            const agent = await registerAndLoginUser(); 
+            const { programId, workoutId } = await createAndFindProgramAndWorkoutIdForUser(agent); 
+
+            const workoutExercise = await WorkoutExercise.findOne({where: { workoutId }, include: [{model: Exercise, as: "exercise", attributes: ["movementPattern"]}], order: [["order", "ASC"]]}); 
+            const workoutExerciseId = workoutExercise.id; 
+
+            const invalidExercise = await Exercise.findOne({where: {movementPattern: { [Op.ne]: workoutExercise.exercise.movementPattern } }}); 
+
+            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExerciseId}`).send({ exerciseId: invalidExercise.id, weightKg: 1, sets: 1, reps: 1, restSeconds: 10, order: 2 }); 
+
+            expect(response.status).toBe(400); 
+        })
+        it("active session don't allow further workoutExercise updates", async () => {
+            const agent = await registerAndLoginUser(); 
+            const { programId, workoutId } = await createAndFindProgramAndWorkoutIdForUser(agent); 
+
+            const sessionResponse = await agent.post(`/programs/${programId}/workouts/${workoutId}/sessions`); 
+
+            const sessionId = sessionResponse.body?.data?.id;
+
+            await agent.patch(`/workout-sessions/${sessionId}/finish`); 
+
+            const sets = await WorkoutSet.findAll({ where: { workoutSessionId: sessionId } }); 
+
+            const response = await agent.patch(`/workout-sessions/${sessionId}/sets/${sets[0].id}`).send({ executedReps: 10, weightKg: 12, isCompleted: true }); 
+
+            expect(response.status).toBe(409); 
+            
+        });
         it("returns 404 when user tries to update invalid workoutExercise", async () => {
             const agent = await registerAndLoginUser();
             const { programId, workoutId } =
