@@ -52,8 +52,8 @@ const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workou
     const workoutExercise = await findUserWorkoutExerciseById(userId, programId, workoutId, workoutExerciseId); 
     if (!workoutExercise) return null; 
 
-    const session = await WorkoutSession.findOne({where: {userId, workoutId}}); 
-    if (session && session.isInProgress) throw new AppError(409, "NO_EXERCISE_UPDATE_ON_ACTIVE_SESSION", "Exercise update in an active session is not allowed"); 
+    const activeSession = await WorkoutSession.findOne({where: {userId, workoutId, isInProgress: true, completedAt: null}, attributes: ["id"]}); 
+    if (activeSession) throw new AppError(409, "NO_EXERCISE_UPDATE_ON_ACTIVE_SESSION", "Exercise update in an active session is not allowed"); 
 
     const {
         exerciseId,

@@ -119,17 +119,29 @@ describe("WorkoutExercise", () => {
             const agent = await registerAndLoginUser(); 
             const { programId, workoutId } = await createAndFindProgramAndWorkoutIdForUser(agent); 
 
-            const sessionResponse = await agent.post(`/programs/${programId}/workouts/${workoutId}/sessions`); 
+            const firstSession = await agent.post(`/programs/${programId}/workouts/${workoutId}/sessions`); 
 
-            const sessionId = sessionResponse.body?.data?.id;
+            await agent.patch(`/workout-sessions/${firstSession.body.data.id}/finish`); 
 
-            await agent.patch(`/workout-sessions/${sessionId}/finish`); 
+            await agent.post(`/programs/${programId}/workouts/${workoutId}/sessions`); 
 
-            const sets = await WorkoutSet.findAll({ where: { workoutSessionId: sessionId } }); 
+            const workoutExercise = await WorkoutExercise.findOne({ where: { workoutId }, include: [{model: Exercise, as: "exercise", attributes: ["movementPattern"]}] }); 
 
-            const response = await agent.patch(`/workout-sessions/${sessionId}/sets/${sets[0].id}`).send({ executedReps: 10, weightKg: 12, isCompleted: true }); 
+            const replacement = await Exercise.findOne({
+                where: {
+                  movementPattern: workoutExercise.exercise.movementPattern,
+                  id: { [Op.ne]: workoutExercise.exerciseId },
+                },
+            });
 
-            expect(response.status).toBe(409); 
+            const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExercise.id}`).send({ exerciseId: replacement.id }); 
+
+            expect(response.status).toBe(409);
+            expect(response.body.error.code).toBe("NO_EXERCISE_UPDATE_ON_ACTIVE_SESSION"); 
+
+            const persistedWorkoutExercise = await WorkoutExercise.findOne({ where: { workoutId }, attributes: ["exerciseId"] });
+
+            expect (persistedWorkoutExercise.exerciseId).toBe(workoutExercise.exerciseId); 
             
         });
         it("returns 404 when user tries to update invalid workoutExercise", async () => {
