@@ -29,6 +29,5 @@ const sequelize =
         developmentConfig
       );
 
-module.exports = sequelize;
 module.exports = sequelize; 
 
