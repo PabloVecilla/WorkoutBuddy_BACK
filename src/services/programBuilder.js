@@ -195,9 +195,6 @@ const generateProgram = async ({ name, goal, level, frequency }) => {
     }
 };
 
-// generateProgram({ goal: "strength", level: "beginner", frequency: 2 })
-// console.log(generateProgram({goal: "muscle_gain", level: "intermediate", frequency: 3})); 
-
 module.exports = {
 generateProgram,
 };

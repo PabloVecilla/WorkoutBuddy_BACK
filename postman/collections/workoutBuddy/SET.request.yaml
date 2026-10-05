@@ -1,0 +1,12 @@
+$kind: http-request
+url: http://localhost:3000/workout-sessions/2/sets/17
+method: PATCH
+body:
+  type: json
+  content: |-
+    {
+        "executedReps": 10,
+        "weightKg": 100,
+        "isCompleted": true
+    }
+order: 4497500588168566

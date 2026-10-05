@@ -1,49 +1,85 @@
-const { WorkoutExercise, Workout, Program } = require("../models"); 
+const { WorkoutExercise, Workout, Program, Exercise, WorkoutSession } = require("../models"); 
+const AppError = require("../utils/AppError");
 
-// const findAllWorkoutExercisesByUserId = async (userId) => {
-//     return await WorkoutExercise.findAll({  
-//         include: [{
-//             model: Workout, 
-//             as: "workout",
-//             required: true,
-//             include: [{
-//                 model: Program,
-//                 required: true,
-//                 where: { userId }
-//             }]
-//         }]
-//     }); 
-// }; 
+const getWorkoutExercisesForUser = async ( userId, programId, workoutId) => {
+    return await WorkoutExercise.findAll({ where: { workoutId }, 
+        include: [
+            {
+                model: Exercise,
+                as: "exercise",
+                attributes: { exclude: ["raw"]},
+            },
+            {
+                model: Workout,
+                as: "workout",
+                required: true,
+                where: { id: workoutId },
+                include: [
+                    {
+                        model: Program,
+                        required: true,
+                        where: { id: programId, userId }
+                    }
+                ]
+            }
+        ],
+        order: [["order", "ASC"]]
+    });
+};
 
-const findUserWorkoutExerciseById = async (userId, workoutExerciseId) => {
+const findUserWorkoutExerciseById = async (userId, programId, workoutId, workoutExerciseId) => {
     return await WorkoutExercise.findOne({ where: {id: workoutExerciseId}, 
         include: [{
+            model: Exercise, 
+            as: "exercise", 
+            required: true, 
+            attributes: ["id", "movementPattern"]
+        }, {
             model: Workout, 
             as: "workout",
             required: true,
+            where: { id: workoutId },
             include: [{
                 model: Program,
                 required: true,
-                where: { userId }
+                where: { id: programId, userId }
             }]
         }]
     }); 
 };  
 
-const updateWorkoutExerciseForUser = async (userId, workoutExerciseId, updates) => {
-    const workoutExercise = await findUserWorkoutExerciseById(userId, workoutExerciseId); 
+const updateWorkoutExerciseForUser = async (userId, programId, workoutId, workoutExerciseId, updates) => {
+    const workoutExercise = await findUserWorkoutExerciseById(userId, programId, workoutId, workoutExerciseId); 
     if (!workoutExercise) return null; 
+
+    const activeSession = await WorkoutSession.findOne({where: {userId, workoutId, isInProgress: true, completedAt: null}, attributes: ["id"]}); 
+    if (activeSession) throw new AppError(409, "NO_EXERCISE_UPDATE_ON_ACTIVE_SESSION", "Exercise update in an active session is not allowed"); 
 
     const {
         exerciseId,
+        weightKg,
         sets,
         reps,
         restSeconds,
         order
       } = updates;
 
+    // Only validate movement pattern if exerciseId is actually changing
+    if (exerciseId && exerciseId !== workoutExercise.exerciseId) {
+        const newExercise = await Exercise.findByPk(exerciseId); 
+        if (!newExercise) return null; 
+
+        // Verify movement pattern matches
+        const isValidMovementPattern = workoutExercise.exercise.movementPattern === newExercise.movementPattern; 
+
+        if (!isValidMovementPattern) throw new AppError(400, "INVALID_MOVEMENT_PATTERN", "Replacement exercise must have the same movement pattern"); 
+    }
+
+    
+
     return workoutExercise.update({
         exerciseId: exerciseId ?? workoutExercise.exerciseId,
+        weightKg: weightKg ?? workoutExercise.weightKg,
         sets: sets ?? workoutExercise.sets, 
         reps: reps ?? workoutExercise.reps, 
         restSeconds: restSeconds ?? workoutExercise.restSeconds, 
@@ -52,16 +88,18 @@ const updateWorkoutExerciseForUser = async (userId, workoutExerciseId, updates) 
 }; 
 
 
-const deleteWorkoutExerciseForUser = async (userId, workoutExerciseId) => {
-        const workoutExercise =  await findUserWorkoutExerciseById(userId, workoutExerciseId); 
-        if (!workoutExercise) return null
-        await workoutExercise.destroy(); 
-        return workoutExercise; 
-}; 
+const deleteWorkoutExerciseForUser = async (userId, programId, workoutId, workoutExerciseId) => {
+    const workoutExercise = await findUserWorkoutExerciseById(userId, programId, workoutId, workoutExerciseId);
+
+    if (!workoutExercise) return null;
+
+    await workoutExercise.destroy();
+
+    return workoutExercise;
+};
 
 const createExercisesForWorkout = async ({exercises, workoutId, transaction}) => {
     // Map exercises with workout ID
-    console.log("Exercises prepared for workout: ", exercises)
     const exercisesWithId = exercises.map(exercise => ({
         ...exercise,
         workoutId
@@ -71,4 +109,4 @@ const createExercisesForWorkout = async ({exercises, workoutId, transaction}) =>
     return await WorkoutExercise.bulkCreate(exercisesWithId, { transaction });
 };
 
-module.exports = { updateWorkoutExerciseForUser, deleteWorkoutExerciseForUser, createExercisesForWorkout }; 
+module.exports = { getWorkoutExercisesForUser, updateWorkoutExerciseForUser, deleteWorkoutExerciseForUser, createExercisesForWorkout }; 

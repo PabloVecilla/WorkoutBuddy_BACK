@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
+            weightKg: {
+                type: DataTypes.DECIMAL(5, 2),
+                allowNull: true, 
+                validate: { min: 0 }
+            },
             sets: {
                 type: DataTypes.INTEGER, 
                 defaultValue: 3

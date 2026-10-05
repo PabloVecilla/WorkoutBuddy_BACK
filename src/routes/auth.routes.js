@@ -1,4 +1,5 @@
 const express = require("express"); 
+const { loginLimiter } = require("../middleware/rateLimit.middleware"); 
 
 const { register, login, me, logout } = require("../controllers/auth.controller"); 
 const protect = require("../middleware/auth.middleware"); 
@@ -9,13 +10,13 @@ router.post("/register", register);
 /* TEST JSON:: {
     "name": "Carlos",
     "mail": "carlos@example.com",
-    "pass": "123456"
+    "pass": "TestUser1!"
     } */
 
-router.post("/login", login); 
+router.post("/login", loginLimiter, login); 
 /* TEST JSON:: {
     "mail": "carlos@example.com",
-    "pass": "123456"
+    "pass": "TestUser1!"
     } */
 
 router.get("/me", protect, me); 
