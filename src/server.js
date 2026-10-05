@@ -2,7 +2,7 @@ const app = require("./app");
 const sequelize = require("../config/database"); 
 
 const PORT = process.env.PORT || 3000; 
-const HOST = process.env.NODE_ENV = "production" ? "0.0.0.0" : "127.0.0.1";  // explicit host necessary to run render deployment
+const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";  // explicit host necessary to run render deployment
 async function startServer() { // -> only accept http requests if connection is successful
     try {
       await sequelize.authenticate(); // -> test connection to DB
