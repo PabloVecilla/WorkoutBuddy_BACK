@@ -135,11 +135,11 @@ describe("WorkoutExercise", () => {
             });
 
             const response = await agent.patch(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExercise.id}`).send({ exerciseId: replacement.id }); 
-
+            
             expect(response.status).toBe(409);
             expect(response.body.error.code).toBe("NO_EXERCISE_UPDATE_ON_ACTIVE_SESSION"); 
 
-            const persistedWorkoutExercise = await WorkoutExercise.findOne({ where: { workoutId }, attributes: ["exerciseId"] });
+            const persistedWorkoutExercise = await WorkoutExercise.findByPk( workoutExercise.id, { attributes: ["exerciseId"] });
 
             expect (persistedWorkoutExercise.exerciseId).toBe(workoutExercise.exerciseId); 
             
@@ -198,4 +198,111 @@ describe("WorkoutExercise", () => {
             expect(response.body.error.message).toBe("Exercise not found");
         });
     })
+    describe("DELETE /programs/:programId/workouts/:workoutId/workout-exercises/:id", () => {
+        it("rejects deletion while the workout has an active session", async () => {
+            const agent = await registerAndLoginUser();
+            const { programId, workoutId } =
+                await createAndFindProgramAndWorkoutIdForUser(agent);
+    
+            const workoutExercise = await WorkoutExercise.findOne({
+                where: { workoutId },
+                order: [["order", "ASC"]],
+            });
+    
+            const sessionResponse = await agent.post(
+                `/programs/${programId}/workouts/${workoutId}/sessions`
+            );
+    
+            expect(sessionResponse.status).toBe(200);
+    
+            const sessionId = sessionResponse.body.data.id;
+    
+            const setCountBefore = await WorkoutSet.count({
+                where: {
+                    workoutSessionId: sessionId,
+                    workoutExerciseId: workoutExercise.id,
+                },
+            });
+    
+            expect(setCountBefore).toBeGreaterThan(0);
+    
+            const response = await agent.delete(
+                `/programs/${programId}/workouts/${workoutId}/workout-exercises/${workoutExercise.id}`
+            );
+    
+            expect(response.status).toBe(409);
+            expect(response.body.error.code).toBe(
+                "NO_EXERCISE_DELETE_ON_ACTIVE_SESSION"
+            );
+    
+            expect(
+                await WorkoutExercise.findByPk(workoutExercise.id)
+            ).not.toBeNull();
+    
+            expect(
+                await WorkoutSet.count({
+                    where: {
+                        workoutSessionId: sessionId,
+                        workoutExerciseId: workoutExercise.id,
+                    },
+                })
+            ).toBe(setCountBefore);
+        });
+
+        it("preserves completed logged sets when a prescription is deleted", async () => {
+            const agent = await registerAndLoginUser();
+            const { programId, workoutId } =
+                await createAndFindProgramAndWorkoutIdForUser(agent);
+        
+            const sessionResponse = await agent.post(
+                `/programs/${programId}/workouts/${workoutId}/sessions`
+            );
+        
+            expect(sessionResponse.status).toBe(200);
+        
+            const session = sessionResponse.body.data;
+        
+            // Select a strength set so its completion payload is predictable.
+            const setToComplete = session.workoutSets.find(
+                (set) => set.targetReps !== null
+            );
+        
+            expect(setToComplete).toBeDefined();
+        
+            const completionResponse = await agent
+                .patch(`/workout-sessions/${session.id}/sets/${setToComplete.id}`).send({
+                    executedReps: 8,
+                    weightKg: 42.5,
+                    isCompleted: true,
+                });
+        
+            expect(completionResponse.status).toBe(200);
+        
+            const finishResponse = await agent.patch(`/workout-sessions/${session.id}/finish`);
+        
+            expect(finishResponse.status).toBe(200);
+        
+            const deleteResponse = await agent.delete(`/programs/${programId}/workouts/${workoutId}/workout-exercises/${setToComplete.workoutExerciseId}`);
+        
+            expect(deleteResponse.status).toBe(200);
+        
+            expect( await WorkoutExercise.findByPk(setToComplete.workoutExerciseId)).toBeNull();
+        
+            const persistedSet = await WorkoutSet.findByPk(
+                setToComplete.id
+            );
+        
+            expect(persistedSet).not.toBeNull();
+            expect(persistedSet).toEqual(
+                expect.objectContaining({
+                    workoutExerciseId: null,
+                    workoutSessionId: session.id,
+                    exerciseId: setToComplete.exerciseId,
+                    executedReps: 8,
+                    isCompleted: true,
+                })
+            );
+            expect(Number(persistedSet.weightKg)).toBe(42.5);
+        });
+    });
 })
