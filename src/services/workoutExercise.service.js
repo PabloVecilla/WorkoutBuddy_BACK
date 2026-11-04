@@ -93,6 +93,24 @@ const deleteWorkoutExerciseForUser = async (userId, programId, workoutId, workou
 
     if (!workoutExercise) return null;
 
+    const activeSession = await WorkoutSession.findOne({
+        where: {
+            userId,
+            workoutId,
+            isInProgress: true,
+            completedAt: null,
+        },
+        attributes: ["id"],
+    });
+    
+    if (activeSession) {
+        throw new AppError(
+            409,
+            "NO_EXERCISE_DELETE_ON_ACTIVE_SESSION",
+            "Exercise deletion during an active session is not allowed"
+        );
+    }
+
     await workoutExercise.destroy();
 
     return workoutExercise;

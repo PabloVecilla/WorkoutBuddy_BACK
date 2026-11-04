@@ -104,11 +104,12 @@ WorkoutSet.belongsTo(WorkoutSession, {
 
 WorkoutExercise.hasMany(WorkoutSet, {
     foreignKey: "workoutExerciseId", 
-    onDelete: "CASCADE"
+    onDelete: "SET NULL"
 }); 
 
 WorkoutSet.belongsTo(WorkoutExercise, {
-    foreignKey: "workoutExerciseId"
+    foreignKey: "workoutExerciseId", 
+    onDelete: "SET NULL"
 }); 
 
 module.exports = { sequelize, User, Program, Workout, Exercise, WorkoutExercise, WorkoutSession, WorkoutSet }; 

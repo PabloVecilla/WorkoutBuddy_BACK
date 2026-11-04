@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             workoutExerciseId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
+                allowNull: true,
             },
             exerciseId: {
                 type: DataTypes.INTEGER, 
